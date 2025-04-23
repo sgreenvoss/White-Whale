@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3301826179450934294}
   - component: {fileID: 3301826179452065494}
   - component: {fileID: 27890137185966806}
+  - component: {fileID: -2835867184976172449}
   m_Layer: 0
   m_Name: Tropical Fish 08_01
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,3 +103,25 @@ MonoBehaviour:
   averageSpeed: 1
   performance: 5
   flock: {fileID: 0}
+--- !u!64 &-2835867184976172449
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301826179454060560}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300080, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}

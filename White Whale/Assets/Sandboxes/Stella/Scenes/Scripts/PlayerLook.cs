@@ -26,7 +26,7 @@ public class playerLook : MonoBehaviour
     {
         MyInput();
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 
     void MyInput()
@@ -37,7 +37,7 @@ public class playerLook : MonoBehaviour
         yRotation += mouseX * sensX * multiplier;
         xRotation -= mouseY * sensY * multiplier;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -75f, 75f);
 
     }
 }
