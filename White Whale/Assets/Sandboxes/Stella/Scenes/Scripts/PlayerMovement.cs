@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] KeyCode diveKey = KeyCode.LeftShift;
     float jumpAmt = 5f;
 
     Rigidbody rb;
@@ -20,15 +21,23 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        MovePlayer();
         MyInput();
-        ControlDrag();
+
         if (Input.GetKey(jumpKey))
         {
             Jump();
         }
+        if (Input.GetKey(diveKey))
+        {
+            Dive();
+        }
+    }
+    private void FixedUpdate()
+    {
+        MovePlayer();
+        ControlDrag();
     }
 
     void MyInput()
@@ -46,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         rb.AddForce(transform.up * jumpAmt, ForceMode.Impulse);
+    }
+
+    void Dive()
+    {
+        rb.AddForce(-transform.up * jumpAmt, ForceMode.Impulse);
     }
  
 
