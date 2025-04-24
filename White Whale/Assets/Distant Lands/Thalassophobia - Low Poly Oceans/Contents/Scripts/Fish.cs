@@ -15,6 +15,7 @@ namespace DistantLands
         public int performance;
         [HideInInspector]
         public GlobalFlock flock;
+     
 
         bool turning = false;
 
