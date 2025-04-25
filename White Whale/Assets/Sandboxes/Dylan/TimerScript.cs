@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     // Timer Settings
     [SerializeField] private float roundDuration = 60f; // 1 minute
-    [SerializeField] private Text timerText;           // UI for timer
+    [SerializeField] private TMP_Text timerText;        // UI for timer
 
     // End Round Scene
     [SerializeField] private GameObject roundOverScreen;   // Round Over Screen
@@ -20,8 +21,11 @@ public class Timer : MonoBehaviour
     {
         _currTime = roundDuration;
         _isRoundActive = true;
-        roundOverScreen.SetActive(false);
 
+        if (roundOverScreen != null)
+        {
+            roundOverScreen.SetActive(false);
+        }
         // Restart Button go click
         if (restartButton != null)
         {
@@ -43,6 +47,16 @@ public class Timer : MonoBehaviour
                 EndRound();
             }
         }
+        else
+        {
+            // Restarts Round on Space or Return Key press
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            {
+                RestartRound();
+            }
+        }
+
+        
     }
 
     void UpdateTimerDisplay()
