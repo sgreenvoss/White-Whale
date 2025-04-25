@@ -67203,6 +67203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032990322}
   - component: {fileID: 2032990323}
+  - component: {fileID: 2032990324}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -67241,6 +67242,20 @@ MonoBehaviour:
   timerText: {fileID: 532515338}
   roundOverScreen: {fileID: 1130123136}
   restartButton: {fileID: 1733537676}
+--- !u!114 &2032990324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032990321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d942164f3cbd7ea47b256906b9cfaa0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCursorVisible: 0
+  lockCursor: 1
 --- !u!1001 &2035187114
 PrefabInstance:
   m_ObjectHideFlags: 0
