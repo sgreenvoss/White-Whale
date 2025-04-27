@@ -1,4 +1,5 @@
 using DistantLands;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,10 +10,14 @@ public class PlayerMovement : MonoBehaviour
     float movementMultiplier = 10f;
 
     public float moveSpeed = 10f;
+    PlayerFish harpoon;
+
     Vector3 moveDirection;
 
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode diveKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode fishKey = KeyCode.Mouse0;
+
     float jumpAmt = 5f;
 
     Rigidbody rb;
@@ -21,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        harpoon = GetComponent<PlayerFish>();
     }
+
     private void Update()
     {
         MyInput();
@@ -33,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(diveKey))
         {
             Dive();
+        }
+        if (Input.GetKeyDown(fishKey))
+        {
+            harpoon.Shoot();
         }
     }
     private void FixedUpdate()
@@ -78,5 +89,4 @@ public class PlayerMovement : MonoBehaviour
             col.GetComponent<ABSFish>().Catch();
         } 
     }
-
 }
