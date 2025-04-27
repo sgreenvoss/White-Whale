@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 namespace DistantLands
 {
-    public class IndependentFish : MonoBehaviour
+    public class IndependentFish : ABSFish
     {
 
         private float speed;
         public float averageSpeed;
+        public bool caught = false;
         
 
         //making independent variables
@@ -51,6 +53,7 @@ namespace DistantLands
                 TurnSpeed() * Time.deltaTime);
                 transform.Translate(0, 0, Time.deltaTime * speed);
                 //smoothly rotates fish
+
         }
 
         
@@ -80,6 +83,22 @@ namespace DistantLands
 
             // Draw a wire sphere to represent the tank radius
             Gizmos.DrawWireSphere(tankCenter, tankRadius);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            ChooseNewDirection();
+            directionChangeTimer = directionChangeInterval;
+            // quick fix for ground
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                transform.Translate(0f, 1f, 0f);
+            }
+        }
+
+        public override void Catch()
+        {
+            Destroy(gameObject);
         }
     }
 }

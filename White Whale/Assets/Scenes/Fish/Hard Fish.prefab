@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3318750105924504335}
   - component: {fileID: 3318750105925504463}
   - component: {fileID: -1083406530953475704}
+  - component: {fileID: 686853293081056219}
   m_Layer: 0
   m_Name: Hard Fish
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +101,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageSpeed: 20
+  caught: 0
   tankRadius: 18
   tankCenter: {x: 0, y: 0, z: 0}
   directionChangeInterval: 3
+--- !u!64 &686853293081056219
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318750105923247885}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300612, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}

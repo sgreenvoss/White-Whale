@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 namespace DistantLands
 {
-    public class Fish : MonoBehaviour
+    public class Fish : ABSFish
     {
 
         private float speed;
@@ -15,6 +16,7 @@ namespace DistantLands
         public int performance;
         [HideInInspector]
         public GlobalFlock flock;
+        public bool caught = false;
      
 
         bool turning = false;
@@ -45,6 +47,8 @@ namespace DistantLands
             }
 
             transform.Translate(0, 0, Time.deltaTime * speed);
+
+
         }
 
         void ApplyTankBoundary()
@@ -120,6 +124,12 @@ namespace DistantLands
         float TurnSpeed()
         {
             return Random.Range(0.2f, .4f) * speed;
+        }
+
+        public override void Catch()
+        {
+            flock.allFish.Remove(gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -1,3 +1,4 @@
+using DistantLands;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -66,6 +67,16 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer()
     {
         rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject col = collision.gameObject;
+        
+        if (col.CompareTag("Fish"))
+        {
+            col.GetComponent<ABSFish>().Catch();
+        } 
     }
 
 }
