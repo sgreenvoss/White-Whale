@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        // rb.freezeRotation = true;
         harpoon = GetComponent<PlayerFish>();
     }
 
@@ -41,10 +41,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Dive();
         }
-        if (Input.GetKeyDown(fishKey))
-        {
-            harpoon.Shoot();
-        }
+
     }
     private void FixedUpdate()
     {

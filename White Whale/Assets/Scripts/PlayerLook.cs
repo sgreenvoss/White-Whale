@@ -25,7 +25,7 @@ public class playerLook : MonoBehaviour
     private void Update()
     {
         MyInput();
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+       // cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 
