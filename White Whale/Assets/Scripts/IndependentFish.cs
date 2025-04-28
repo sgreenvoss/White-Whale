@@ -6,7 +6,7 @@ namespace DistantLands
 {
     public class IndependentFish : ABSFish
     {
-
+        public int value = 1;
         private float speed;
         public float averageSpeed;
         public bool caught = false;
@@ -98,7 +98,10 @@ namespace DistantLands
 
         public override void Catch()
         {
+            score += value;
             Destroy(gameObject);
+            Debug.Log("Here");
+            Debug.Log(score.ToString());
         }
     }
 }
