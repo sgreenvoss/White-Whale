@@ -13,10 +13,15 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode diveKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode dashKey = KeyCode.Space;
 
     float jumpAmt = 5f;
+    float dashAmt = 40f;
+    int numDash = 0;
+    int dashMax = 1;
+    float dashTime = 3f;
+    private float dashTimer = 0f;
 
     Rigidbody rb;
 
@@ -28,15 +33,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        dashTimer += Time.deltaTime;
+        
         MyInput();
 
-        if (Input.GetKey(jumpKey))
-        {
-            Jump();
-        }
         if (Input.GetKey(diveKey))
         {
             Dive();
+        }
+        if (Input.GetKeyDown(dashKey))
+        {
+            Debug.Log("dash");
+            Dash();
         }
 
     }
@@ -58,14 +66,14 @@ public class PlayerMovement : MonoBehaviour
         rb.linearDamping = drag;
     }
 
-    void Jump()
-    {
-        rb.AddForce(transform.up * jumpAmt, ForceMode.Impulse);
-    }
-
     void Dive()
     {
         rb.AddForce(-transform.up * jumpAmt, ForceMode.Impulse);
+    }
+
+    void Dash()
+    {
+        rb.AddForce(transform.forward * dashAmt, ForceMode.Impulse);
     }
  
 
