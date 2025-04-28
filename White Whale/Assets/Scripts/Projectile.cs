@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Fish"))
         {
-            print("Pish");
             // destroy game object?
             collision.gameObject.GetComponent<ABSFish>().Catch();
         }

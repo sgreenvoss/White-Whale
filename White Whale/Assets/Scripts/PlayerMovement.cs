@@ -10,13 +10,11 @@ public class PlayerMovement : MonoBehaviour
     float movementMultiplier = 10f;
 
     public float moveSpeed = 10f;
-    PlayerFish harpoon;
 
     Vector3 moveDirection;
 
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode diveKey = KeyCode.LeftShift;
-    [SerializeField] KeyCode fishKey = KeyCode.Mouse0;
 
     float jumpAmt = 5f;
 
@@ -26,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         // rb.freezeRotation = true;
-        harpoon = GetComponent<PlayerFish>();
     }
 
     private void Update()
