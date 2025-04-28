@@ -5,5 +5,7 @@ using UnityEngine;
 // holds all shared functions to enable polymorphism
 public abstract class ABSFish : MonoBehaviour
 {
+    static public int score = 0;
+
     public abstract void Catch();
 }
