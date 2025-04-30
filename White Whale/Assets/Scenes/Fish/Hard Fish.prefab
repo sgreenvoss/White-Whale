@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3318750105925504463}
   - component: {fileID: -1083406530953475704}
   - component: {fileID: 686853293081056219}
+  - component: {fileID: -7324570886039922992}
   m_Layer: 0
   m_Name: Hard Fish
   m_TagString: Fish
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5c9cc5be9e647f58b3402c6a7fb5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 1
   averageSpeed: 20
   caught: 0
   tankRadius: 18
@@ -127,3 +129,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300612, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}
+--- !u!54 &-7324570886039922992
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318750105923247885}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -1,3 +1,4 @@
+﻿
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UIElements;
@@ -23,8 +24,10 @@ namespace DistantLands
 
 
         // Use this for initialization
-        void Start()
+        protected override void Start()
         {
+            base.Start();
+
             speed = Random.Range(0.5f, 1.5f) * averageSpeed;
             ChooseNewDirection();
             directionChangeTimer = directionChangeInterval;
@@ -51,7 +54,7 @@ namespace DistantLands
             transform.rotation = Quaternion.Slerp(transform.rotation,
                 Quaternion.LookRotation(wanderDirection),
                 TurnSpeed() * Time.deltaTime);
-                transform.Translate(0, 0, Time.deltaTime * speed);
+                rb.MovePosition(rb.position + transform.forward * speed * Time.deltaTime);
                 //smoothly rotates fish
 
         }

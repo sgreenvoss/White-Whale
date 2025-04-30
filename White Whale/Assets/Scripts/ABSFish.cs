@@ -8,4 +8,11 @@ public abstract class ABSFish : MonoBehaviour
     static public int score = 0;
 
     public abstract void Catch();
+
+    protected Rigidbody rb;
+
+    protected virtual void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 }
