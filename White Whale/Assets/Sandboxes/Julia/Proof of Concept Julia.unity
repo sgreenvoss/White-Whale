@@ -9130,6 +9130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 243457364}
     m_Modifications:
+    - target: {fileID: -7324570886039922992, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7324570886039922992, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
       propertyPath: caught
       value: 0
@@ -63430,6 +63438,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 243457364}
     m_Modifications:
+    - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
       value: 35
