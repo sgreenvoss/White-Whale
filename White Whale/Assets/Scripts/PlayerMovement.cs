@@ -1,15 +1,18 @@
 using DistantLands;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
+using Skills;
 
 public class PlayerMovement : MonoBehaviour
 {
+    PlayerSkills skills = new PlayerSkills();
+    SkillTree _tree;
+
     float horizontalMovement;
     float verticalMovement;
     float drag = 10f;
     float movementMultiplier = 10f;
-
-    public float moveSpeed = 10f;
 
     Vector3 moveDirection;
 
@@ -17,23 +20,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] KeyCode dashKey = KeyCode.Space;
 
     float jumpAmt = 5f;
-    float dashAmt = 40f;
-    int numDash = 0;
-    int dashMax = 1;
-    float dashTime = 3f;
-    private float dashTimer = 0f;
 
     Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        _tree = new SkillTree(skills);
         // rb.freezeRotation = true;
     }
 
     private void Update()
     {
-        dashTimer += Time.deltaTime;
         
         MyInput();
 
@@ -43,9 +41,24 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(dashKey))
         {
-            Debug.Log("dash");
             Dash();
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            _tree.Unlock("NewHand");
+            Debug.Log("hand");
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            _tree.Unlock("dashMult");
+            Debug.Log("dash");
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _tree.Unlock("speedMult");
+            Debug.Log("speed");
+        }
+
 
     }
     private void FixedUpdate()
@@ -68,18 +81,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Dive()
     {
-        rb.AddForce(-transform.up * jumpAmt, ForceMode.Impulse);
+        rb.AddForce(Vector3.down * jumpAmt, ForceMode.Impulse);
     }
 
     void Dash()
     {
-        rb.AddForce(transform.forward * dashAmt, ForceMode.Impulse);
+        rb.AddForce(transform.forward * skills.dashAmt, ForceMode.Impulse);
     }
  
 
     void MovePlayer()
     {
-        rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+        rb.AddForce(moveDirection.normalized * skills.velocity * movementMultiplier, ForceMode.Acceleration);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,0 +1,12 @@
+{
+	"dashMult" : {
+		"prereqs" : [],
+		"unlocked" : false,
+		"func" : "DashMult"
+	},
+	"speedMult" : {
+		"prereqs" : ["dashMult"],
+		"unlocked" : false,
+		"func" : "SpeedMult"
+	}
+}
