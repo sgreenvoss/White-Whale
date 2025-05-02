@@ -20,7 +20,9 @@ public class WeaponManager : MonoBehaviour
         {
             positions.Add(new Vector3(0.51f - (0.13f * (i + 1)), 0.24f, 0.57f));
         }
-        
+        GameObject weapon = Instantiate(weaponPrefab, weaponParent);
+        weapon.transform.localPosition = new Vector3(0.51f, 0.24f, 0.57f);
+
     }
     public void GrantWeapon()
     {
