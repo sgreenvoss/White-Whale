@@ -13,15 +13,6 @@ public class CursorManager : MonoBehaviour
         UpdateCursorState();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _isCursorVisible = !_isCursorVisible;
-            lockCursor = !lockCursor;
-            UpdateCursorState();
-        }
-    }
 
     void UpdateCursorState()
     {

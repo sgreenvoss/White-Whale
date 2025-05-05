@@ -2,6 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+
+
+
+
 
 public class Timer : MonoBehaviour
 {
@@ -13,6 +18,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private GameObject roundOverScreen;   // Round Over Screen
 
     [SerializeField] private Button restartButton;         // Restart game
+    [SerializeField] private Button homeBaseButton;         // Go to home base
 
     private float _currTime;
     private bool _isRoundActive;
@@ -31,9 +37,13 @@ public class Timer : MonoBehaviour
         {
             restartButton.onClick.AddListener(RestartRound);
         }
+        // Home Button go home
+        if (homeBaseButton != null)
+        {
+            homeBaseButton.onClick.AddListener(() => SceneManager.LoadScene("HomeBase"));
+        }
 
     }
-
     void Update()
     {
         if (_isRoundActive)
@@ -54,9 +64,7 @@ public class Timer : MonoBehaviour
             {
                 RestartRound();
             }
-        }
-
-        
+        }        
     }
 
     void UpdateTimerDisplay()
@@ -72,17 +80,15 @@ public class Timer : MonoBehaviour
         _isRoundActive = false;
         roundOverScreen.SetActive(true);
 
-
         // Pause Button ?
         Time.timeScale = 0f;
     }
-
     void RestartRound()
     {
         // Unpause 
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-
 }
+
+
