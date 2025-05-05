@@ -1,6 +1,10 @@
 using TMPro;
 using UnityEngine;
 
+// Observer
+    // Listens for OnFishCaught and updates UI
+
+
 public class FishCountUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text fishCountText;

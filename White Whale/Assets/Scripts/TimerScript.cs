@@ -4,12 +4,18 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 
-
+// Notifier
+    // Raises OnRoundEnded when round ends
+        // Observer: UIManager
 
 
 
 public class Timer : MonoBehaviour
 {
+
+    // Observer Events
+    public static event Action<float> OnTimerTick;
+    public static event Action OnRoundEnded;
     // Timer Settings
     [SerializeField] private float roundDuration = 60f; // 1 minute
     [SerializeField] private TMP_Text timerText;        // UI for timer
@@ -51,6 +57,8 @@ public class Timer : MonoBehaviour
             _currTime -= Time.deltaTime;
             UpdateTimerDisplay();
 
+            OnTimerTick?.Invoke(_currTime);     // Broadcast time left
+
             if (_currTime <= 0)
             {
                 _currTime = 0;
@@ -80,8 +88,11 @@ public class Timer : MonoBehaviour
         _isRoundActive = false;
         roundOverScreen.SetActive(true);
 
-        // Pause Button ?
+        // Pause
         Time.timeScale = 0f;
+
+        GameEvents.RoundEnded(); // Notify all subscribed observers
+
     }
     void RestartRound()
     {

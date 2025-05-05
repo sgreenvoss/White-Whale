@@ -1,5 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
+// Notifier
+    // Raises OnPauseStateChanged when the game is paused / resumed
+        // Observer: UIManager
 
 public class PauseManager : MonoBehaviour
 {
@@ -8,6 +13,8 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private CursorManager cursorManager;
 
     private bool isPaused = false;
+
+    public static event Action<bool> OnPauseStateChanged;
 
     void Start()
     {
@@ -36,6 +43,10 @@ public class PauseManager : MonoBehaviour
 
         pauseMenuUI?.SetActive(true);
         cursorManager.ShowCursor();
+
+        OnPauseStateChanged?.Invoke(isPaused);
+
+
     }
 
     public void ResumeGame()
@@ -45,10 +56,15 @@ public class PauseManager : MonoBehaviour
 
         pauseMenuUI?.SetActive(false);
         cursorManager?.HideCursor();
+
+        OnPauseStateChanged?.Invoke(isPaused);
+
+
     }
 
     public bool IsPaused()
     {
         return isPaused;
     }
+
 }

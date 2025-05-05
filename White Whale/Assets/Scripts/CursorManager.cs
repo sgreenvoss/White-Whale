@@ -1,7 +1,16 @@
 using UnityEngine;
+using System;
+
+// Notifier
+    // Raises OnCursorVisibilityChanged when cursor is shown / hidden
+        // Observer: UIManager
 
 public class CursorManager : MonoBehaviour
 {
+
+    // Notifies when cursor visibility changes
+    public static event Action<bool> OnCursorVisibilityChanged;
+
     // Cursor Settings
 
     // Make cursor invisible during gameplay
@@ -18,6 +27,11 @@ public class CursorManager : MonoBehaviour
     {
         Cursor.visible = _isCursorVisible;
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+
+        // Notifies Observers
+        OnCursorVisibilityChanged?.Invoke(_isCursorVisible);
+
+
 
     }
 
