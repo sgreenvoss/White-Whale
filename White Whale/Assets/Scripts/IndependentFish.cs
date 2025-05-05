@@ -1,5 +1,5 @@
 ﻿
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UIElements;
 
@@ -101,10 +101,25 @@ namespace DistantLands
 
         public override void Catch()
         {
+            FishManager fishManager = FindObjectOfType<FishManager>();
+            fishManager?.CatchFish();
+
             score += value;
-            Destroy(gameObject);
-            Debug.Log("Here");
-            Debug.Log(score.ToString());
+            caught = true;
+
+            gameObject.SetActive(false); //deactivate inseatd of destroy
+            Debug.Log("Fish caught");
+        }
+
+        public void ResetFish(Vector3 newPosition)
+        {
+            //When a fish gets respawned reset its state
+            transform.position = newPosition;
+            speed = Random.Range(0.5f, 1.5f) * averageSpeed;
+            ChooseNewDirection();
+            directionChangeTimer = directionChangeInterval;
+            caught = false;
+            gameObject.SetActive(true);
         }
     }
 }
