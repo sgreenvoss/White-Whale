@@ -82,7 +82,7 @@ namespace DistantLands
         void OnDrawGizmos()
         {
             // Set the color of the Gizmos (green in this case)
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.red;
 
             // Draw a wire sphere to represent the tank radius
             Gizmos.DrawWireSphere(tankCenter, tankRadius);
@@ -115,6 +115,7 @@ namespace DistantLands
         {
             //When a fish gets respawned reset its state
             transform.position = newPosition;
+            tankCenter = newPosition;
             speed = Random.Range(0.5f, 1.5f) * averageSpeed;
             ChooseNewDirection();
             directionChangeTimer = directionChangeInterval;

@@ -12,6 +12,13 @@ public class FishPoolManager : MonoBehaviour
 
     private void Start()
     {
+
+         // Disable all fish first
+        foreach (var fish in fishPool)
+        {
+            fish.gameObject.SetActive(false);
+        }
+
         // Shuffle spawn points to avoid always using the same ones
         spawnPoints = spawnPoints.OrderBy(x => Random.value).ToList();
 
@@ -41,7 +48,7 @@ public class FishPoolManager : MonoBehaviour
 
     private void HandleFishCaught(int totalCaught)
     {
-        var inactiveFish = fishPool.FirstOrDefault(f => !f.gameObject.activeInHierarchy);
+        var inactiveFish = fishPool.Where(f => !f.gameObject.activeInHierarchy).OrderBy(f => Random.value).FirstOrDefault();
         if (inactiveFish != null)
         {
             Transform spawnPoint = GetHiddenSpawnPoint();
@@ -56,16 +63,20 @@ public class FishPoolManager : MonoBehaviour
     {
         foreach (Transform spawn in spawnPoints)
         {
-            Vector3 toSpawn = (spawn.position - playerCamera.position).normalized;
+            Vector3 toSpawn = spawn.position - playerCamera.position;
+            float distance = toSpawn.magnitude;
+
+            toSpawn.Normalize();
             float dot = Vector3.Dot(playerCamera.forward, toSpawn);
-            if (dot < 0f) // Make sure the spawn piont is behind the player(DOT PRODUCT)
+
+       
+            if (dot < Mathf.Cos(45f * Mathf.Deg2Rad))
             {
                 return spawn;
             }
         }
 
         return null;
-
     }
 
     public void LogActiveFishCount()
