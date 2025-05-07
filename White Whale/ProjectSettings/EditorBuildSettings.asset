@@ -8,9 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Proof of Concept.unity
     guid: c5f2d06b140f0f24995d6adfeab3b0e1
+  - enabled: 1
+    path: Assets/Scenes/UpgradeScreen.unity
+    guid: 77353752f80011d47af071679edde0c2
+  - enabled: 1
+    path: Assets/Scenes/Underwater Base.unity
+    guid: e5b2f8d5e92a94450bf51ca525c8e5b9
+  - enabled: 1
+    path: Assets/Scenes/Sunlight Zone.unity
+    guid: e1f4ef38dcb7344da8eafaa464281a9d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
