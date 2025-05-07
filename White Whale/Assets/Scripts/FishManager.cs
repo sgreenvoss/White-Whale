@@ -22,11 +22,5 @@ public class FishManager : MonoBehaviour
         return fishCaught;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            CatchFish(); // Simulate catching a fish
-        }
-    }
+
 }
