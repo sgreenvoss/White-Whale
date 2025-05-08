@@ -5,6 +5,10 @@ using UnityEngine;
 // holds all shared functions to enable polymorphism
 public abstract class ABSFish : MonoBehaviour
 {
+    public int max_health;
+
+    protected int current_health; 
+
     static public int score = 0;
 
     public abstract void Catch();
@@ -14,5 +18,16 @@ public abstract class ABSFish : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        current_health = max_health;
+    }
+
+    public virtual void Damage(int damage)
+    {
+        current_health -= damage;
+        if (current_health <= 0)
+        {
+            Catch();
+        }
     }
 }

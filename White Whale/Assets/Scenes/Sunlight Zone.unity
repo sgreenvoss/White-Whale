@@ -6983,6 +6983,10 @@ PrefabInstance:
       value: 112
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
       value: 30
       objectReference: {fileID: 0}
@@ -8797,6 +8801,10 @@ PrefabInstance:
       value: 112
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
       value: 30
       objectReference: {fileID: 0}
@@ -9871,6 +9879,10 @@ PrefabInstance:
     - target: {fileID: -7324570886039922992, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
       propertyPath: tankRadius
@@ -18043,6 +18055,112 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2846662264440089722, guid: 8b3e696cbc2a26f4a9f3f7673466ff5e, type: 3}
   m_PrefabInstance: {fileID: 541167609}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &543978880
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 899533947}
+    m_Modifications:
+    - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: numFish
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: wanderSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: fishPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: 'fishPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2906003396754718220, guid: 249e045e84c72d14e9ef2a0780de69cd, type: 3}
+    - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: 'fishPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2906003396754718220, guid: 249e045e84c72d14e9ef2a0780de69cd, type: 3}
+    - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: 'fishPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2906003396754718220, guid: 249e045e84c72d14e9ef2a0780de69cd, type: 3}
+    - target: {fileID: 6023623886322974145, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_Name
+      value: Fish School (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+--- !u!4 &543978881 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6023623886322974147, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
+  m_PrefabInstance: {fileID: 543978880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &546539367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18444,6 +18562,10 @@ PrefabInstance:
     - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
@@ -27089,6 +27211,10 @@ PrefabInstance:
       value: 112
       objectReference: {fileID: 0}
     - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
+      propertyPath: max_health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
       propertyPath: tankRadius
       value: 30
       objectReference: {fileID: 0}
@@ -27340,6 +27466,10 @@ PrefabInstance:
     - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
@@ -30255,6 +30385,7 @@ Transform:
   - {fileID: 2103935699}
   - {fileID: 990604892}
   - {fileID: 257996630}
+  - {fileID: 543978881}
   - {fileID: 1133934333}
   - {fileID: 2144312919}
   - {fileID: 887206718}
@@ -32504,7 +32635,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
       propertyPath: numFish
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
       propertyPath: wanderSize
@@ -40837,6 +40968,10 @@ PrefabInstance:
     - target: {fileID: -7324570886039922992, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1083406530953475704, guid: 7bc672bf019a1a34987275f83887543b, type: 3}
       propertyPath: tankRadius
@@ -49476,6 +49611,10 @@ PrefabInstance:
     - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
@@ -63801,6 +63940,10 @@ PrefabInstance:
       value: 112
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
       value: 30
       objectReference: {fileID: 0}
@@ -64203,6 +64346,10 @@ PrefabInstance:
     - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
@@ -66961,6 +67108,10 @@ PrefabInstance:
     - target: {fileID: -5010545632485428474, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
+      propertyPath: max_health
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1106389573862684829, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
       propertyPath: tankRadius
@@ -71998,7 +72149,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
       propertyPath: numFish
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
       propertyPath: wanderSize
@@ -72711,7 +72862,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
       propertyPath: numFish
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6023623886322974144, guid: 02009fedc15396b40a1ee9bcf1a74207, type: 3}
       propertyPath: wanderSize
