@@ -24,6 +24,6 @@ public class ResponsiveSpacing : MonoBehaviour
     {
         float currentHeight = Screen.height;
         float scaleFactor = currentHeight / referenceHeight;
-        layout.spacing = baseSpacing * scaleFactor * 15;
+        layout.spacing = baseSpacing * scaleFactor * 10;
     }
 }
