@@ -20,6 +20,11 @@ public class UpgradeUIManager : MonoBehaviour
 
     void Start()
     {
+        // Make cursor show up
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+
         speedOpt1.onClick.AddListener(() => OnUpgradeClicked("Speed", 1));
         speedOpt2.onClick.AddListener(() => OnUpgradeClicked("Speed", 2));
         speedOpt3.onClick.AddListener(() => OnUpgradeClicked("Speed", 3));

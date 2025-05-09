@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 // Notifier
@@ -19,20 +20,38 @@ public class CursorManager : MonoBehaviour
     
     void Start()
     {
-        UpdateCursorState();
+        HandleSceneCursorSettings(); // << This runs your scene-specific logic
     }
 
+
+
+    void HandleSceneCursorSettings()
+    {
+        string currScene = SceneManager.GetActiveScene().name;
+
+        if (currScene == "UpgradeScene")
+        {
+            _isCursorVisible = true;
+            lockCursor = false;
+        }
+        else
+        {
+            Cursor.visible = _isCursorVisible;
+            Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+
+            // Notifies Observers
+            OnCursorVisibilityChanged?.Invoke(_isCursorVisible);
+        }
+
+        UpdateCursorState();
+    }
 
     void UpdateCursorState()
     {
         Cursor.visible = _isCursorVisible;
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
 
-        // Notifies Observers
         OnCursorVisibilityChanged?.Invoke(_isCursorVisible);
-
-
-
     }
 
     public void ShowCursor()
