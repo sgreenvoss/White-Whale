@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
     void HandleFishCaught(int count)
     {
         if (fishCountText != null)
-            fishCountText.text = $"Fish Count: {count}";
+            fishCountText.text = $"Points: {count}";
     }
 
 

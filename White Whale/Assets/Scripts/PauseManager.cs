@@ -27,6 +27,10 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
+
+        if (Time.timeScale == 0f && !isPaused) return;
+
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)

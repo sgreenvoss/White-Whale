@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
         // Home Button go home
         if (homeBaseButton != null)
         {
-            homeBaseButton.onClick.AddListener(() => SceneManager.LoadScene("HomeBase"));
+            homeBaseButton.onClick.AddListener(() => SceneManager.LoadScene("Underwater Base"));
         }
 
     }
@@ -62,6 +62,11 @@ public class Timer : MonoBehaviour
             if (_currTime <= 0)
             {
                 _currTime = 0;
+                CursorManager cursorManager = FindObjectOfType<CursorManager>();
+                if (cursorManager != null)
+                {
+                    cursorManager.ShowCursor();
+                }
                 EndRound();
             }
         }
