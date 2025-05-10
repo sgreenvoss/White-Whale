@@ -46,7 +46,11 @@ public class Timer : MonoBehaviour
         // Home Button go home
         if (homeBaseButton != null)
         {
-            homeBaseButton.onClick.AddListener(() => SceneManager.LoadScene("Underwater Base"));
+            homeBaseButton.onClick.AddListener(() =>
+            {
+                Time.timeScale = 1f; // Ensure time resumes before scene loads
+                SceneManager.LoadScene("Underwater Base");
+            });
         }
 
     }
