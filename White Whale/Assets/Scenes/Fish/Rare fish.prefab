@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 4609175997804251308}
   - component: {fileID: 4609175997803481230}
   - component: {fileID: 4609175997802352206}
-  - component: {fileID: 4609175997804616843}
+  - component: {fileID: 359772761656040443}
+  - component: {fileID: 4994720367598004976}
+  - component: {fileID: 2391033612216441064}
   m_Layer: 0
-  m_Name: Tropical Fish 18_02
-  m_TagString: Untagged
+  m_Name: Rare fish
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,7 +89,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4609175997804616843
+--- !u!114 &359772761656040443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,9 +98,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 4609175997804616844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009ec6487ac49f24f8abd79beee13831, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e5c9cc5be9e647f58b3402c6a7fb5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  averageSpeed: 3
-  performance: 5
-  flock: {fileID: 0}
+  fish_score: 50
+  max_health: 3
+  averageSpeed: 17
+  caught: 0
+  tankRadius: 10
+  tankCenter: {x: 0, y: 0, z: 0}
+  directionChangeInterval: 3
+--- !u!64 &4994720367598004976
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609175997804616844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300150, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}
+--- !u!54 &2391033612216441064
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609175997804616844}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
