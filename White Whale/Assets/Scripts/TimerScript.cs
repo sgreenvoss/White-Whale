@@ -66,7 +66,8 @@ public class Timer : MonoBehaviour
             if (_currTime <= 0)
             {
                 _currTime = 0;
-                CursorManager cursorManager = FindObjectOfType<CursorManager>();
+                CursorManager cursorManager = FindFirstObjectByType<CursorManager>();
+
                 if (cursorManager != null)
                 {
                     cursorManager.ShowCursor();

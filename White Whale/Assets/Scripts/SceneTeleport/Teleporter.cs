@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour
 {
-    [Header("Scene to Load on Trigger")]
-    [SerializeField] private string targetSceneName; // Assign this in the Inspector per portal
+    [SerializeField] private string targetSceneName; // Assign this in the Inspector
 
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("Entered trigger: " + other.name);
+
         if (other.CompareTag("Player"))
         {
+            //Debug.Log("Teleporting to: " + targetSceneName);
             SceneManager.LoadScene(targetSceneName);
         }
     }
