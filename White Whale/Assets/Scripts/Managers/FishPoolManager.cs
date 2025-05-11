@@ -46,7 +46,7 @@ public class FishPoolManager : MonoBehaviour
         FishManager.OnFishCaught -= HandleFishCaught;
     }
 
-    private void HandleFishCaught(int totalCaught)
+    private void HandleFishCaught(ABSFish fish)
     {
         var inactiveFish = fishPool.Where(f => !f.gameObject.activeInHierarchy).OrderBy(f => Random.value).FirstOrDefault();
         if (inactiveFish != null)

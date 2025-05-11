@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009ec6487ac49f24f8abd79beee13831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fish_score: 2
   max_health: 1
-  value: 1
   averageSpeed: 3
   performance: 5
   flock: {fileID: 0}

@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
         PauseManager.OnPauseStateChanged += HandlePauseStateChanged;
         Timer.OnRoundEnded += HandleRoundEnded;
         CursorManager.OnCursorVisibilityChanged += HandleCursorChange;
-        FishManager.OnFishCaught += HandleFishCaught;
+        FishManager.OnFishCaught += HandleFishScore;
     }
 
     void OnDisable()
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
         PauseManager.OnPauseStateChanged -= HandlePauseStateChanged;
         Timer.OnRoundEnded -= HandleRoundEnded;
         CursorManager.OnCursorVisibilityChanged -= HandleCursorChange;
-        FishManager.OnFishCaught -= HandleFishCaught;
+        FishManager.OnFishCaught -= HandleFishScore;
     }
 
 
@@ -57,10 +57,10 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void HandleFishCaught(int count)
+    void HandleFishScore(ABSFish fish)
     {
         if (fishCountText != null)
-            fishCountText.text = $"Points: {count}";
+            fishCountText.text = $"Score: {ABSFish.total_score}";
     }
 
 

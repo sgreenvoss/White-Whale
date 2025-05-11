@@ -7,20 +7,19 @@ using System;
 
 public class FishManager : MonoBehaviour
 {
-    public static event Action<int> OnFishCaught; // Local event
+    public static event Action<ABSFish> OnFishCaught; // Local event
 
-    private int fishCaught = 0;
 
-    public void CatchFish()
+    public void CatchFish(ABSFish fish)
     {
-        fishCaught++;
-        OnFishCaught?.Invoke(fishCaught); // Notify observers (UI in this case)
+        // fishCaught++;
+        OnFishCaught?.Invoke(fish); // Notify observers (UI in this case)
     }
 
-    public int GetFishCount()
-    {
-        return fishCaught;
-    }
+    // public int GetFishCount()
+    // {
+    //     return fishCaught;
+    // }
 
 
 }

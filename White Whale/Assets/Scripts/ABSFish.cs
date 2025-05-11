@@ -5,6 +5,11 @@ using UnityEngine;
 // holds all shared functions to enable polymorphism
 public abstract class ABSFish : MonoBehaviour
 {
+    [SerializeField]
+    public int fish_score;
+
+    public static int total_score;
+
     public int max_health;
 
     protected int current_health; 

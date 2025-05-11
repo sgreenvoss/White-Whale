@@ -6,7 +6,7 @@ namespace DistantLands
 {
     public class Fish : ABSFish
     {
-        public int value = 1;
+        // public int value = 1;
         private float speed;
         public float averageSpeed;
         //public float turnSpeed = 4.0f;
@@ -128,8 +128,14 @@ namespace DistantLands
 
         public override void Catch()
         {
+            ABSFish.total_score += this.fish_score;
+            FishManager fishManager = FindObjectOfType<FishManager>();
+            fishManager?.CatchFish(this);
+
+            
+
             flock.allFish.Remove(gameObject);
-            score += value;
+   
             Destroy(gameObject);
         }
     }

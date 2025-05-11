@@ -7,7 +7,7 @@ namespace DistantLands
 {
     public class IndependentFish : ABSFish
     {
-        public int value = 1;
+        // public int value = 1;
         private float speed;
         public float averageSpeed;
         public bool caught = false;
@@ -101,10 +101,11 @@ namespace DistantLands
 
         public override void Catch()
         {
+            ABSFish.total_score += this.fish_score;
             FishManager fishManager = FindObjectOfType<FishManager>();
-            fishManager?.CatchFish();
+            fishManager?.CatchFish(this);
 
-            score += value;
+            
             caught = true;
 
             gameObject.SetActive(false); //deactivate inseatd of destroy
