@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2918677425048784564}
   - component: {fileID: 4046195036851716020}
   - component: {fileID: 7391509790012719413}
-  - component: {fileID: 7908941684948332720}
+  - component: {fileID: 4987206079233769936}
   m_Layer: 0
-  m_Name: Harpoon
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1482433114410893961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41, y: 0.17, z: 0.57}
-  m_LocalScale: {x: 0.046012, y: 0.112371005, z: 0.93376}
+  m_LocalPosition: {x: 0.41, y: 0.17, z: 0.744}
+  m_LocalScale: {x: 0.046012, y: 0.112371005, z: 2.0144937}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4956084225681976868}
@@ -110,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7908941684948332720
+--- !u!114 &4987206079233769936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 795328967992672067, guid: c9fdec95b30216345b98cc6190e81020, type: 3}
-  projectileSpawn: {fileID: 4956084225681976868}
-  projectileVelocity: 30
-  projectileLifeTime: 3
+  projectileSpawn: {fileID: 0}
+  projectileVelocity: 3
+  projectileLifeTime: 10
   shoot: 323
 --- !u!1 &4604099242077645693
 GameObject:

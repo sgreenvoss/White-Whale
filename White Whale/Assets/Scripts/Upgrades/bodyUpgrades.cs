@@ -9,6 +9,8 @@ namespace Skills
 {
     public class PlayerSkills : MonoBehaviour
     {
+        [SerializeField]
+        public GunData currentGunData;
         public static PlayerSkills Instance;
         private void Awake()
         {
@@ -19,7 +21,7 @@ namespace Skills
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log("called dontdestroyonload");
+            
         }
 
         public float velocity = 10f;

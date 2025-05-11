@@ -27,12 +27,10 @@ public class Timer : MonoBehaviour
     [SerializeField] private Button homeBaseButton;         // Go to home base
 
     private float _currTime;
-    private bool _isRoundActive;
 
     void Start()
     {
         _currTime = roundDuration;
-        _isRoundActive = true;
 
         if (roundOverScreen != null)
         {
@@ -56,7 +54,7 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
-        if (_isRoundActive)
+        if (GameState.CurrentState == GState.Diving)
         {
             _currTime -= Time.deltaTime;
             UpdateTimerDisplay();
@@ -95,7 +93,7 @@ public class Timer : MonoBehaviour
 
     void EndRound()
     {
-        _isRoundActive = false;
+        GameState.Instance.ChangeState(GState.EndRound);
         roundOverScreen.SetActive(true);
 
         // Pause
@@ -107,7 +105,9 @@ public class Timer : MonoBehaviour
     void RestartRound()
     {
         // Unpause 
+        Debug.Log("time scale reset");
         Time.timeScale = 1f;
+        GameState.Instance.ChangeState(GState.Diving);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -63,7 +63,6 @@ public class PauseManager : MonoBehaviour
 
         OnPauseStateChanged?.Invoke(isPaused);
 
-
     }
 
     public bool IsPaused()

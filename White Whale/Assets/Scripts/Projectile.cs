@@ -1,10 +1,16 @@
 using UnityEngine;
 using System.Collections;
-
 public class Projectile : MonoBehaviour
 {
-    public int damage_dealt = 1;
+    private int damage;
+    private int ricochets;
+    private int ric_count;
 
+  //  public void Initialize(int dmg, int _ricochets)
+  //  {
+  //      damage = dmg;
+  //      ricochets = _ricochets;
+  //  }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Fish"))
@@ -13,9 +19,14 @@ public class Projectile : MonoBehaviour
 
             if (fish != null)
             {
-                fish.Damage(damage_dealt);
+                fish.Damage(damage);
             }
         }
+ //       if (ric_count >= ricochets)
+  //      {
+   //         Destroy(gameObject);
+    //    }
+     //   ric_count++;
     }
 
 }

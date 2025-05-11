@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         {
             Dash();
         }
+
         //if (Input.GetKeyDown(KeyCode.H))
         //{
         //    _tree.Unlock("NewHand");

@@ -11,6 +11,7 @@ public class Teleporter : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            GameState.Instance.SceneChange(targetSceneName);
             //Debug.Log("Teleporting to: " + targetSceneName);
             SceneManager.LoadScene(targetSceneName);
         }

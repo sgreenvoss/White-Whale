@@ -1,12 +1,14 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.XR;
 
 // Observer
-    // Listens to:
-        // PauseManager.OnPauseStateChanged         pause UI
-        // Timer.OnRoundEnded                       round over screen
-        // FishManager.OnFishCaught                 Updates fish count UI
-        // CursorManager.OnCursorVisibilityChanged  reacts to cursor changes
+// Listens to:
+// PauseManager.OnPauseStateChanged         pause UI
+// Timer.OnRoundEnded                       round over screen
+// FishManager.OnFishCaught                 Updates fish count UI
+// CursorManager.OnCursorVisibilityChanged  reacts to cursor changes
 
 public class UIManager : MonoBehaviour
 {
@@ -37,7 +39,6 @@ public class UIManager : MonoBehaviour
     }
 
 
-
     void HandlePauseStateChanged(bool isPaused)
     {
         if (pauseMenu != null)
@@ -49,6 +50,7 @@ public class UIManager : MonoBehaviour
         // Show round over UI
         if (roundOverScreen != null)
             roundOverScreen.SetActive(true);
+        // limit access? 
     }
 
     void HandleCursorChange(bool isVisible)

@@ -103,7 +103,7 @@ namespace Skills
     {
         public void Apply()
         {
-            WeaponManager.Instance.GrantWeapon();
+       //     WeaponManager.Instance.GrantWeapon();
             Debug.Log("hands");
         }
     }

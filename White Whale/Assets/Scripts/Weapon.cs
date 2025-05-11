@@ -32,6 +32,9 @@ public class Weapon : MonoBehaviour
     private IEnumerator DestroyProjectileAfterTime(GameObject projectile, float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(projectile);
+        if (projectile)
+        {
+            Destroy(projectile);
+        }
     }
 }
