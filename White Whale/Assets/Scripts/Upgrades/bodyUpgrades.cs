@@ -7,8 +7,21 @@ using UnityEngine;
 
 namespace Skills
 {
-    public class PlayerSkills
+    public class PlayerSkills : MonoBehaviour
     {
+        public static PlayerSkills Instance;
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("called dontdestroyonload");
+        }
+
         public float velocity = 10f;
         public float dashAmt = 40f;
         public bool longDash = false;
@@ -34,24 +47,35 @@ namespace Skills
             maxCt = _max;
         }
     }
-    public class SkillTree
+    public class SkillTree : MonoBehaviour
     {
-        private PlayerSkills skills;
+        public static SkillTree Instance;
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializeTree();
+        }
+
         private Dictionary<string, SkillNode> nodes;
         public bool Unlockable(string id) => nodes[id].Prereqs.All(p => p.IsUnlocked);
      
-        public SkillTree(PlayerSkills _skills)
+        private void InitializeTree()
         {
             // this is the instantiator
             // there are a lot of things we could do to clean this up...
-            skills = _skills;
             nodes = new Dictionary<string, SkillNode>();
-            SkillNode d_node = new SkillNode("dashMult", new List<SkillNode>(), false, 3, new DashMult());
-            nodes.Add("dashMult", d_node);
-            SkillNode s_node = new SkillNode("speedMult", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
-            nodes.Add("speedMult", s_node);
-            SkillNode h_node = new SkillNode("NewHand", new List<SkillNode>(), false, 7, new NewHand());
-            nodes.Add("NewHand", h_node);
+            SkillNode d_node = new SkillNode("Speed1", new List<SkillNode>(), false, 3, new DashMult());
+            nodes.Add("Speed1", d_node);
+            SkillNode s_node = new SkillNode("Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
+            nodes.Add("Speed2", s_node);
+            SkillNode h_node = new SkillNode("Speed3", new List<SkillNode>(), false, 7, new NewHand());
+            nodes.Add("Speed3", h_node);
         }
         public void Unlock(string id)
         {
@@ -60,41 +84,41 @@ namespace Skills
             {
                 node.IsUnlocked = true;
                 node.appCt++;
-                node.ApplyEffect.Apply(skills);
+                node.ApplyEffect.Apply();
             }
         }
     }
     public interface ISkillEffect
     {
-        void Apply(PlayerSkills skills);
+        void Apply();
     }
 
     public class SpeedMult : ISkillEffect {
 
-        public void Apply(PlayerSkills skills) {
-            skills.velocity *= 2f;
+        public void Apply() {
+            PlayerSkills.Instance.velocity *= 4f;
         }
     }
 
     public class DashMult : ISkillEffect
     {
-        public void Apply(PlayerSkills skills)
+        public void Apply()
         {
-            skills.dashAmt *= 2f;
+            PlayerSkills.Instance.dashAmt *= 2f;
         }
     }
 
     public class GameAdd : ISkillEffect
     {
-        public void Apply(PlayerSkills skills)
+        public void Apply()
         {
-            skills.gameTime += 20f;
+            PlayerSkills.Instance.gameTime += 20f;
         }
     }
 
     public class NewHand : ISkillEffect
     {
-        public void Apply(PlayerSkills skills)
+        public void Apply()
         {
             WeaponManager.Instance.GrantWeapon();
         }

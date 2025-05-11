@@ -1,9 +1,10 @@
+using Skills;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeUIManager : MonoBehaviour
 {
-    
+    SkillTree tree = SkillTree.Instance;
     public Button speedOpt1;
     public Button speedOpt2;
     public Button speedOpt3;
@@ -43,7 +44,7 @@ public class UpgradeUIManager : MonoBehaviour
     void OnUpgradeClicked(string category, int option)
     {
         Debug.Log($"Upgrade selected: {category} Option {option}");
-            // TODO: Implement upgrade logic
+        tree.Unlock(category + option.ToString());
     }
 
 

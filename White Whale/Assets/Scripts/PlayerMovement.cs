@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Skills;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    PlayerSkills skills = new PlayerSkills();
-    SkillTree _tree;
+    PlayerSkills skills;
 
     float horizontalMovement;
     float verticalMovement;
@@ -26,8 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        _tree = new SkillTree(skills);
-        // rb.freezeRotation = true;
+        skills = PlayerSkills.Instance;
     }
 
     private void Update()
@@ -43,21 +41,18 @@ public class PlayerMovement : MonoBehaviour
         {
             Dash();
         }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            _tree.Unlock("NewHand");
-            Debug.Log("hand");
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            _tree.Unlock("dashMult");
-            Debug.Log("dash");
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            _tree.Unlock("speedMult");
-            Debug.Log("speed");
-        }
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    _tree.Unlock("NewHand");
+        //}
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    _tree.Unlock("dashMult");
+        //}
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    _tree.Unlock("speedMult");
+        //}
 
 
     }
