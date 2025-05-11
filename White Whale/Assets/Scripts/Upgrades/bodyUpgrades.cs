@@ -97,6 +97,7 @@ namespace Skills
 
         public void Apply() {
             PlayerSkills.Instance.velocity *= 4f;
+            Debug.Log("speedmult");
         }
     }
 
@@ -105,6 +106,7 @@ namespace Skills
         public void Apply()
         {
             PlayerSkills.Instance.dashAmt *= 2f;
+            Debug.Log("dashmult");
         }
     }
 
@@ -121,6 +123,7 @@ namespace Skills
         public void Apply()
         {
             WeaponManager.Instance.GrantWeapon();
+            Debug.Log("hands");
         }
     }
 
