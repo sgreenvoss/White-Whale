@@ -594,7 +594,7 @@ Shader "Distant Lands/Stylized Fog"
 
 				float4 ase_grabScreenPos = ASE_ComputeGrabScreenPos( ScreenPos );
 				float4 ase_grabScreenPosNorm = ase_grabScreenPos / ase_grabScreenPos.w;
-				float4 fetchOpaqueVal16 = float4( SHADERGRAPH_SAMPLE_SCENE_COLOR( ase_grabScreenPosNorm ), 1.0 );
+				float4 fetchOpaqueVal16 = float4( SHADERGRAPH_SAMPLE_SCENE_COLOR( ase_grabScreenPosNorm.xy ), 1.0 );
 				float4 ase_screenPosNorm = ScreenPos / ScreenPos.w;
 				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
 				float eyeDepth80 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm.xy ),_ZBufferParams);
@@ -1820,7 +1820,7 @@ Shader "Distant Lands/Stylized Fog"
 				float4 screenPos = input.ase_texcoord4;
 				float4 ase_grabScreenPos = ASE_ComputeGrabScreenPos( screenPos );
 				float4 ase_grabScreenPosNorm = ase_grabScreenPos / ase_grabScreenPos.w;
-				float4 fetchOpaqueVal16 = float4( SHADERGRAPH_SAMPLE_SCENE_COLOR( ase_grabScreenPosNorm ), 1.0 );
+				float4 fetchOpaqueVal16 = float4( SHADERGRAPH_SAMPLE_SCENE_COLOR( ase_grabScreenPosNorm.xy ), 1.0 );
 				float4 ase_screenPosNorm = screenPos / screenPos.w;
 				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
 				float eyeDepth80 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm.xy ),_ZBufferParams);

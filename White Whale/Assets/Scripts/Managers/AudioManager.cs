@@ -3,6 +3,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     // with code modified from https://www.youtube.com/watch?v=DU7cgVsU2rM
+    // and https://www.youtube.com/watch?app=desktop&v=xswEpNpucZQ
     public static AudioManager instance;
 
     [SerializeField] private AudioSource soundFXObject;
@@ -12,10 +13,18 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
+        if (instance == null) {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+        else {
+            Destroy(gameObject);
+        }
+
+        // if (instance == null)
+        // {
+        //     instance = this;
+        // }
         musicSource.clip = bgm;
         musicSource.Play();
     }
