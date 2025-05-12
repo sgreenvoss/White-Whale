@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    GameObject currentGunInstance;
+    static GameObject currentGunInstance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void OnEnable()
+    private void Awake()
     {
         GameState.GameStateChanged += HandleGameStateChanged;
     }
     private void OnDisable()
     {
+        UnequipGun();
         GameState.GameStateChanged -= HandleGameStateChanged;
     }
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         if (GameState.CurrentState == GState.Diving)
         {
             EquipCurrentGun();
         }
+        else UnequipGun();
     }
 
     private void EquipCurrentGun()
@@ -36,7 +37,9 @@ public class WeaponHolder : MonoBehaviour
             Debug.Log("equipping gun: " + gunData.name);
             currentGunInstance = Instantiate(gunData.gunPrefab, transform.position, transform.rotation, parent: this.transform);
             Debug.Log("Here, gundata is " + gunData.name);
+            Debug.Log(currentGunInstance.name);
         }
+        Debug.Log(currentGunInstance.name);
     }
     private void UnequipGun()
     {

@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: Better Pistol
   m_EditorClassIdentifier: 
   name: Better Pistol
-  gunPrefab: {fileID: 4204968473350720500, guid: 3b76953f2a8eb2c4a91e989bdd64a10d, type: 3}
+  gunPrefab: {fileID: 4204968473350720500, guid: 7ce1b7860cd2bb44cada2cc3aa3fe76d, type: 3}
   damage: 2
-  projectile: {fileID: 4863515396118822957, guid: 7ebeb6d60d237324e845d12332415241, type: 3}
-  projectileVelocity: 20
+  projectile: {fileID: 4863515396118822957, guid: a6dfd90869a192f458785cd9b076efa0, type: 3}
+  projectileVelocity: 15
   projectileLifetime: 4
   ricochets: 1
-  currentAmmo: 6
   capacity: 6
-  fireRate: 0
-  reloadTime: 0
-  reloading: 0
+  fireRate: 1
+  reloadTime: 1

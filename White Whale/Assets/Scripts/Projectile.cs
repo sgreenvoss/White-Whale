@@ -5,7 +5,10 @@ public class Projectile : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] BulletData bulletData;
-
+    private void Awake()
+    {
+        Debug.Log("Bullet is here: " + transform.position.ToString());
+    }
     int numRicochets = 0;
     private void OnCollisionEnter(Collision collision)
     {
@@ -21,7 +24,6 @@ public class Projectile : MonoBehaviour
         }
         if (numRicochets >= bulletData.ricochets)
         {
-            Debug.Log("ricochets done.");
             if (bulletData.explosions)
             {
                 Debug.Log("EXPLOSION!!!");
