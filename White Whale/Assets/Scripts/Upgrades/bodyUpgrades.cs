@@ -16,7 +16,7 @@ namespace Skills
         public static PlayerSkills Instance;
         private void Awake()
         {
-            currentGunData = guns[_index];
+            currentGunData = guns[Mathf.Clamp(_index, 0, guns.Count - 1)];
             if (Instance != null)
             {
                 Destroy(gameObject);

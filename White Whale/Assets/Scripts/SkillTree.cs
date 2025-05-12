@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 
 namespace Skills
@@ -29,6 +30,7 @@ namespace Skills
             // this is the instantiator
             // there are a lot of things we could do to clean this up...
             nodes = new Dictionary<string, SkillNode>();
+            SkillNode default_node = new SkillNode("", new List<SkillNode>(), _applyEffect: new NotImplemented());
             SkillNode d_node = new SkillNode("Speed1", new List<SkillNode>(), false, 3, new DashMult());
             nodes.Add("Speed1", d_node);
             SkillNode s_node = new SkillNode("Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
@@ -38,6 +40,13 @@ namespace Skills
 
             SkillNode gun1 = new SkillNode("Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
             nodes.Add("Weapon1", gun1);
+            SkillNode gun2 = new SkillNode("Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
+            nodes.Add("Weapon2", gun2);
+            nodes.Add("Weapon3", default_node);
+            nodes.Add("Oxygen1", default_node);
+            nodes.Add("Oxygen2", default_node);
+            nodes.Add("Oxygen3", default_node);
+
         }
         public void Unlock(string id)
         {
@@ -77,6 +86,14 @@ namespace Skills
     public interface ISkillEffect
     {
         void Apply();
+    }
+
+    public class NotImplemented : ISkillEffect
+    {
+        public void Apply()
+        {
+            Debug.Log("Not yet implemented, sorry!");
+        }
     }
 
     public class SpeedMult : ISkillEffect

@@ -44732,6 +44732,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3999986007209274095, guid: 8aaa57f515f4bb54fa6fae441aa0c1e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3999986007216424207, guid: 8aaa57f515f4bb54fa6fae441aa0c1e8, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -44796,16 +44800,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammerhead Shark
       objectReference: {fileID: 0}
+    - target: {fileID: 3999986007216527663, guid: 8aaa57f515f4bb54fa6fae441aa0c1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aaa57f515f4bb54fa6fae441aa0c1e8, type: 3}
---- !u!4 &1307064974 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3999986007216424207, guid: 8aaa57f515f4bb54fa6fae441aa0c1e8, type: 3}
-  m_PrefabInstance: {fileID: 1307064973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1308600197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49492,7 +49495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1459808999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49505,7 +49508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f5acac056403243a60f889a2ed5ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToMove: {fileID: 1307064974}
+  objectToMove: {fileID: 0}
   moveSpeed: 2
   turnSpeed: 30
 --- !u!4 &1459809000
@@ -63564,6 +63567,7 @@ MonoBehaviour:
   guns:
   - {fileID: 11400000, guid: 282b66341c9bea64f9b779bc53a1ff70, type: 2}
   - {fileID: 11400000, guid: 1a7c8c55c3f32d645bda337d0b50f25e, type: 2}
+  - {fileID: 11400000, guid: 8657aa696bfbdda40afeb80274cd92dd, type: 2}
   currentGunData: {fileID: 0}
   velocity: 10
   dashAmt: 40

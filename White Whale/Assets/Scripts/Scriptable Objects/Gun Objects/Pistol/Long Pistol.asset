@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccaea84702a6a541ace0614ec7347c1, type: 3}
+  m_Name: Long Pistol
+  m_EditorClassIdentifier: 
+  name: Long Pistol
+  gunPrefab: {fileID: 4204968473350720500, guid: a5801136a723a0040807fc623ab538d6, type: 3}
+  damage: 3
+  projectile: {fileID: 4863515396118822957, guid: a6dfd90869a192f458785cd9b076efa0, type: 3}
+  projectileVelocity: 20
+  projectileLifetime: 4
+  ricochets: 3
+  capacity: 12
+  fireRate: 1
+  reloadTime: 1
