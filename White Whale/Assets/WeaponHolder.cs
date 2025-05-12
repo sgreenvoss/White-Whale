@@ -5,24 +5,58 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    private GameObject currentGunInstance;
+    GameObject currentGunInstance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
-        switch (GameState.CurrentState)
+        GameState.GameStateChanged += HandleGameStateChanged;
+    }
+    private void OnDisable()
+    {
+        GameState.GameStateChanged -= HandleGameStateChanged;
+    }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        if (GameState.CurrentState == GState.Diving)
+        {
+            EquipCurrentGun();
+        }
+    }
+
+    private void EquipCurrentGun()
+    {
+        UnequipGun();
+
+        var gunData = PlayerSkills.Instance.currentGunData;
+        Debug.Log("Loading this gun:" + gunData.name);
+        if (gunData != null && gunData.gunPrefab != null)
+        {
+            Debug.Log("equipping gun: " + gunData.name);
+            currentGunInstance = Instantiate(gunData.gunPrefab, transform.position, transform.rotation, parent: this.transform);
+            Debug.Log("Here, gundata is " + gunData.name);
+        }
+    }
+    private void UnequipGun()
+    {
+        if (currentGunInstance != null) { 
+            Destroy(currentGunInstance);
+            currentGunInstance = null;
+        }
+    }
+    void HandleGameStateChanged(GState state)
+    {
+        switch (state)
         {
             case (GState.Diving):
 
-                Debug.Log("diving");
-                var gunData = PlayerSkills.Instance.currentGunData;
-                if (gunData != null && gunData.gunPrefab != null)
-                {
-                    currentGunInstance = Instantiate(gunData.gunPrefab, transform.position, transform.rotation, parent:this.transform);
-                }
+                EquipCurrentGun();
+
                 break;
 
             case (GState.HomeBase):
-                Destroy(currentGunInstance);
+                UnequipGun();
                 break;
         }
     }

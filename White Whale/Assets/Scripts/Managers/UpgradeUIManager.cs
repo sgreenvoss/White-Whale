@@ -44,6 +44,7 @@ public class UpgradeUIManager : MonoBehaviour
     void OnUpgradeClicked(string category, int option)
     {
         Debug.Log($"Upgrade selected: {category} Option {option}");
+        Debug.Log(category + option.ToString());
         tree.Unlock(category + option.ToString());
     }
 

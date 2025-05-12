@@ -15,9 +15,7 @@ public class GunData : ScriptableObject
     public int ricochets;
 
     [Header("Reloading")]
-    public int currentAmmo;
     public int capacity;
     public float fireRate;
     public float reloadTime;
-    public bool reloading;
 }

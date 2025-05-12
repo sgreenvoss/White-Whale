@@ -1,32 +1,34 @@
 using UnityEngine;
 using System.Collections;
+using System;
 public class Projectile : MonoBehaviour
 {
-    private int damage;
-    private int ricochets;
-    private int ric_count;
+    [Header("References")]
+    [SerializeField] BulletData bulletData;
 
-  //  public void Initialize(int dmg, int _ricochets)
-  //  {
-  //      damage = dmg;
-  //      ricochets = _ricochets;
-  //  }
+    int numRicochets = 0;
     private void OnCollisionEnter(Collision collision)
     {
+        numRicochets++;
         if (collision.gameObject.CompareTag("Fish"))
         {
             ABSFish fish = collision.gameObject.GetComponent<ABSFish>();
 
             if (fish != null)
             {
-                fish.Damage(damage);
+                fish.Damage(bulletData.damage);
             }
         }
- //       if (ric_count >= ricochets)
-  //      {
-   //         Destroy(gameObject);
-    //    }
-     //   ric_count++;
+        if (numRicochets >= bulletData.ricochets)
+        {
+            Debug.Log("ricochets done.");
+            if (bulletData.explosions)
+            {
+                Debug.Log("EXPLOSION!!!");
+            }
+            Destroy(gameObject);
+        }
+        numRicochets++;
     }
 
 }

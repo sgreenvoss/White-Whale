@@ -9,19 +9,37 @@ namespace Skills
 {
     public class PlayerSkills : MonoBehaviour
     {
-        [SerializeField]
+        [SerializeField] public List<GunData> guns;
+        public static int _index = 0;
         public GunData currentGunData;
+        
         public static PlayerSkills Instance;
         private void Awake()
         {
+            currentGunData = guns[_index];
             if (Instance != null)
             {
                 Destroy(gameObject);
                 return;
             }
+
             Instance = this;
             DontDestroyOnLoad(gameObject);
             
+        }
+
+        public void SwapIndex(int index)
+        {
+            if (index >= 0 && index < guns.Count)
+            {
+                _index = index;
+                currentGunData = guns[_index]; 
+                Debug.Log("Swapped to gun: " + currentGunData.name);
+            }
+            else
+            {
+                Debug.LogWarning("Invalid gun index: " + index);
+            }
         }
 
         public float velocity = 10f;

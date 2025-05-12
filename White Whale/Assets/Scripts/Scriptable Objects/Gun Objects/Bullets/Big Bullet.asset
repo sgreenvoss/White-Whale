@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1497beb0b76bdd459a89d024ca947fc, type: 3}
+  m_Name: Big Bullet
+  m_EditorClassIdentifier: 
+  name: Big Bullet
+  prefab: {fileID: 4863515396118822957, guid: 7ebeb6d60d237324e845d12332415241, type: 3}
+  damage: 2
+  projectileLifetime: 4
+  ricochets: 2
+  explosions: 0
+  explosionRadius: 0

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccaea84702a6a541ace0614ec7347c1, type: 3}
+  m_Name: Better Pistol
+  m_EditorClassIdentifier: 
+  name: Better Pistol
+  gunPrefab: {fileID: 4204968473350720500, guid: 3b76953f2a8eb2c4a91e989bdd64a10d, type: 3}
+  damage: 2
+  projectile: {fileID: 4863515396118822957, guid: 7ebeb6d60d237324e845d12332415241, type: 3}
+  projectileVelocity: 20
+  projectileLifetime: 4
+  ricochets: 1
+  currentAmmo: 6
+  capacity: 6
+  fireRate: 0
+  reloadTime: 0
+  reloading: 0

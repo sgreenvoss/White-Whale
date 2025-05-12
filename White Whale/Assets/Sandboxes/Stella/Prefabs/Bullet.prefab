@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534656d19e9443949bc7911f5ef9663e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletData: {fileID: 11400000, guid: 1fdca26acb82e044f9f9b02a17bdaca6, type: 2}
 --- !u!96 &3146083698210824519
 TrailRenderer:
   serializedVersion: 3

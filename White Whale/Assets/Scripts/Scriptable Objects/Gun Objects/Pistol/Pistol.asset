@@ -19,8 +19,6 @@ MonoBehaviour:
   projectileVelocity: 10
   projectileLifetime: 3
   ricochets: 0
-  currentAmmo: 6
   capacity: 6
   fireRate: 1
   reloadTime: 1
-  reloading: 0

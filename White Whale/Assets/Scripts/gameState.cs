@@ -57,6 +57,7 @@ public class GameState : MonoBehaviour
 
     public void SceneChange(string sceneName)
     {
+        Debug.Log("changing to " + sceneName);
         GState newState = SceneLookup[sceneName];
         CurrentState = newState;
         GameStateChanged?.Invoke(newState);
