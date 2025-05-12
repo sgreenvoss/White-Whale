@@ -28,9 +28,14 @@ public class Timer : MonoBehaviour
 
     private float _currTime;
 
+
+
     void Start()
     {
         _currTime = roundDuration;
+
+        if (GameState.CurrentState != GState.Diving)
+            GameState.Instance.ChangeState(GState.Diving);
 
         if (roundOverScreen != null)
         {
