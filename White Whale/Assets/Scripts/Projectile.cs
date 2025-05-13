@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] BulletData bulletData;
+    [SerializeField] private ParticleSystem bulletParticle;
     private void Awake()
     {
         Debug.Log("Bullet is here: " + transform.position.ToString());
@@ -16,6 +17,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Fish"))
         {
             ABSFish fish = collision.gameObject.GetComponent<ABSFish>();
+            bulletParticle.Play();
 
             if (fish != null)
             {
