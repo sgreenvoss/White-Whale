@@ -78,14 +78,14 @@ public class Timer : MonoBehaviour
                 EndRound();
             }
         }
-        else
-        {
+        //else
+        //{
             // Restarts Round on Space or Return Key press
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
-            {
-                RestartRound();
-            }
-        }        
+            //if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            //{
+            //    RestartRound();
+            //}
+        //}        
     }
 
     void UpdateTimerDisplay()
@@ -99,7 +99,6 @@ public class Timer : MonoBehaviour
     void EndRound()
     {
         GameState.Instance.ChangeState(GState.EndRound);
-        roundOverScreen.SetActive(true);
 
         // Pause
         Time.timeScale = 0f;
@@ -110,7 +109,6 @@ public class Timer : MonoBehaviour
     void RestartRound()
     {
         // Unpause 
-        Debug.Log("time scale reset");
         Time.timeScale = 1f;
         GameState.Instance.ChangeState(GState.Diving);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

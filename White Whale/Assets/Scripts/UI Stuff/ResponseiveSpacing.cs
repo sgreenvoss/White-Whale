@@ -5,21 +5,28 @@ using UnityEngine.UI;
 public class ResponsiveSpacing : MonoBehaviour
 {
     private VerticalLayoutGroup layout;
-    private float referenceHeight = 1080f; // Use your design reference height
+    private float referenceHeight = 1080f;
 
     public float baseSpacing = 50f;
     public float baseBottomPadding = 20f;
 
+    private Vector2 lastResolution;
+
     void Start()
     {
         layout = GetComponent<VerticalLayoutGroup>();
+        lastResolution = new Vector2(Screen.width, Screen.height);
         UpdateSpacing();
     }
 
     void Update()
     {
-        UpdateSpacing(); // You could optimize by only calling on resolution change
-    }
+        if (Screen.width != lastResolution.x || Screen.height != lastResolution.y)
+        {
+            lastResolution = new Vector2(Screen.width, Screen.height);
+            UpdateSpacing();
+        }
+    }   
 
     void UpdateSpacing()
     {

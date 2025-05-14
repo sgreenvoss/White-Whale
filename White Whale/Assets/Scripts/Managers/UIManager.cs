@@ -19,12 +19,21 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject roundOverScreen;
 
+    [SerializeField] private GameObject timerUI;
+
+
+    // Round Over children
+    private GameObject RoundOverText;
+    private GameObject HomeButton;
+    private GameObject RestartButton;
+    private GameObject RestartIndicator;
+
 
     void OnEnable()
     {
         Debug.Log("UIManager subscribed to events");
         PauseManager.OnPauseStateChanged += HandlePauseStateChanged;
-        Timer.OnRoundEnded += HandleRoundEnded;
+        GameEvents.OnRoundEnded += HandleRoundEnded;
         CursorManager.OnCursorVisibilityChanged += HandleCursorChange;
         FishManager.OnFishCaught += HandleFishScore;
     }
@@ -33,7 +42,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("UIManager unsubscribed from events");
         PauseManager.OnPauseStateChanged -= HandlePauseStateChanged;
-        Timer.OnRoundEnded -= HandleRoundEnded;
+        GameEvents.OnRoundEnded -= HandleRoundEnded;
         CursorManager.OnCursorVisibilityChanged -= HandleCursorChange;
         FishManager.OnFishCaught -= HandleFishScore;
     }
@@ -47,10 +56,40 @@ public class UIManager : MonoBehaviour
 
     void HandleRoundEnded()
     {
+
+        if (timerUI != null)
+            timerUI.SetActive(false);       // disables timer
+
+            
         // Show round over UI
         if (roundOverScreen != null)
+        {
             roundOverScreen.SetActive(true);
-        // limit access? 
+
+            // get child references
+            RoundOverText = roundOverScreen.transform.Find("RoundOverText")?.gameObject;
+            HomeButton = roundOverScreen.transform.Find("HomeButton")?.gameObject;
+            RestartButton = roundOverScreen.transform.Find("RestartButton")?.gameObject;
+
+            RoundOverText?.SetActive(true);
+
+            HomeButton?.SetActive(false);
+            RestartButton?.SetActive(false);
+
+            StartCoroutine(ShowRoundOverUI());
+        }
+
+
+    }
+
+    System.Collections.IEnumerator ShowRoundOverUI()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        HomeButton?.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(1f);
+        RestartButton?.SetActive(true);
+
     }
 
     void HandleCursorChange(bool isVisible)
