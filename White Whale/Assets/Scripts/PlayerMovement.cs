@@ -18,8 +18,6 @@ public class Player : MonoBehaviour
     [SerializeField] KeyCode diveKey = KeyCode.LeftShift;
     [SerializeField] KeyCode dashKey = KeyCode.Space;
 
-    float jumpAmt = 5f;
-
     Rigidbody rb;
 
     void Start()
@@ -33,28 +31,10 @@ public class Player : MonoBehaviour
         
         MyInput();
 
-        if (Input.GetKey(diveKey))
-        {
-            Dive();
-        }
         if (Input.GetKeyDown(dashKey))
         {
             Dash();
         }
-
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    _tree.Unlock("NewHand");
-        //}
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
-        //    _tree.Unlock("dashMult");
-        //}
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    _tree.Unlock("speedMult");
-        //}
-
 
     }
     private void FixedUpdate()
@@ -75,11 +55,6 @@ public class Player : MonoBehaviour
         rb.linearDamping = drag;
     }
 
-    void Dive()
-    {
-        rb.AddForce(Vector3.down * jumpAmt, ForceMode.Impulse);
-    }
-
     void Dash()
     {
         rb.AddForce(transform.forward * skills.dashAmt, ForceMode.Impulse);
@@ -97,7 +72,8 @@ public class Player : MonoBehaviour
         
         if (col.CompareTag("Fish"))
         {
-            col.GetComponent<ABSFish>().Catch();
+            // changed to only damage the fish on collision.
+            col.GetComponent<ABSFish>().Damage(1);
         } 
     }
 }
