@@ -13,9 +13,11 @@ public class Player : MonoBehaviour
     float drag = 10f;
     float movementMultiplier = 10f;
 
+    float jumpAmt = 5f;
+
     Vector3 moveDirection;
 
-    [SerializeField] KeyCode diveKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode jumpKey = KeyCode.LeftShift;
     [SerializeField] KeyCode dashKey = KeyCode.Space;
 
     Rigidbody rb;
@@ -30,6 +32,11 @@ public class Player : MonoBehaviour
     {
         
         MyInput();
+
+        if (Input.GetKey(jumpKey))
+        {
+            Jump();
+        }
 
         if (Input.GetKeyDown(dashKey))
         {
@@ -53,6 +60,11 @@ public class Player : MonoBehaviour
     void ControlDrag()
     {
         rb.linearDamping = drag;
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpAmt, ForceMode.Impulse);
     }
 
     void Dash()
