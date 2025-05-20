@@ -21,12 +21,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject timerUI;
 
+    [SerializeField] private BulletBarUI bulletBarUI;
+
 
     // Round Over children
     private GameObject RoundOverText;
     private GameObject HomeButton;
     private GameObject RestartButton;
     private GameObject RestartIndicator;
+
 
 
     void OnEnable()
@@ -36,6 +39,7 @@ public class UIManager : MonoBehaviour
         GameEvents.OnRoundEnded += HandleRoundEnded;
         CursorManager.OnCursorVisibilityChanged += HandleCursorChange;
         FishManager.OnFishCaught += HandleFishScore;
+        Gun.OnAmmoChanged += UpdateAmmoUI;
     }
 
     void OnDisable()
@@ -45,6 +49,7 @@ public class UIManager : MonoBehaviour
         GameEvents.OnRoundEnded -= HandleRoundEnded;
         CursorManager.OnCursorVisibilityChanged -= HandleCursorChange;
         FishManager.OnFishCaught -= HandleFishScore;
+        Gun.OnAmmoChanged -= UpdateAmmoUI;
     }
 
 
@@ -102,6 +107,13 @@ public class UIManager : MonoBehaviour
     {
         if (fishCountText != null)
             fishCountText.text = $"Score: {ABSFish.total_score}";
+    }
+
+    void UpdateAmmoUI(int currentAmmo)
+    {
+        Debug.Log($"UIManager received ammo update: {currentAmmo}");
+
+        bulletBarUI?.UpdateBulletDisplay(currentAmmo);
     }
 
 

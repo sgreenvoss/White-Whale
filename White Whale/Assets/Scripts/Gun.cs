@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
     int currentAmmo;
     bool reloading;
 
+    public static System.Action<int> OnAmmoChanged;
+
     private void Awake()
     {
     //    GameState.GameStateChanged += HandleGameChange;
@@ -36,6 +38,7 @@ public class Gun : MonoBehaviour
             // shoot projectile
             projectile.GetComponent<Rigidbody>().AddForce(muzzle.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
             currentAmmo--;
+            OnAmmoChanged?.Invoke(currentAmmo);
             // destroy after some time
             StartCoroutine(DestroyProjectileAfterTime(projectile, gunData.projectileLifetime));
         }
@@ -47,6 +50,7 @@ public class Gun : MonoBehaviour
         reloading = true;
         yield return new WaitForSeconds(gunData.reloadTime);
         currentAmmo = gunData.capacity;
+        OnAmmoChanged?.Invoke(currentAmmo);
         reloading = false;
         Debug.Log("Done reloading");
     }
