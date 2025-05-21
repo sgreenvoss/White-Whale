@@ -30,14 +30,16 @@ public class Gun : MonoBehaviour
 
         if (reloading) return;
 
-        if (currentAmmo <= 0) StartCoroutine(Reload());
-
         else if (GameState.CurrentState == GState.Diving)
         {
             GameObject projectile = Instantiate(gunData.projectile, muzzle.position, muzzle.rotation);
             // shoot projectile
             projectile.GetComponent<Rigidbody>().AddForce(muzzle.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
             currentAmmo--;
+            if (currentAmmo == 0)
+            {
+                StartCoroutine(Reload());
+            }
             OnAmmoChanged?.Invoke(currentAmmo);
             // destroy after some time
             StartCoroutine(DestroyProjectileAfterTime(projectile, gunData.projectileLifetime));
