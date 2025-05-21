@@ -7,7 +7,11 @@ public class Gun : MonoBehaviour
     [Header("References")]
     [SerializeField] GunData gunData;
     [SerializeField] Transform muzzle;
-    LineRenderer lr;
+
+    // for particle instantiation:
+    GameObject impact; 
+    GameObject muzzleInst;
+
     int currentAmmo;
     bool reloading;
     float timeSinceLastShot;
@@ -21,15 +25,6 @@ public class Gun : MonoBehaviour
 
     public static System.Action<int> OnAmmoChanged;
 
-    //private void DecreaseAmmoPistol()
-    //{
-    //    currentAmmo--;
-    //}
-    //private void DecreaseAmmoAuto()
-    //{
-    //    currentAmmo
-    //}
-
     private bool CanShoot() => !reloading && timeSinceLastShot > recip;
 
     private void Awake()
@@ -42,7 +37,8 @@ public class Gun : MonoBehaviour
         if (gunData.auto)
         {
             PlayerShoot.shootHold += ShootAuto;
-            lr = GetComponent<LineRenderer>();
+            impact = gunData.impact;
+            muzzleInst = gunData.muzzleFlash;
         }
         else
         {
@@ -76,17 +72,13 @@ public class Gun : MonoBehaviour
         Debug.Log("SHOOTING AUTO!");
         if (currentAmmo > 0 && CanShoot())
         {
-            lr.enabled = true;
-            Vector3 start = muzzle.position;
-            Vector3 direction = muzzle.forward; // or firePoint.right for 2D
-            Vector3 end = start + direction * gunData.maxDistance;
-
-            lr.SetPosition(0, start);
-            lr.SetPosition(1, end);
-
+            Instantiate(muzzleInst, muzzle.position, muzzle.rotation);
             if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
             {
                 Debug.Log("hit!");
+
+                Instantiate(impact, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+
                 if (hitInfo.transform.CompareTag("Fish"))
                 {
                     ABSFish fish = hitInfo.transform.GetComponent<ABSFish>();
@@ -98,7 +90,10 @@ public class Gun : MonoBehaviour
                 }
                 currentAmmo--;
                 timeSinceLastShot = 0;
-
+                if (currentAmmo == 0)
+                {
+                    StartCoroutine(Reload());
+                }
             }
         }
     }

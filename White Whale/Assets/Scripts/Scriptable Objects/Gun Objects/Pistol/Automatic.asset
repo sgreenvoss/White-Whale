@@ -20,7 +20,9 @@ MonoBehaviour:
   projectileVelocity: 0
   projectileLifetime: 0
   ricochets: 0
-  capacity: 600
-  fireRate: 600
+  capacity: 31
   reloadTime: 1
   maxDistance: 500
+  fireRate: 600
+  impact: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
+  muzzleFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}

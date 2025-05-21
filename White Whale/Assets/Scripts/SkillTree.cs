@@ -42,7 +42,9 @@ namespace Skills
             nodes.Add("Weapon1", gun1);
             SkillNode gun2 = new SkillNode("Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon2", gun2);
-            nodes.Add("Weapon3", default_node);
+            SkillNode gun3 = new SkillNode("Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
+            nodes.Add("Weapon3", gun3);
+
             nodes.Add("Oxygen1", default_node);
             nodes.Add("Oxygen2", default_node);
             nodes.Add("Oxygen3", default_node);

@@ -22,4 +22,8 @@ public class GunData : ScriptableObject
 
     [Header("Only for auto")]
     public float fireRate;
+
+    [Header("Juice")]
+    public GameObject impact;
+    public GameObject muzzleFlash;
 }

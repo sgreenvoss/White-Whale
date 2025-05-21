@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/cliot/Documents/cs410/White-Whale/White Whale/WebGL Builds;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/sgree/OneDrive/Documents/School/UO/2024-25/SPRING 2025/GAMES/Unity Builds/White-Whale/White Whale/WebGL Builds;C:/Users/cliot/Documents/cs410/White-Whale/White Whale/WebGL Builds;;;;;;;;\"}"
             }
         ]
     }
