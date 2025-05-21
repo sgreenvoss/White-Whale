@@ -52,6 +52,7 @@ public class Timer : MonoBehaviour
             homeBaseButton.onClick.AddListener(() =>
             {
                 Time.timeScale = 1f; // Ensure time resumes before scene loads
+                GameState.Instance.ChangeState(GState.HomeBase);
                 SceneManager.LoadScene("Underwater Base");
             });
         }

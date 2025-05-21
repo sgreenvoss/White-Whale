@@ -69,14 +69,12 @@ public class Gun : MonoBehaviour
     }
     public void ShootAuto()
     {
-        Debug.Log("SHOOTING AUTO!");
         if (currentAmmo > 0 && CanShoot())
         {
+            // plays particle system and starts coroutine to delete self in one second. 
             Instantiate(muzzleInst, muzzle.position, muzzle.rotation);
             if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
             {
-                Debug.Log("hit!");
-
                 Instantiate(impact, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
 
                 if (hitInfo.transform.CompareTag("Fish"))
@@ -88,13 +86,18 @@ public class Gun : MonoBehaviour
                         fish.Damage(gunData.damage);
                     }
                 }
-                currentAmmo--;
-                timeSinceLastShot = 0;
-                if (currentAmmo == 0)
-                {
-                    StartCoroutine(Reload());
-                }
+               
             }
+
+            currentAmmo--;
+            timeSinceLastShot = 0;
+
+            if (currentAmmo == 0)
+            {
+                StartCoroutine(Reload());
+            }
+
+            OnAmmoChanged?.Invoke(currentAmmo);
         }
     }
     public void ShootPistol()

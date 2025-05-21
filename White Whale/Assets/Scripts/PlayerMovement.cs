@@ -3,17 +3,21 @@ using Unity.VisualScripting;
 using System.Collections.Generic;
 using UnityEngine;
 using Skills;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     PlayerSkills skills;
+    [SerializeField] GameObject FlashlightPrefab;
 
     float horizontalMovement;
     float verticalMovement;
     float drag = 10f;
     float movementMultiplier = 10f;
+    float _dashamt;
+    float _velocity;
 
-    float jumpAmt = 5f;
+    float jumpAmt;
 
     Vector3 moveDirection;
 
@@ -21,11 +25,29 @@ public class Player : MonoBehaviour
     [SerializeField] KeyCode dashKey = KeyCode.Space;
 
     Rigidbody rb;
+    Light flashlight;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         skills = PlayerSkills.Instance;
+        Debug.Log("GAME STATE: " + GameState.CurrentState);
+        if (GameState.CurrentState == GState.HomeBase) {
+            // set speed in home base to regular values
+            _velocity = skills.baseVelocity;
+            _dashamt = 0f;
+            jumpAmt = 0f;
+        } 
+        else
+        {
+            flashlight = Instantiate(FlashlightPrefab, parent:gameObject.transform).GetComponent<Light>();
+            flashlight.intensity = skills.lightIntensity;
+            flashlight.range = skills.lightDistance;
+
+            _velocity = skills.velocity;
+            _dashamt = skills.dashAmt;
+            jumpAmt = 5f;
+        }
     }
 
     private void Update()
@@ -69,13 +91,13 @@ public class Player : MonoBehaviour
 
     void Dash()
     {
-        rb.AddForce(transform.forward * skills.dashAmt, ForceMode.Impulse);
+        rb.AddForce(transform.forward * _dashamt, ForceMode.Impulse);
     }
  
 
     void MovePlayer()
     {
-        rb.AddForce(moveDirection.normalized * skills.velocity * movementMultiplier, ForceMode.Acceleration);
+        rb.AddForce(moveDirection.normalized * _velocity * movementMultiplier, ForceMode.Acceleration);
     }
 
     private void OnCollisionEnter(Collision collision)

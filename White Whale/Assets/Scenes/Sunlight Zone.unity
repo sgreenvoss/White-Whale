@@ -19187,6 +19187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a4a0be458e5b049a3e89ff5452505d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlashlightPrefab: {fileID: 5642683288396103677, guid: 45b3f0b42114e0d4c8d8b635fcd8597a, type: 3}
   jumpKey: 304
   dashKey: 32
 --- !u!54 &569658491
@@ -64114,7 +64115,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8657aa696bfbdda40afeb80274cd92dd, type: 2}
   - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
   currentGunData: {fileID: 0}
+  lightIntensity: 0
+  lightDistance: 5
   velocity: 10
+  baseVelocity: 10
   dashAmt: 40
   longDash: 0
   gameTime: 30

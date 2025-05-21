@@ -42,7 +42,10 @@ namespace Skills
             }
         }
 
+        public float lightIntensity = 0f;
+        public float lightDistance = 5f;
         public float velocity = 10f;
+        public float baseVelocity = 10f;
         public float dashAmt = 40f;
         public bool longDash = false;
         public float gameTime = 30f;

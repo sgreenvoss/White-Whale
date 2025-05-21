@@ -45,7 +45,8 @@ namespace Skills
             SkillNode gun3 = new SkillNode("Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon3", gun3);
 
-            nodes.Add("Oxygen1", default_node);
+            SkillNode general1 = new SkillNode("Oxygen1", new List<SkillNode>(), _max: 3, _applyEffect: new Flashlight());
+            nodes.Add("Oxygen1", general1);
             nodes.Add("Oxygen2", default_node);
             nodes.Add("Oxygen3", default_node);
 
@@ -149,6 +150,15 @@ namespace Skills
         {
        //     WeaponManager.Instance.GrantWeapon();
             Debug.Log("hands");
+        }
+    }
+
+    public class Flashlight : ISkillEffect
+    {
+        public void Apply()
+        {
+            PlayerSkills.Instance.lightDistance += 5f;
+            PlayerSkills.Instance.lightIntensity += 1f;
         }
     }
 }
