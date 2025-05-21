@@ -6,9 +6,10 @@ public class GunData : ScriptableObject
     [Header("Information")]
     public new string name;
     public GameObject gunPrefab;
+    public bool auto;
 
     [Header("Shooting")]
-    public float damage;
+    public int damage;
     public GameObject projectile;
     public int projectileVelocity;
     public float projectileLifetime;
@@ -16,6 +17,9 @@ public class GunData : ScriptableObject
 
     [Header("Reloading")]
     public int capacity;
-    public float fireRate;
     public float reloadTime;
+    public float maxDistance;
+
+    [Header("Only for auto")]
+    public float fireRate;
 }
