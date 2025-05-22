@@ -14,7 +14,8 @@ public class GameState : MonoBehaviour
     {
         ["Sunlight Zone"] = GState.Diving,
         ["Underwater Base"] = GState.HomeBase,
-        ["UpgradeScene"] = GState.Upgrading
+        ["UpgradeScene"] = GState.Upgrading,
+        ["Twilight Zone"] = GState.Diving
     };
 
     public static GameState Instance { get; private set; }

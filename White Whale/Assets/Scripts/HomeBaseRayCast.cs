@@ -4,6 +4,7 @@ using TMPro;
 public class HomeBaseRayCast : MonoBehaviour
 {
     public TMP_Text UpgradeText;
+    public TMP_Text InfoText;
     public Camera PlayerCamera;
 
     public float maxInteractionDist = 10f;
@@ -11,7 +12,8 @@ public class HomeBaseRayCast : MonoBehaviour
     // public bool faceCamera;
 
     public Collider fridgeCollider; 
-    private bool isTextInitialized = false;
+    public Collider OfficeCollider;
+    // private bool isTextInitialized = false;
 
 
 
@@ -25,13 +27,23 @@ public class HomeBaseRayCast : MonoBehaviour
         }
         else
         {
-            Debug.Log("Text component found");
+            Debug.Log("Upgrade Text component found");
         }
+        if (InfoText == null)
+        {
+            Debug.LogError("TMP_Text component not found on InfoText!");
+        }
+        else
+        {
+            Debug.Log("Info Text component found");
+        }
+
 
         UpgradeText.enabled = true;
         UpgradeText.text = "UPGRADES";
-
-        isTextInitialized = true;
+        InfoText.enabled = true;
+        InfoText.text = "INFO";
+        // isTextInitialized = true;
     }
 
     void Update()
@@ -42,6 +54,7 @@ public class HomeBaseRayCast : MonoBehaviour
         RaycastHit hitInfo;
 
         bool lookingAtFridge = false;
+        bool lookingAtOffice = false;
 
              
         if (Physics.Raycast(ray, out hitInfo, maxInteractionDist))
@@ -53,6 +66,11 @@ public class HomeBaseRayCast : MonoBehaviour
                 Debug.Log("Fridge hit!");
                 lookingAtFridge = true;
             }
+            if (hitInfo.collider == OfficeCollider)
+            {
+                Debug.Log("Fridge hit!");
+                lookingAtOffice = true;
+            }
         }
 
         if(lookingAtFridge)
@@ -60,7 +78,7 @@ public class HomeBaseRayCast : MonoBehaviour
             if (!UpgradeText.enabled)
             {
                 UpgradeText.enabled = true;
-                // Debug.Log("Looking at Fridge: UpgradeText Visible");
+
                 Debug.Log("You should see the text");
             }
         }
@@ -69,7 +87,25 @@ public class HomeBaseRayCast : MonoBehaviour
             if (UpgradeText.enabled)
             {
                 UpgradeText.enabled = false;
-                // Debug.Log("Not Looking at Fridge: UpgradeText Hidden");
+
+            }
+        }
+
+        if(lookingAtOffice)
+        {
+            if (!InfoText.enabled)
+            {
+                InfoText.enabled = true;
+
+                Debug.Log("You should see the info text");
+            }
+        }
+        else
+        {
+            if (InfoText.enabled)
+            {
+                InfoText.enabled = false;
+
             }
         }
 

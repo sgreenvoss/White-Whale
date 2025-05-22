@@ -7,12 +7,12 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Entered trigger: " + other.name);
+        Debug.Log("Entered trigger: " + other.name);
 
         if (other.CompareTag("Player"))
         {
             GameState.Instance.SceneChange(targetSceneName);
-            //Debug.Log("Teleporting to: " + targetSceneName);
+            Debug.Log("Teleporting to: " + targetSceneName);
             SceneManager.LoadScene(targetSceneName);
         }
     }
