@@ -27,6 +27,7 @@ public class GameState : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+        Debug.Log($"This is me {name}");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
