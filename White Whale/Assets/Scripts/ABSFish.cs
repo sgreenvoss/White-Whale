@@ -10,6 +10,8 @@ public abstract class ABSFish : MonoBehaviour
 
     public static int total_score;
 
+    public static int total_coins;
+
     public int max_health;
 
     protected int current_health; 
