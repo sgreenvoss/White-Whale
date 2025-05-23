@@ -104,9 +104,6 @@ public class Timer : MonoBehaviour
         // Pause
         Time.timeScale = 0f;
 
-        // convert score to total coins
-        ABSFish.total_coins += ABSFish.score * 10;
-
         GameEvents.RoundEnded(); // Notify all subscribed observers
 
     }
