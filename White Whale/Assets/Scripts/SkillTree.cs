@@ -10,6 +10,23 @@ namespace Skills
     {
         public static SkillTree Instance;
 
+        private HashSet<string> unlockedUpgrades = new HashSet<string>();
+
+        
+        private string currentSelectedUpgrade;
+
+        private Dictionary<string, string> selectedUpgrades = new();
+
+        public bool IsCurrentlySelected(string category, string id)
+        {
+            return selectedUpgrades.TryGetValue(category, out var selected) && selected == id;
+        }
+
+        public void SelectUpgrade(string category, string id)
+        {
+            selectedUpgrades[category] = id;
+        }
+
         private void Awake()
         {
             if (Instance != null)
@@ -35,7 +52,7 @@ namespace Skills
             nodes.Add("Speed1", d_node);
             SkillNode s_node = new SkillNode("Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
             nodes.Add("Speed2", s_node);
-            SkillNode h_node = new SkillNode("Speed3", new List<SkillNode>(), false, 7, new NewHand());
+            SkillNode h_node = new SkillNode("Speed3", new List<SkillNode> { s_node }, false, 7, new NewHand());
             nodes.Add("Speed3", h_node);
 
             SkillNode gun1 = new SkillNode("Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
@@ -53,16 +70,25 @@ namespace Skills
         }
         public void Unlock(string id)
         {
-            Debug.Log(id);
+            if (!nodes.ContainsKey(id)) return;
+
             var node = nodes[id];
-            Debug.Log(node == null);
             if (Unlockable(id) && node.maxCt > node.appCt)
             {
-                Debug.Log("unlockable here");
                 node.IsUnlocked = true;
                 node.appCt++;
                 node.ApplyEffect.Apply();
+
+                string category = new string(id.TakeWhile(char.IsLetter).ToArray());
+                SelectUpgrade(category, id);
             }
+            
+        }
+        
+        public bool IsUnlocked(string id)
+        {
+            if (!nodes.ContainsKey(id)) return false;
+            return nodes[id].IsUnlocked;
         }
     }
 
@@ -161,4 +187,6 @@ namespace Skills
             PlayerSkills.Instance.lightIntensity += 1f;
         }
     }
+    
+    
 }
