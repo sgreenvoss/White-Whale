@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.08036668, g: 0.28615403, b: 0.3962264, a: 1}
+  m_FogColor: {r: 0.06857421, g: 0.16567992, b: 0.21698111, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.025
+  m_FogDensity: 0.08
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.060875755, g: 0.1988252, b: 0.2264151, a: 1}
@@ -915,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b84faae84ebc614dbe28b73e8792f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletBarUI: {fileID: 0}
 --- !u!1001 &212457431
 PrefabInstance:
   m_ObjectHideFlags: 0
