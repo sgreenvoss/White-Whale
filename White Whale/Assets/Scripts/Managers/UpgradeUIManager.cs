@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class UpgradeUIManager : MonoBehaviour
 {
+    [SerializeField] private BulletBarUI bulletBarUI;
+
     SkillTree tree = SkillTree.Instance;
     public Button speedOpt1;
     public Button speedOpt2;
@@ -114,18 +116,22 @@ public class UpgradeUIManager : MonoBehaviour
             case "locked":
                 colors.normalColor = new Color(0.5f, 0.5f, 0.5f, 1f);
                 colors.highlightedColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+                Debug.Log("locked");
                 break;
             case "available":
                 colors.normalColor = new Color(1f, 1f, 1f, 1f);
                 colors.highlightedColor = new Color(0.8f, 0.8f, 1f, 1f);
+                Debug.Log("available");
                 break;
             case "purchased":
                 colors.normalColor = new Color(0.3f, 0.9f, 0.3f, 1f);
-                colors.highlightedColor = new Color(0.4f, 1f, 0.4f, 1f);
+                colors.highlightedColor = new Color(1f, 1f, 1f, 1f);
+                Debug.Log("purchased");
                 break;
             case "unlocked":
                 colors.normalColor = new Color(1f, 1f, 1f, 1f);
-                colors.highlightedColor = new Color(0.8f, 1f, 0.8f, 1f);
+                colors.highlightedColor = new Color(1f, 1f, 1f, 1f);
+                Debug.Log("unlocked");
                 break;
 
         }

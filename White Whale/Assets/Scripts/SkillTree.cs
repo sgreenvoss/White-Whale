@@ -144,7 +144,20 @@ namespace Skills
             int nextIndex = PlayerSkills._index + 1;
             if (nextIndex < skills.guns.Count)
             {
-                PlayerSkills.Instance.SwapIndex(nextIndex);
+                skills.SwapIndex(nextIndex);
+
+
+                var bulletUI = GameObject.FindObjectOfType<BulletBarUI>();
+                if (bulletUI != null)
+                {
+                    int playerMaxAmmo = skills.GetCurrentGunMaxAmmo();
+                    bulletUI.SetTotalAmmo(playerMaxAmmo);
+                }
+                else
+                {
+                    Debug.LogWarning("BulletBarUI not found in scene");
+                }
+
             }
             else
             {

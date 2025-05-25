@@ -4,12 +4,16 @@ using UnityEngine.Scripting;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private BulletBarUI bulletBarUI;
+
+
     [Header("References")]
     [SerializeField] GunData gunData;
     [SerializeField] Transform muzzle;
 
+
     // for particle instantiation:
-    GameObject impact; 
+    GameObject impact;
     GameObject muzzleInst;
 
     int currentAmmo;
@@ -25,12 +29,16 @@ public class Gun : MonoBehaviour
 
     public static System.Action<int> OnAmmoChanged;
 
+    public int MaxAmmo => gunData.capacity;
+
     private bool CanShoot() => !reloading && timeSinceLastShot > recip;
 
     private void Awake()
     {
         recip = 1f / (gunData.fireRate / div);
         //    GameState.GameStateChanged += HandleGameChange;
+        currentAmmo = gunData.capacity;
+        reloading = false;
 
         PlayerShoot.reload += TryReload;
 
@@ -45,8 +53,26 @@ public class Gun : MonoBehaviour
             Debug.Log("initializing as shootpistol");
             PlayerShoot.shootPress += ShootPistol;
         }
-        currentAmmo = gunData.capacity;
-        reloading = false;
+    }
+
+    public void Initialize(BulletBarUI bulletBarUI)
+    {
+        this.bulletBarUI = bulletBarUI;
+        this.bulletBarUI.SetTotalAmmo(gunData.capacity);
+        this.bulletBarUI.UpdateBulletDisplay(currentAmmo);
+    }
+
+    private void Start()
+    {
+        // Set total ammo in UI at start
+        if (bulletBarUI != null)
+        {
+            bulletBarUI.SetTotalAmmo(gunData.capacity);
+            bulletBarUI.UpdateBulletDisplay(currentAmmo);
+        }
+
+
+        OnAmmoChanged += HandleAmmoChanged;
     }
     private void Update()
     {
@@ -65,7 +91,9 @@ public class Gun : MonoBehaviour
             PlayerShoot.shootPress -= ShootPistol;
         }
         PlayerShoot.reload -= TryReload;
-    //    GameState.GameStateChanged -= HandleGameChange;
+        //    GameState.GameStateChanged -= HandleGameChange;
+
+        OnAmmoChanged -= HandleAmmoChanged;
     }
     public void ShootAuto()
     {
@@ -86,7 +114,7 @@ public class Gun : MonoBehaviour
                         fish.Damage(gunData.damage);
                     }
                 }
-               
+
             }
 
             currentAmmo--;
@@ -153,4 +181,14 @@ public class Gun : MonoBehaviour
             Destroy(projectile);
         }
     }
+
+    // Bullet Bar UI
+    private void HandleAmmoChanged(int currentAmmo)
+    {
+        if (bulletBarUI != null)
+        {
+            bulletBarUI.UpdateBulletDisplay(currentAmmo);
+        }
+    }
+
 }

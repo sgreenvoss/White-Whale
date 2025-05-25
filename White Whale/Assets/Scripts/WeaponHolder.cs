@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
+    [SerializeField] private BulletBarUI bulletBarUI;
     static GameObject currentGunInstance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -38,6 +39,12 @@ public class WeaponHolder : MonoBehaviour
             currentGunInstance = Instantiate(gunData.gunPrefab, transform.position, gunData.gunPrefab.transform.rotation, parent: this.transform);
             Debug.Log("Here, gundata is " + gunData.name);
             Debug.Log(currentGunInstance.name);
+
+            Gun gunScript = currentGunInstance.GetComponent<Gun>();
+            if (gunScript != null && bulletBarUI != null)
+            {
+                gunScript.Initialize(bulletBarUI);
+            }
         }
         Debug.Log(currentGunInstance.name);
     }

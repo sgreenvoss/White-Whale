@@ -10,22 +10,70 @@ public class BulletBarUI : MonoBehaviour
     [SerializeField] private Color activeColor = Color.red;
     [SerializeField] private Color inactiveColor = Color.gray;
 
+    private int totalAmmo = 6;
+    public void SetTotalAmmo(int newMaxAmmo)
+    {
+        totalAmmo = newMaxAmmo;
+        Debug.Log($"[BulletBarUI] Total ammo set to: {totalAmmo}");
+    }
+
+
     public void UpdateBulletDisplay(int currentAmmo)
     {
         Debug.Log($"[TEST] Updating bullet visuals to reflect: {currentAmmo}");
 
-//        foreach (var img in bullets)
-//        {
-//            if (img != null)
-//                img.color = new Color(1f, 0f, 1f, 1f);;    // Forcing color change
-//        }
 
-        Debug.Log($"[TEST] Bullet[0] color: {bullets[0]?.color}");
+        //Debug.Log($"[TEST] Bullet[0] color: {bullets[0]?.color}");
 
-        for (int i = 0; i < bullets.Length; i++)
+
+
+
+        int iconCount = bullets.Length;
+        float ammoPerIcon =(float)totalAmmo / iconCount;
+
+
+
+        for (int i = 0; i < iconCount; i++)
         {
-            bullets[i].color = i < currentAmmo ? activeColor : inactiveColor;
+
+            int reverseIndex = iconCount - 1 - i;
+
+            float threshold = ammoPerIcon * i;
+            bullets[reverseIndex].color = currentAmmo > threshold ? activeColor : inactiveColor;
+
+            /* Failed linear interpolation attempt
+
+
+            float chunkStart = i * bulletsPerIcon;
+            float chunkEnd = (i + 1) * bulletsPerIcon;
+
+
+            float fill = Mathf.Clamp01((currentAmmo - chunkStart) / bulletsPerIcon);
+
+
+            Color iconColor;
+            if (fill >= 1f)
+            {
+                iconColor = activeColor;
+            }
+            else if (fill > 0f)
+            {
+                iconColor = Color.Lerp(inactiveColor, activeColor, 0.5f);
+            }
+            else
+            {
+                iconColor = inactiveColor;
+            }
+
+
+
+            bullets[i].color = iconColor;
+
+
+            */
         }
+
+
     }
     
 }

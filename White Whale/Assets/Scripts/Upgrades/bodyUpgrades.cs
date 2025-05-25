@@ -42,6 +42,16 @@ namespace Skills
             }
         }
 
+        public int GetCurrentGunMaxAmmo()
+        {
+            if (currentGunData != null)
+                return currentGunData != null ? currentGunData.capacity : 0;
+
+            Debug.LogWarning("currentGunData is null!");
+            return 0;
+        }
+
+
         public float lightIntensity = 0f;
         public float lightDistance = 5f;
         public float velocity = 10f;
