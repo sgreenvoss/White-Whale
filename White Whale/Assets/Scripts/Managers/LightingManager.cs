@@ -19,10 +19,17 @@ public class LightingManager : MonoBehaviour
 
     void Update()
     {
-        //this is for testing, will remove once implmented
+        //this is for testing, will remove key input once implmented
         if (Input.GetKeyDown(KeyCode.G))
         {
-            PutGogglesOn();
+            if(gogglesOn == false)
+            {
+                PutGogglesOn();
+            }
+            else
+            {
+                TakeGogglesOff();
+            }
         }
     }
 
@@ -31,7 +38,17 @@ public class LightingManager : MonoBehaviour
         gogglesOn = true;
         RenderSettings.fogColor = GoggleFogColor;
         RenderSettings.fogDensity = GoggleFogDensity;
-        Debug.Log("Goggles On!");
+        Debug.Log("Goggles on!");
     }
+
+    void TakeGogglesOff()
+    //This function is mostly for testing
+    {
+        gogglesOn = false;
+        RenderSettings.fogColor = defaultFogColor;
+        RenderSettings.fogDensity = defaultFogDensity;
+        Debug.Log("Goggles off!");
+    }
+
 
 }
