@@ -1,3 +1,4 @@
+
 using Skills;
 using UnityEngine;
 using UnityEngine.UI;
@@ -98,10 +99,16 @@ public class UpgradeUIManager : MonoBehaviour
 
                 if (isUnlocked)
                 {
-                    bool isCurrentlySelected = tree.IsCurrentlySelected(category, upgradeID);
-                    btn.interactable = true;
-                    SetButtonColor(btn, isCurrentlySelected ? "purchased" : "unlocked");
-
+                    if (category == "Weapon")
+                    {
+                        bool isSelected = tree.IsCurrentlySelected(category, upgradeID);
+                        btn.interactable = !isSelected;
+                        SetButtonColor(btn, isSelected ? "purchased" : "unlocked");
+                    }
+                    else
+                    {
+                        SetButtonColor(btn, "purchased");
+                    }
                 }
                 else if (isUnlockable)
                 {
@@ -135,6 +142,9 @@ public class UpgradeUIManager : MonoBehaviour
         // Special multi-press buttons
         if (maxUpgradeCounts.ContainsKey(upgradeID))
         {
+            if (!currentUpgradeCounts.ContainsKey(upgradeID))
+                currentUpgradeCounts[upgradeID] = 0;
+
             int currentCount = currentUpgradeCounts.ContainsKey(upgradeID) ? currentUpgradeCounts[upgradeID] : 0;
             int maxCount = maxUpgradeCounts[upgradeID];
 
@@ -153,6 +163,15 @@ public class UpgradeUIManager : MonoBehaviour
                 tree.SelectUpgrade(category, upgradeID);
             }
         }
+        else if (category == "Weapon")
+        {
+            if (!tree.IsUnlocked(upgradeID))
+            {
+                tree.Unlock(upgradeID);
+            }
+
+            tree.SelectUpgrade(category, upgradeID);
+        }
         else
         {
             // Existing single press logic
@@ -167,39 +186,51 @@ public class UpgradeUIManager : MonoBehaviour
 
     void SetButtonColor(Button btn, string state)
     {
-
+        var colors = btn.colors;
+        ColorBlock cb = colors;
 
         switch (state)
         {
             case "locked":
                 btn.interactable = false;
                 Debug.Log("locked");
+                // Use disabledColor (automatically shown when not interactable)
                 break;
+
             case "available":
                 btn.interactable = true;
                 Debug.Log("available");
+                cb.normalColor = colors.normalColor;  // default normal
                 break;
-            case "purchased":
-                btn.interactable = false;
-                Debug.Log("purchased");
-                break;
+
             case "unlocked":
                 btn.interactable = true;
                 Debug.Log("unlocked");
+                cb.normalColor = colors.pressedColor;  // upgradable
                 break;
 
+            case "purchased":
+                btn.interactable = true; // keep interactable if multi-press allowed
+                Debug.Log("purchased");
+                cb.normalColor = colors.selectedColor;
+                btn.Select(); // visually mark as selected
+                break;
+
+            default:
+                btn.interactable = true;
+                cb.normalColor = colors.normalColor;
+                break;
         }
 
-        var colors = btn.colors;
-        if (state == "purchased")
-        {
-            btn.Select();
-        }
-        else
+        btn.colors = cb;
+
+        // Deselect if not purchased
+        if (state != "purchased")
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
+
 
     void RefreshButtonStates()
     {
@@ -217,15 +248,25 @@ public class UpgradeUIManager : MonoBehaviour
                     int maxCount = maxUpgradeCounts[id];
 
                     // Allow pressing
-                    if (currentCount < maxCount)
+                    if (currentCount >= maxCount)
+                    {
+                        btn.interactable = false;
+                        SetButtonColor(btn, "purchased");
+                    }
+                    else if (tree.IsUnlocked(id))
                     {
                         btn.interactable = true;
-                        SetButtonColor(btn, "available"); // partially upgraded state, treat as available
+                        SetButtonColor(btn, "unlocked");
+                    }
+                    else if (tree.Unlockable(id))
+                    {
+                        btn.interactable = true;
+                        SetButtonColor(btn, "available");
                     }
                     else
                     {
                         btn.interactable = false;
-                        SetButtonColor(btn, "purchased"); // fully upgraded
+                        SetButtonColor(btn, "locked");
                     }
                 }
                 else
@@ -239,7 +280,14 @@ public class UpgradeUIManager : MonoBehaviour
                     if (isUnlocked)
                     {
                         bool isSelected = tree.IsCurrentlySelected(category, id);
-                        SetButtonColor(btn, isSelected ? "purchased" : "unlocked");
+                        if (category == "Weapon" && !isSelected)
+                        {
+                            SetButtonColor(btn, "locked");
+                        }
+                        else
+                        {
+                            SetButtonColor(btn, "purchased");
+                        }
                     }
                     else if (isUnlockable)
                         SetButtonColor(btn, "available");
