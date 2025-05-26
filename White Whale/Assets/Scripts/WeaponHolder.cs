@@ -7,6 +7,7 @@ public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private BulletBarUI bulletBarUI;
     static GameObject currentGunInstance;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -35,11 +36,13 @@ public class WeaponHolder : MonoBehaviour
         Debug.Log("Loading this gun:" + gunData.name);
         if (gunData != null && gunData.gunPrefab != null)
         {
-            Debug.Log("equipping gun: " + gunData.name);
-            currentGunInstance = Instantiate(gunData.gunPrefab, transform.position, gunData.gunPrefab.transform.rotation, parent: this.transform);
-            Debug.Log("Here, gundata is " + gunData.name);
-            Debug.Log(currentGunInstance.name);
-
+            for (int i = 0; i < PlayerSkills.Instance.hands; i++)
+            {
+                Debug.Log("equipping gun: " + gunData.name);
+                currentGunInstance = Instantiate(gunData.gunPrefab, parent: this.transform);
+                currentGunInstance.transform.localPosition += PlayerSkills.Instance.gunPositions[i];
+            }
+            // this only references the last gun created. but that's fine because each ammo should dec the same.
             Gun gunScript = currentGunInstance.GetComponent<Gun>();
             if (gunScript != null && bulletBarUI != null)
             {

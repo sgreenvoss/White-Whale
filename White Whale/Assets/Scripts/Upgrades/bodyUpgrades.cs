@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Skills
 {
@@ -12,7 +13,8 @@ namespace Skills
         [SerializeField] public List<GunData> guns;
         public static int _index = 0;
         public GunData currentGunData;
-        
+        public List<Vector3> gunPositions = new List<Vector3>();
+
         public static PlayerSkills Instance;
         private void Awake()
         {
@@ -25,7 +27,13 @@ namespace Skills
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            
+
+            for (int i = 0; i < 8; i++)
+            {
+                // initialize the gun positions :)
+                gunPositions.Add(new Vector3(0.51f - (0.13f * (i + 1)), 0f, 0f));
+            }
+
         }
 
         public void SwapIndex(int index)
@@ -52,14 +60,12 @@ namespace Skills
         }
 
 
-        public float lightIntensity = 0f;
-        public float lightDistance = 5f;
         public float velocity = 10f;
         public float baseVelocity = 10f;
         public float dashAmt = 40f;
-        public bool longDash = false;
         public float gameTime = 30f;
         public int hands = 1;
+        public bool goggles = false;
     }
 
 }

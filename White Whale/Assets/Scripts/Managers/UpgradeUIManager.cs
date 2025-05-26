@@ -78,8 +78,8 @@ public class UpgradeUIManager : MonoBehaviour
             { "Speed3", "Longer Timer for Longer Rounds" },
             { "Weapon1", "A better version of starter Pistol" },
             { "Weapon2", "Long Pistol, Mag Size: 12" },
-            { "Weapon3", "Asault Rifle, Mag Size: 30" },
-            { "Oxygen1", "Illuminates the SunlightZone" },
+            { "Weapon3", "Assault Rifle, Mag Size: 30" },
+            { "Oxygen1", "Illuminates the Twilight Zone" },
             { "Oxygen2", "Increases Bullet Size" },
             { "Oxygen3", "Increases Number of Hands x7" },
         };

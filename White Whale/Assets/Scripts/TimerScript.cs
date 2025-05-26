@@ -3,10 +3,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using Skills;
 
 // Notifier
-    // Raises OnRoundEnded when round ends
-        // Observer: UIManager
+// Raises OnRoundEnded when round ends
+// Observer: UIManager
 
 
 
@@ -32,7 +33,15 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        _currTime = roundDuration;
+        if (PlayerSkills.Instance != null)
+        {
+            _currTime = PlayerSkills.Instance.gameTime;
+        }
+        else
+        {
+            Debug.LogWarning("player skills is null!");
+            _currTime = roundDuration;
+        }
 
         if (GameState.CurrentState != GState.Diving)
             GameState.Instance.ChangeState(GState.Diving);

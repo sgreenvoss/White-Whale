@@ -64,7 +64,9 @@ namespace Skills
 
             SkillNode general1 = new SkillNode("Oxygen1", new List<SkillNode>(), _max: 3, _applyEffect: new Flashlight());
             nodes.Add("Oxygen1", general1);
-            nodes.Add("Oxygen2", default_node);
+            SkillNode ox2 = new SkillNode("Oxygen2", new List<SkillNode> { general1 }, _max: 3, _applyEffect: new OxygenUp());
+            nodes.Add("Oxygen2", ox2);
+            SkillNode hands = new SkillNode("Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", default_node);
 
         }
@@ -134,6 +136,14 @@ namespace Skills
             Debug.Log("speedmult");
         }
     }
+
+    public class OxygenUp : ISkillEffect
+    {
+        public void Apply()
+        {
+            PlayerSkills.Instance.gameTime += 20f;
+        }
+    }
     
     public class IncreaseGun : ISkillEffect
     {
@@ -187,8 +197,7 @@ namespace Skills
     {
         public void Apply()
         {
-       //     WeaponManager.Instance.GrantWeapon();
-            Debug.Log("hands");
+            PlayerSkills.Instance.hands++;
         }
     }
 
@@ -196,8 +205,7 @@ namespace Skills
     {
         public void Apply()
         {
-            PlayerSkills.Instance.lightDistance += 5f;
-            PlayerSkills.Instance.lightIntensity += 1f;
+            PlayerSkills.Instance.goggles = true;
         }
     }
     
