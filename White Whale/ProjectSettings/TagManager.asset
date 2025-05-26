@@ -7,7 +7,6 @@ TagManager:
   - Fish
   - Ground
   - BFish
-  - Shark
   layers:
   - Default
   - TransparentFX

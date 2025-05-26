@@ -24,34 +24,6 @@ public class Projectile : MonoBehaviour
                 fish.Damage(bulletData.damage);
             }
         }
-
-        //Enemy Collion
-    if (collision.gameObject.CompareTag("Shark"))
-    {
-        bulletParticle.Play();
-        Debug.Log("Shark got hit!!");
-        
-
-        SharkAI shark = collision.gameObject.GetComponent<SharkAI>();
-        Debug.Log("Shark Speed"+ shark.speed);
-        if (shark != null)
-        {
-  
-            if (!shark.IsAggro)
-            {
-  
-                shark.ChangeState(new SharkAttack(shark));
-                Debug.Log("Shark should now be chansing you :O");
-            }
-            else
-            {
-                shark.Damage(bulletData.damage);
-                Debug.Log("Shark took Damage!!");
-            }
-        }
-    }
-
-
         if (numRicochets >= bulletData.ricochets)
         {
             if (bulletData.explosions)
