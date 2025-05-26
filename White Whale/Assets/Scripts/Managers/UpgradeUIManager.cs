@@ -2,13 +2,38 @@ using Skills;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using TMPro;
+using System.Collections;
+
+
 
 
 public class UpgradeUIManager : MonoBehaviour
 {
-    [SerializeField] private BulletBarUI bulletBarUI;
+    //[SerializeField] private BulletBarUI bulletBarUI;
+
+    [SerializeField] private UpgradeTooltipUI tooltipUI;
+    //[SerializeField] private TextMeshProUGUI tooltipText;
+    private GameObject currentHoveredButton = null;
+    private Coroutine hideTooltipCoroutine;
+
+    private Dictionary<string, int> currentUpgradeCounts = new Dictionary<string, int>()
+    {
+        { "Speed1", 0 },
+        { "Oxygen3", 0 }
+    };
+    private Dictionary<string, int> maxUpgradeCounts = new Dictionary<string, int>()
+    {
+        { "Speed1", 3 },
+        { "Oxygen3", 7 }
+    };
+
 
     SkillTree tree = SkillTree.Instance;
+
+
+
     public Button speedOpt1;
     public Button speedOpt2;
     public Button speedOpt3;
@@ -25,10 +50,12 @@ public class UpgradeUIManager : MonoBehaviour
 
     private Dictionary<string, Button[]> upgradeButtons;
 
-    
+
 
     void Start()
     {
+
+
         // Make cursor show up
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -43,6 +70,20 @@ public class UpgradeUIManager : MonoBehaviour
             { "Weapon", new Button[] { weaponOpt1, weaponOpt2, weaponOpt3 } },
         };
 
+        // Pop Up Descriptions
+        Dictionary<string, string> upgradeDescriptions = new Dictionary<string, string>
+        {
+            { "Speed1", "Increases Dash Speed x3" },
+            { "Speed2", "Increases swimming Speed" },
+            { "Speed3", "Longer Timer for Longer Rounds" },
+            { "Weapon1", "A better version of starter Pistol" },
+            { "Weapon2", "Long Pistol, Mag Size: 12" },
+            { "Weapon3", "Asault Rifle, Mag Size: 30" },
+            { "Oxygen1", "Illuminates the SunlightZone" },
+            { "Oxygen2", "Increases Bullet Size" },
+            { "Oxygen3", "Increases Number of Hands x7" },
+        };
+
         // Listeners
         foreach (var category in upgradeButtons.Keys)
         {
@@ -53,7 +94,7 @@ public class UpgradeUIManager : MonoBehaviour
                 Button btn = upgradeButtons[category][i];
 
                 bool isUnlocked = tree.IsUnlocked(upgradeID);
-                bool isUnlockable = tree.Unlockable(upgradeID); 
+                bool isUnlockable = tree.Unlockable(upgradeID);
 
                 if (isUnlocked)
                 {
@@ -75,72 +116,89 @@ public class UpgradeUIManager : MonoBehaviour
 
                 btn.onClick.AddListener(() => OnUpgradeClicked(category, capturedIndex));
 
+                if (upgradeDescriptions.TryGetValue(upgradeID, out string description))
+                {
+                    AddTooltipEvents(btn.gameObject, description);
+                }
+                else
+                {
+                    Debug.LogWarning($"No description found for {upgradeID}");
+                }
             }
         }
-
     }
 
     void OnUpgradeClicked(string category, int option)
     {
-        Debug.Log($"Upgrade selected: {category} Option {option}");
-
         string upgradeID = category + option.ToString();
 
-        if (!tree.Unlockable(upgradeID)) return;
-        tree.Unlock(upgradeID);
-        tree.SelectUpgrade(category, upgradeID);
-
-        for (int i = 0; i < upgradeButtons[category].Length; i++)
+        // Special multi-press buttons
+        if (maxUpgradeCounts.ContainsKey(upgradeID))
         {
-            int tier = i + 1;
-            string id = category + tier;
+            int currentCount = currentUpgradeCounts.ContainsKey(upgradeID) ? currentUpgradeCounts[upgradeID] : 0;
+            int maxCount = maxUpgradeCounts[upgradeID];
 
-            bool isSelected = tree.IsCurrentlySelected(category, id);
-            bool isUnlocked = tree.IsUnlocked(id);
+            if (currentCount < maxCount)
+            {
+                currentCount++;
+                currentUpgradeCounts[upgradeID] = currentCount;
 
-            Button btn = upgradeButtons[category][i];
-            btn.interactable = (tier == option + 1) && tree.Unlockable(id);
-            SetButtonColor(btn, isSelected ? "purchased" : isUnlocked ? "available" : "locked");
+                if (currentCount == 1)
+                {
+                    tree.Unlock(upgradeID);
+                }
+                Debug.Log($"{upgradeID} upgraded to level {currentCount}");
 
+                // Optionally, select upgrade or update skill tree
+                tree.SelectUpgrade(category, upgradeID);
+            }
+        }
+        else
+        {
+            // Existing single press logic
+            if (!tree.Unlockable(upgradeID)) return;
+            tree.Unlock(upgradeID);
+            tree.SelectUpgrade(category, upgradeID);
         }
 
+        RefreshButtonStates();
     }
 
 
     void SetButtonColor(Button btn, string state)
     {
-        ColorBlock colors = btn.colors;
+
 
         switch (state)
         {
             case "locked":
-                colors.normalColor = new Color(0.5f, 0.5f, 0.5f, 1f);
-                colors.highlightedColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+                btn.interactable = false;
                 Debug.Log("locked");
                 break;
             case "available":
-                colors.normalColor = new Color(1f, 1f, 1f, 1f);
-                colors.highlightedColor = new Color(0.8f, 0.8f, 1f, 1f);
+                btn.interactable = true;
                 Debug.Log("available");
                 break;
             case "purchased":
-                colors.normalColor = new Color(0.3f, 0.9f, 0.3f, 1f);
-                colors.highlightedColor = new Color(1f, 1f, 1f, 1f);
+                btn.interactable = false;
                 Debug.Log("purchased");
                 break;
             case "unlocked":
-                colors.normalColor = new Color(1f, 1f, 1f, 1f);
-                colors.highlightedColor = new Color(1f, 1f, 1f, 1f);
+                btn.interactable = true;
                 Debug.Log("unlocked");
                 break;
 
         }
 
-        colors.disabledColor = new Color(0.3f, 0.3f, 0.3f, 1f);
-        colors.pressedColor = colors.normalColor;
-        colors.selectedColor = colors.normalColor;
-
-        btn.colors = colors;
+        var colors = btn.colors;
+        if (state == "purchased")
+        {
+            btn.Select();
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     void RefreshButtonStates()
@@ -150,20 +208,142 @@ public class UpgradeUIManager : MonoBehaviour
             for (int i = 0; i < upgradeButtons[category].Length; i++)
             {
                 string id = category + (i + 1).ToString();
-                bool isUnlocked = tree.IsUnlocked(id);
-                bool isUnlockable = tree.Unlockable(id);
-
                 var btn = upgradeButtons[category][i];
-                btn.interactable = isUnlockable && !isUnlocked;
 
-                if (isUnlocked)
-                    SetButtonColor(btn, "purchased");
-                else if (isUnlockable)
-                    SetButtonColor(btn, "available");
+                // Check for multi-press capacity
+                if (maxUpgradeCounts.ContainsKey(id))
+                {
+                    int currentCount = currentUpgradeCounts.ContainsKey(id) ? currentUpgradeCounts[id] : 0;
+                    int maxCount = maxUpgradeCounts[id];
+
+                    // Allow pressing
+                    if (currentCount < maxCount)
+                    {
+                        btn.interactable = true;
+                        SetButtonColor(btn, "available"); // partially upgraded state, treat as available
+                    }
+                    else
+                    {
+                        btn.interactable = false;
+                        SetButtonColor(btn, "purchased"); // fully upgraded
+                    }
+                }
                 else
-                    SetButtonColor(btn, "locked");
+                {
+                    // Normal logic for buttons without multi-press
+                    bool isUnlocked = tree.IsUnlocked(id);
+                    bool isUnlockable = tree.Unlockable(id);
+
+                    btn.interactable = isUnlockable && !isUnlocked;
+
+                    if (isUnlocked)
+                    {
+                        bool isSelected = tree.IsCurrentlySelected(category, id);
+                        SetButtonColor(btn, isSelected ? "purchased" : "unlocked");
+                    }
+                    else if (isUnlockable)
+                        SetButtonColor(btn, "available");
+                    else
+                        SetButtonColor(btn, "locked");
+                }
             }
         }
     }
+
+
+    void AddTooltipEvents(GameObject obj, string description)
+    {
+        EventTrigger trigger = obj.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = obj.AddComponent<EventTrigger>();
+
+        trigger.triggers.Clear();
+
+        // Pointer Enter
+        EventTrigger.Entry entryEnter = new EventTrigger.Entry();
+        entryEnter.eventID = EventTriggerType.PointerEnter;
+        entryEnter.callback.AddListener((eventData) =>
+        {
+            // Old code
+            //Vector2 pos = Input.mousePosition;
+            //tooltipUI.Show(description, pos);
+
+
+            // Cancel hide coroutine if running
+            if (hideTooltipCoroutine != null)
+            {
+                StopCoroutine(hideTooltipCoroutine);
+                hideTooltipCoroutine = null;
+            }
+
+            // Only update tooltip if new button hovered
+            if (currentHoveredButton != obj)
+            {
+                currentHoveredButton = obj;
+                RectTransform buttonRect = obj.GetComponent<RectTransform>();
+                tooltipUI.Show(description, buttonRect);
+            }
+        });
+        trigger.triggers.Add(entryEnter);
+
+        // Pointer Exit
+        EventTrigger.Entry entryExit = new EventTrigger.Entry();
+        entryExit.eventID = EventTriggerType.PointerExit;
+        entryExit.callback.AddListener((eventData) =>
+        {
+            // Start delayed hide coroutine
+            if (hideTooltipCoroutine != null)
+                StopCoroutine(hideTooltipCoroutine);
+
+            hideTooltipCoroutine = StartCoroutine(HideTooltipAfterDelay(0.1f));
+        });
+        trigger.triggers.Add(entryExit);
+    }
+    
+
+
+    private IEnumerator HideTooltipAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Check if pointer is still over a button - if not, hide tooltip
+        if (currentHoveredButton != null)
+        {
+            // Check if pointer is over currentHoveredButton
+            if (!IsPointerOverGameObject(currentHoveredButton))
+            {
+                tooltipUI.Hide();
+                currentHoveredButton = null;
+            }
+        }
+        else
+        {
+            tooltipUI.Hide();
+        }
+    }
+
+    // Helper function
+    private bool IsPointerOverGameObject(GameObject obj)
+    {
+        // Check if pointer is currently over the GameObject obj
+        // Use UnityEngine.EventSystems.PointerEventData if needed, or use RaycastAll
+
+        var pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        foreach (var result in results)
+        {
+            if (result.gameObject == obj)
+                return true;
+        }
+
+        return false;
+    }
+
     
 }
