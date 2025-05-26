@@ -196,8 +196,7 @@ namespace Skills
     {
         public void Apply()
         {
-            PlayerSkills.Instance.lightDistance += 5f;
-            PlayerSkills.Instance.lightIntensity += 1f;
+            PlayerSkills.Instance.goggles = true;
         }
     }
     

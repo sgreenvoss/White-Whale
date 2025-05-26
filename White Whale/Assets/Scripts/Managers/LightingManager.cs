@@ -1,3 +1,4 @@
+using Skills;
 using UnityEngine;
 
 public class LightingManager : MonoBehaviour
@@ -20,16 +21,9 @@ public class LightingManager : MonoBehaviour
     void Update()
     {
         //this is for testing, will remove key input once implmented
-        if (Input.GetKeyDown(KeyCode.G))
+        if (PlayerSkills.Instance.goggles)
         {
-            if(gogglesOn == false)
-            {
-                PutGogglesOn();
-            }
-            else
-            {
-                TakeGogglesOff();
-            }
+            PutGogglesOn();
         }
     }
 

@@ -40,10 +40,6 @@ public class Player : MonoBehaviour
         } 
         else
         {
-            flashlight = Instantiate(FlashlightPrefab, parent:gameObject.transform).GetComponent<Light>();
-            flashlight.intensity = skills.lightIntensity;
-            flashlight.range = skills.lightDistance;
-
             _velocity = skills.velocity;
             _dashamt = skills.dashAmt;
             jumpAmt = 5f;

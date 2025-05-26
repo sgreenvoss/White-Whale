@@ -60,6 +60,7 @@ namespace Skills
         public bool longDash = false;
         public float gameTime = 30f;
         public int hands = 1;
+        public bool goggles = false;
     }
 
 }
