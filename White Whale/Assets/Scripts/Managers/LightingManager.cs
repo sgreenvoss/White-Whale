@@ -15,17 +15,12 @@ public class LightingManager : MonoBehaviour
     {
         defaultFogColor = RenderSettings.fogColor;
         defaultFogDensity = RenderSettings.fogDensity;
-    }
-
-
-    void Update()
-    {
-        //this is for testing, will remove key input once implmented
         if (PlayerSkills.Instance.goggles)
         {
             PutGogglesOn();
         }
     }
+
 
     void PutGogglesOn()
     {
