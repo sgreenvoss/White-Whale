@@ -64117,13 +64117,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
   currentGunData: {fileID: 0}
   gunPositions: []
-  lightIntensity: 0
-  lightDistance: 5
   velocity: 10
   baseVelocity: 10
   dashAmt: 40
-  longDash: 0
-  gameTime: 30
+  gameTime: 20
   hands: 3
   goggles: 0
 --- !u!1001 &1831486644
