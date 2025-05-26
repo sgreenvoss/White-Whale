@@ -7,6 +7,8 @@ TagManager:
   - Fish
   - Ground
   - BFish
+  - Shark
+  - New tag
   layers:
   - Default
   - TransparentFX

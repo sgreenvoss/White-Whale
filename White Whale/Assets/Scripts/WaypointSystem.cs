@@ -6,14 +6,17 @@ using UnityEngine;
 namespace DistantLands
 {
     public class WaypointSystem : MonoBehaviour
+
     {
 
+        public Transform player;
+        public bool attackPlayer = false;
 
         public Transform objectToMove;
         public float moveSpeed;
         public float turnSpeed;
 
-        private Transform target;
+        public Transform target;
         private int progress;
         private List<Transform> waypoints;
 
@@ -32,10 +35,16 @@ namespace DistantLands
         void Update()
         {
 
+            if (attackPlayer)
+            {
+                target = player;
+            }
+        
+
             objectToMove.position += objectToMove.forward * moveSpeed * Time.deltaTime;
             objectToMove.rotation = Quaternion.RotateTowards(objectToMove.rotation, Quaternion.LookRotation(target.position - objectToMove.position, Vector3.up), turnSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(objectToMove.position, target.position) < moveSpeed)
+            if (!attackPlayer && Vector3.Distance(objectToMove.position, target.position) < moveSpeed)
                 NextPoint();
 
         }
