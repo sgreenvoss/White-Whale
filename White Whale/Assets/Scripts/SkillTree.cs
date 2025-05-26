@@ -65,6 +65,7 @@ namespace Skills
             SkillNode general1 = new SkillNode("Oxygen1", new List<SkillNode>(), _max: 3, _applyEffect: new Flashlight());
             nodes.Add("Oxygen1", general1);
             nodes.Add("Oxygen2", default_node);
+            SkillNode hands = new SkillNode("Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", default_node);
 
         }
@@ -187,8 +188,7 @@ namespace Skills
     {
         public void Apply()
         {
-       //     WeaponManager.Instance.GrantWeapon();
-            Debug.Log("hands");
+            PlayerSkills.Instance.hands++;
         }
     }
 
