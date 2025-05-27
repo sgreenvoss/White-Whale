@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5c9cc5be9e647f58b3402c6a7fb5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fish_score: 15
-  max_health: 2
+  fish_score: 30
+  max_health: 6
   averageSpeed: 9
   caught: 0
   tankRadius: 30

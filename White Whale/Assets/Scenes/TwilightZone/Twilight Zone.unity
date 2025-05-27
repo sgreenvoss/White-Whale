@@ -4917,7 +4917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6777d3f3a91adaf40a069d9871dd7be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundDuration: 300
+  roundDuration: 30
   timerText: {fileID: 1151339519}
   roundOverScreen: {fileID: 1929267525}
   restartButton: {fileID: 1866439094}

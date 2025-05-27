@@ -70,7 +70,7 @@ namespace DistantLands
                     Debug.Log("player rb not found");
                     Vector3 knockbackDir = (collision.transform.position - transform.position).normalized;
 
-                    float knockbackForce = 30f;
+                    float knockbackForce = 60f;
                     rb.AddForce(-knockbackDir * knockbackForce, ForceMode.Impulse); // Shark knockback
                     playerRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse); // Player knockback
                 }
