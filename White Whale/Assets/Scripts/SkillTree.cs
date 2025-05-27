@@ -52,7 +52,7 @@ namespace Skills
             nodes.Add("Speed1", d_node);
             SkillNode s_node = new SkillNode("Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
             nodes.Add("Speed2", s_node);
-            SkillNode h_node = new SkillNode("Speed3", new List<SkillNode> { s_node }, false, 7, new NewHand());
+            SkillNode h_node = new SkillNode("Speed3", new List<SkillNode> { s_node }, false, 7, new OxygenUp());
             nodes.Add("Speed3", h_node);
 
             SkillNode gun1 = new SkillNode("Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
@@ -62,9 +62,9 @@ namespace Skills
             SkillNode gun3 = new SkillNode("Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon3", gun3);
 
-            SkillNode general1 = new SkillNode("Oxygen1", new List<SkillNode>(), _max: 3, _applyEffect: new Flashlight());
+            SkillNode general1 = new SkillNode("Oxygen1", new List<SkillNode>(), _max: 1, _applyEffect: new Flashlight());
             nodes.Add("Oxygen1", general1);
-            SkillNode ox2 = new SkillNode("Oxygen2", new List<SkillNode> { general1 }, _max: 3, _applyEffect: new OxygenUp());
+            SkillNode ox2 = new SkillNode("Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
             nodes.Add("Oxygen2", ox2);
             SkillNode hands = new SkillNode("Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", hands);
