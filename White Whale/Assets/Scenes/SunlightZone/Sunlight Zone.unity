@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish_score: 300
-  max_health: 12
+  max_health: 40
   caught: 0
 --- !u!136 &9113136
 CapsuleCollider:
