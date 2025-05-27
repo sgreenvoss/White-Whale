@@ -67,7 +67,7 @@ namespace Skills
             SkillNode ox2 = new SkillNode("Oxygen2", new List<SkillNode> { general1 }, _max: 3, _applyEffect: new OxygenUp());
             nodes.Add("Oxygen2", ox2);
             SkillNode hands = new SkillNode("Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
-            nodes.Add("Oxygen3", default_node);
+            nodes.Add("Oxygen3", hands);
 
         }
         public void Unlock(string id)
@@ -141,7 +141,8 @@ namespace Skills
     {
         public void Apply()
         {
-            PlayerSkills.Instance.gameTime += 20f;
+            PlayerSkills.Instance.roundDurationBonus += 20f;
+            Debug.Log("Added 20s bonus. Total bonus: " + PlayerSkills.Instance.roundDurationBonus);
         }
     }
     
@@ -189,7 +190,8 @@ namespace Skills
     {
         public void Apply()
         {
-            PlayerSkills.Instance.gameTime += 20f;
+            PlayerSkills.Instance.roundDurationBonus += 20f;
+            Debug.Log("Added 20s bonus. Total bonus: " + PlayerSkills.Instance.roundDurationBonus);
         }
     }
 

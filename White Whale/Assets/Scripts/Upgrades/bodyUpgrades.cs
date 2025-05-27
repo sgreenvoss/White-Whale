@@ -63,7 +63,8 @@ namespace Skills
         public float velocity = 10f;
         public float baseVelocity = 10f;
         public float dashAmt = 40f;
-        public float gameTime = 30f;
+        //public float gameTime = 30f;
+        public float roundDurationBonus = 0f;
         public int hands = 1;
         public bool goggles = false;
     }
