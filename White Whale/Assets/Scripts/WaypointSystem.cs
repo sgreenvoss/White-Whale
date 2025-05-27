@@ -39,7 +39,8 @@ namespace DistantLands
             if (attackPlayer)
             {
                 target = player;
-                moveSpeed = 5f;
+                moveSpeed = 8f;
+
             }
         
 
