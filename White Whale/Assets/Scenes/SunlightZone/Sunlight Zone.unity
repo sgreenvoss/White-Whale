@@ -64211,7 +64211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guns:
-  - {fileID: 11400000, guid: 282b66341c9bea64f9b779bc53a1ff70, type: 2}
+  - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
   - {fileID: 11400000, guid: 1a7c8c55c3f32d645bda337d0b50f25e, type: 2}
   - {fileID: 11400000, guid: 8657aa696bfbdda40afeb80274cd92dd, type: 2}
   - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
@@ -64223,6 +64223,7 @@ MonoBehaviour:
   roundDurationBonus: 0
   hands: 3
   goggles: 0
+  bulletScale: 1
 --- !u!1001 &1831486644
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,7 @@
+using NUnit.Framework;
+using Skills;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Scripting;
 
@@ -26,6 +29,9 @@ public class Gun : MonoBehaviour
     public delegate void Shoot();
     public DecreaseAmmo decreaseAmmo;
     public Shoot shoot;
+    float _bulletSize;
+    float autoBulletSize; // radius of spherecast - should be smaller
+   // Vector3 muzzleOffset;
 
     public static System.Action<int> OnAmmoChanged;
 
@@ -38,6 +44,11 @@ public class Gun : MonoBehaviour
         recip = 1f / (gunData.fireRate / div);
         //    GameState.GameStateChanged += HandleGameChange;
         currentAmmo = gunData.capacity;
+        _bulletSize = PlayerSkills.Instance.bulletScale;
+        autoBulletSize /= 3f;
+    //    muzzleOffset = Vector3.one;
+    //    muzzleOffset.z += _bulletSize / 2f;
+
         reloading = false;
 
         PlayerShoot.reload += TryReload;
@@ -101,10 +112,9 @@ public class Gun : MonoBehaviour
         {
             // plays particle system and starts coroutine to delete self in one second. 
             Instantiate(muzzleInst, muzzle.position, muzzle.rotation);
-            if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
+            if (Physics.SphereCast(muzzle.position, autoBulletSize, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
             {
                 Instantiate(impact, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-
                 if (hitInfo.transform.CompareTag("Fish"))
                 {
                     ABSFish fish = hitInfo.transform.GetComponent<ABSFish>();
@@ -114,7 +124,6 @@ public class Gun : MonoBehaviour
                         fish.Damage(gunData.damage);
                     }
                 }
-
             }
 
             currentAmmo--;
@@ -136,7 +145,10 @@ public class Gun : MonoBehaviour
 
         else if (GameState.CurrentState == GState.Diving)
         {
+
             GameObject projectile = Instantiate(gunData.projectile, muzzle.position, muzzle.rotation);
+            // make the bullet the size as declared in the upgrade
+            projectile.transform.localScale = Vector3.one * _bulletSize;
             // shoot projectile
             projectile.GetComponent<Rigidbody>().AddForce(muzzle.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
             currentAmmo--;

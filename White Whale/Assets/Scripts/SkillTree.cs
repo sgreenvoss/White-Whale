@@ -210,6 +210,14 @@ namespace Skills
             PlayerSkills.Instance.goggles = true;
         }
     }
+
+    public class BulletSize : ISkillEffect
+    {
+        public void Apply()
+        {
+            PlayerSkills.Instance.bulletScale += 2f;
+        }
+    }
     
     
 }

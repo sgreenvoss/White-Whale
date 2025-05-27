@@ -67,6 +67,7 @@ namespace Skills
         public float roundDurationBonus = 0f;
         public int hands = 1;
         public bool goggles = false;
+        public float bulletScale = 1f;
     }
 
 }
