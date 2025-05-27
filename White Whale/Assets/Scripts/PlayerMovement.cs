@@ -96,14 +96,4 @@ public class Player : MonoBehaviour
         rb.AddForce(moveDirection.normalized * _velocity * movementMultiplier, ForceMode.Acceleration);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        GameObject col = collision.gameObject;
-        
-        if (col.CompareTag("Fish"))
-        {
-            // changed to only damage the fish on collision.
-            col.GetComponent<ABSFish>().Damage(1);
-        } 
-    }
 }

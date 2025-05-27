@@ -8031,7 +8031,7 @@ MonoBehaviour:
   - {fileID: 415320120}
   - {fileID: 806739704}
   - {fileID: 1359371140}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1562983300}
   initialFishCount: 8
 --- !u!4 &1323881912
 Transform:
@@ -9441,6 +9441,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+--- !u!4 &1562983300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3987814220991435101, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+  m_PrefabInstance: {fileID: 1562983299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1580882363
 PrefabInstance:
   m_ObjectHideFlags: 0

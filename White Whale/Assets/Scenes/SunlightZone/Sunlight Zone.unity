@@ -37711,7 +37711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6777d3f3a91adaf40a069d9871dd7be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundDuration: 100
+  roundDuration: 30
   timerText: {fileID: 529424735}
   roundOverScreen: {fileID: 2061939346}
   restartButton: {fileID: 1163980357}
@@ -39413,6 +39413,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+--- !u!4 &1160720790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3987814220991435101, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+  m_PrefabInstance: {fileID: 1160720789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1163125638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49816,7 +49821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f5acac056403243a60f889a2ed5ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1160720790}
   objectToMove: {fileID: 9113130}
   rb: {fileID: 9113134}
   moveSpeed: 2
@@ -54790,7 +54795,7 @@ MonoBehaviour:
   - {fileID: 2068909214}
   - {fileID: 457745}
   - {fileID: 679042044}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1160720790}
   initialFishCount: 5
 --- !u!4 &1581258640
 Transform:
