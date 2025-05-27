@@ -33,15 +33,16 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        if (PlayerSkills.Instance != null)
-        {
-            _currTime = PlayerSkills.Instance.gameTime;
-        }
-        else
-        {
-            Debug.LogWarning("player skills is null!");
-            _currTime = roundDuration;
-        }
+        _currTime = roundDuration;
+    //    if (PlayerSkills.Instance != null)
+        //   {
+        //        _currTime = PlayerSkills.Instance.gameTime;
+        //    }
+        //    else
+        //   {
+        //        Debug.LogWarning("player skills is null!");
+        //        _currTime = roundDuration;
+        //    }
 
         if (GameState.CurrentState != GState.Diving)
             GameState.Instance.ChangeState(GState.Diving);

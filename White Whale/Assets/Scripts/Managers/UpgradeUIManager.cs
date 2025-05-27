@@ -92,6 +92,7 @@ public class UpgradeUIManager : MonoBehaviour
             {
                 int capturedIndex = i + 1;
                 string upgradeID = category + capturedIndex;
+                string id = category + (i + 1).ToString();
                 Button btn = upgradeButtons[category][i];
 
                 bool isUnlocked = tree.IsUnlocked(upgradeID);
@@ -99,11 +100,10 @@ public class UpgradeUIManager : MonoBehaviour
 
                 if (isUnlocked)
                 {
-                    if (category == "Weapon")
+                    bool isSelected = tree.IsCurrentlySelected(category, id);
+                    if (category == "Weapon" && !isSelected)
                     {
-                        bool isSelected = tree.IsCurrentlySelected(category, upgradeID);
-                        btn.interactable = !isSelected;
-                        SetButtonColor(btn, isSelected ? "purchased" : "unlocked");
+                        SetButtonColor(btn, "locked");
                     }
                     else
                     {
@@ -111,15 +111,10 @@ public class UpgradeUIManager : MonoBehaviour
                     }
                 }
                 else if (isUnlockable)
-                {
-                    btn.interactable = true;
                     SetButtonColor(btn, "available");
-                }
                 else
-                {
-                    btn.interactable = false;
                     SetButtonColor(btn, "locked");
-                }
+                
 
                 btn.onClick.AddListener(() => OnUpgradeClicked(category, capturedIndex));
 
