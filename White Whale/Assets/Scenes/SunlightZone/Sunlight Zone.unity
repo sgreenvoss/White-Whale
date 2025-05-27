@@ -19232,7 +19232,7 @@ GameObject:
   - component: {fileID: 569658494}
   m_Layer: 0
   m_Name: Player (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49935,7 +49935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 569658492}
-  attackPlayer: 0
   objectToMove: {fileID: 9113130}
   rb: {fileID: 9113134}
   moveSpeed: 2

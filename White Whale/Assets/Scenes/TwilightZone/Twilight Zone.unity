@@ -5520,7 +5520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  attackPlayer: 0
   objectToMove: {fileID: 385998964}
   rb: {fileID: 0}
   moveSpeed: 3
@@ -6888,7 +6887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guns:
-  - {fileID: 11400000, guid: 282b66341c9bea64f9b779bc53a1ff70, type: 2}
+  - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
   - {fileID: 11400000, guid: 1a7c8c55c3f32d645bda337d0b50f25e, type: 2}
   - {fileID: 11400000, guid: 8657aa696bfbdda40afeb80274cd92dd, type: 2}
   - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
@@ -6900,6 +6899,7 @@ MonoBehaviour:
   roundDurationBonus: 0
   hands: 1
   goggles: 0
+  bulletScale: 1
 --- !u!4 &1137437792
 Transform:
   m_ObjectHideFlags: 0
@@ -12453,7 +12453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  attackPlayer: 0
   objectToMove: {fileID: 2068383833}
   rb: {fileID: 0}
   moveSpeed: 4

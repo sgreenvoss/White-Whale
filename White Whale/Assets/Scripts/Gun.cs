@@ -4,6 +4,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Scripting;
+using DistantLands;
 
 public class Gun : MonoBehaviour
 {
@@ -124,7 +125,28 @@ public class Gun : MonoBehaviour
                         fish.Damage(gunData.damage);
                     }
                 }
+
+                if (hitInfo.transform.CompareTag("Shark"))
+                {
+                    Debug.Log("collision with shark detected");
+                    WaypointSystem.attackPlayer = true;
+                    Debug.Log("Shark is chasing you :0");
+                    ABSFish shark = hitInfo.transform.GetComponent<ABSFish>();
+
+
+                    if (shark != null)
+                    {
+                        Debug.Log("Shark hit!!");
+                        shark.Damage(gunData.damage);
+                    }
+                    else
+                    {
+                        Debug.Log("Shark is Null");
+                    }
+                }
             }
+
+
 
             currentAmmo--;
             timeSinceLastShot = 0;
