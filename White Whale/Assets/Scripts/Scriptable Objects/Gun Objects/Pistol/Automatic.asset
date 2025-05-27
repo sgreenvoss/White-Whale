@@ -20,7 +20,7 @@ MonoBehaviour:
   projectileVelocity: 0
   projectileLifetime: 0
   ricochets: 0
-  capacity: 31
+  capacity: 30
   reloadTime: 1
   maxDistance: 500
   fireRate: 600
