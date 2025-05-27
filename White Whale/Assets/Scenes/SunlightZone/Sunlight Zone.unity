@@ -64220,7 +64220,7 @@ MonoBehaviour:
   velocity: 10
   baseVelocity: 10
   dashAmt: 40
-  gameTime: 20
+  roundDurationBonus: 0
   hands: 3
   goggles: 0
 --- !u!1001 &1831486644
