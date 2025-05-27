@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4609175997803481230}
   - component: {fileID: 4609175997802352206}
   - component: {fileID: 359772761656040443}
-  - component: {fileID: 4994720367598004976}
   - component: {fileID: 2391033612216441064}
+  - component: {fileID: 8563686356459348582}
   m_Layer: 0
   m_Name: Rare fish
   m_TagString: Fish
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4.58, y: 4.58, z: 4.58}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,28 +108,6 @@ MonoBehaviour:
   tankRadius: 10
   tankCenter: {x: 0, y: 0, z: 0}
   directionChangeInterval: 3
---- !u!64 &4994720367598004976
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4609175997804616844}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300150, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}
 --- !u!54 &2391033612216441064
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,3 +135,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &8563686356459348582
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609175997804616844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.18
+  m_Height: 0.57
+  m_Direction: 2
+  m_Center: {x: -0.01, y: -0.02, z: -0.18}

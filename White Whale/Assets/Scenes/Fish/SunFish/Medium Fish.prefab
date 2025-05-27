@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3498951818304097852}
   - component: {fileID: 3498951818302999548}
   - component: {fileID: -1106389573862684829}
-  - component: {fileID: -2431276533744946647}
   - component: {fileID: -5010545632485428474}
+  - component: {fileID: 8873352786649070024}
   m_Layer: 0
   m_Name: Medium Fish
   m_TagString: Fish
@@ -108,28 +108,6 @@ MonoBehaviour:
   tankRadius: 10
   tankCenter: {x: 0, y: 0, z: 0}
   directionChangeInterval: 3
---- !u!64 &-2431276533744946647
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3498951818301069886}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300438, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}
 --- !u!54 &-5010545632485428474
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,3 +135,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &8873352786649070024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498951818301069886}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.077001244, y: 0.1, z: 0.50033104}
+  m_Center: {x: 0, y: 0.01, z: -0.2155572}

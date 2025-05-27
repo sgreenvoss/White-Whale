@@ -21,6 +21,13 @@ public class LightingManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            PutGogglesOn();
+        }
+    }
 
     void PutGogglesOn()
     {

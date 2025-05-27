@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4975868241551269191}
   - component: {fileID: 4749603337810827588}
   - component: {fileID: 2667449579203011923}
-  - component: {fileID: 4942145734507080652}
   - component: {fileID: -4767486496152422256}
+  - component: {fileID: 8703773906824717683}
   m_Layer: 0
   m_Name: EasyTwiFish2
   m_TagString: Fish
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.59}
-  m_LocalScale: {x: 2.17, y: 2.17, z: 2.17}
+  m_LocalScale: {x: 10.56, y: 10.559999, z: 10.559999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,28 +108,6 @@ MonoBehaviour:
   tankRadius: 30
   tankCenter: {x: 33, y: 22, z: 50}
   directionChangeInterval: 3
---- !u!64 &4942145734507080652
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6793956120584359190}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300186, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}
 --- !u!54 &-4767486496152422256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -153,7 +131,28 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &8703773906824717683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793956120584359190}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08, y: 0.33, z: 0.47839752}
+  m_Center: {x: 0, y: 0.013443269, z: -0.18151821}

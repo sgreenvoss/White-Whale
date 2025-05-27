@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8956183519271065150}
   - component: {fileID: 3494269314889362907}
   - component: {fileID: -5913867854937255765}
-  - component: {fileID: -9023410734393430580}
   - component: {fileID: 7308299471535308756}
+  - component: {fileID: 1661433748769505767}
   m_Layer: 0
   m_Name: MedTwiFIsh
   m_TagString: Fish
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.6, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_LocalScale: {x: 14.7, y: 14.7, z: 14.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,28 +108,6 @@ MonoBehaviour:
   tankRadius: 30
   tankCenter: {x: 33, y: 22, z: 50}
   directionChangeInterval: 3
---- !u!64 &-9023410734393430580
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5746966148223304457}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300530, guid: 67922b04448f39f40804e98fba4c70e5, type: 3}
 --- !u!54 &7308299471535308756
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,3 +135,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &1661433748769505767
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746966148223304457}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.11
+  m_Height: 0.52
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.02, z: -0.17}
