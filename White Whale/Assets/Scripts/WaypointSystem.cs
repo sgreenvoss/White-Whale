@@ -10,7 +10,7 @@ namespace DistantLands
     {
 
         public Transform player;
-        public bool attackPlayer = false;
+        public static bool attackPlayer = false;
 
         public Transform objectToMove;
         public Rigidbody rb;
@@ -65,22 +65,6 @@ namespace DistantLands
 
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                Debug.Log("Shark bite!");
-                Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
-                if (playerRb != null)
-                {
-                    Vector3 knockbackDir = (collision.transform.position - transform.position).normalized;
-
-                    float knockbackForce = 5f;
-                    rb.AddForce(-knockbackDir * knockbackForce, ForceMode.Impulse); // Shark knockback
-                    playerRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse); // Player knockback
-                }
-            }
-        }
 
 
 

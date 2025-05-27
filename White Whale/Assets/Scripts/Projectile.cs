@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System;
+
+using DistantLands;
+
 public class Projectile : MonoBehaviour
 {
     [Header("References")]
@@ -27,6 +30,8 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Shark"))
         {
             Debug.Log("collision with shark detected");
+            WaypointSystem.attackPlayer = true;
+            Debug.Log("Shark is chasing you :0");
             ABSFish shark = collision.gameObject.GetComponent<ABSFish>();
             bulletParticle.Play();
 

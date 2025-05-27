@@ -59,6 +59,23 @@ namespace DistantLands
 
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("Shark bite!");
+                Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
+                if (playerRb != null)
+                {
+                    Debug.Log("player rb not found");
+                    Vector3 knockbackDir = (collision.transform.position - transform.position).normalized;
+
+                    float knockbackForce = 30f;
+                    rb.AddForce(-knockbackDir * knockbackForce, ForceMode.Impulse); // Shark knockback
+                    playerRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse); // Player knockback
+                }
+            }
+        }
         
 
         // void ChooseNewDirection()
