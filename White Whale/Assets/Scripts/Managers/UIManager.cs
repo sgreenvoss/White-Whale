@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void HandleFishScore(ABSFish fish)
+    public void HandleFishScore(ABSFish fish)
     {
         if (fishCountText != null)
             fishCountText.text = $"Score: {ABSFish.total_score}";

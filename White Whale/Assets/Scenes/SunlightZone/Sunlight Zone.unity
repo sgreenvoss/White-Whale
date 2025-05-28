@@ -672,6 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fish_score: 300
   max_health: 40
+  uiManager: {fileID: 286881019}
   caught: 0
 --- !u!136 &9113136
 CapsuleCollider:
@@ -37588,6 +37589,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2846662264440089722, guid: 8b3e696cbc2a26f4a9f3f7673466ff5e, type: 3}
   m_PrefabInstance: {fileID: 1104925698}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1104938587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2916198332035017451, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+  m_PrefabInstance: {fileID: 1160720789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1110630666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39362,7 +39368,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2916198332035017451, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916198332035017451, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3690206932729529560, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
       propertyPath: m_CollisionDetection
@@ -39411,13 +39421,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2916198332035017451, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1160720795}
   m_SourcePrefab: {fileID: 100100000, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
 --- !u!4 &1160720790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3987814220991435101, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
   m_PrefabInstance: {fileID: 1160720789}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &1160720795
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104938587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1163125638
 PrefabInstance:
   m_ObjectHideFlags: 0

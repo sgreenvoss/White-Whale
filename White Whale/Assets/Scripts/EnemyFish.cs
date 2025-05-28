@@ -7,6 +7,8 @@ namespace DistantLands
 {
     public class EnemyFish : ABSFish
     {
+        public UIManager uiManager; // UIManager in inspector
+
   
         // private float speed;
         // public float averageSpeed;
@@ -63,6 +65,13 @@ namespace DistantLands
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                // Decrease score
+                ABSFish.total_score = Mathf.Max(0, ABSFish.total_score - 10); // prevent score from going below 0
+
+                uiManager.HandleFishScore(null);
+
+
+
                 Debug.Log("Shark bite!");
                 Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
                 if (playerRb != null)
@@ -77,7 +86,6 @@ namespace DistantLands
             }
         }
         
-
         // void ChooseNewDirection()
         // {
         //     float yaw = Random.Range(0f, 360f);
