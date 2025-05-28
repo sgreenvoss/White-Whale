@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Long Pistol
   gunPrefab: {fileID: 4204968473350720500, guid: a5801136a723a0040807fc623ab538d6, type: 3}
+  auto: 0
   damage: 3
   projectile: {fileID: 4863515396118822957, guid: a6dfd90869a192f458785cd9b076efa0, type: 3}
   projectileVelocity: 20
   projectileLifetime: 4
   ricochets: 3
   capacity: 12
-  fireRate: 1
   reloadTime: 1
+  maxDistance: 0
+  fireRate: 1
+  impact: {fileID: 8491634497229531707, guid: 317b3448e14a0e54b8215bf14d5d6284, type: 3}
+  muzzleFlash: {fileID: 0}

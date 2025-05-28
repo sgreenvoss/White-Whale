@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
         Debug.Log("Collided with: " + collision.gameObject.name + " tag: " + collision.gameObject.tag);
         numRicochets++;
 
+        Instantiate(bulletParticle, collision.gameObject.transform.position, Quaternion.LookRotation(collision.gameObject.transform.position));
         if (collision.gameObject.CompareTag("Fish"))
         {
             ABSFish fish = collision.gameObject.GetComponent<ABSFish>();

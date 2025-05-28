@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pistol
   gunPrefab: {fileID: 4204968473350720500, guid: 3b76953f2a8eb2c4a91e989bdd64a10d, type: 3}
+  auto: 0
   damage: 1
   projectile: {fileID: 4863515396118822957, guid: f0dd72ec6ce3f6845a6787ec02d681fb, type: 3}
   projectileVelocity: 10
   projectileLifetime: 3
   ricochets: 0
   capacity: 6
-  fireRate: 1
   reloadTime: 1
+  maxDistance: 0
+  fireRate: 1
+  impact: {fileID: 8491634497229531707, guid: 317b3448e14a0e54b8215bf14d5d6284, type: 3}
+  muzzleFlash: {fileID: 0}

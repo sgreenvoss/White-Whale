@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour
     public static event Action<float> OnTimerTick;
     public static event Action OnRoundEnded;
     // Timer Settings
-    //[SerializeField] private float roundDuration = 60f; // 1 minute
+    [SerializeField] private float roundDuration = 60f; // 1 minute
     [SerializeField] private TMP_Text timerText;        // UI for timer
 
     // End Round Scene
