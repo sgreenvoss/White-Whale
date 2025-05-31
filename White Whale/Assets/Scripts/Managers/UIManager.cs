@@ -30,6 +30,13 @@ public class UIManager : MonoBehaviour
     private GameObject RestartButton;
     private GameObject RestartIndicator;
 
+    void Start()
+    {
+        // Restart Score
+        fishCountText.text = $"Score: 0";
+        ABSFish.total_score = 0;
+    }
+
 
 
     void OnEnable()

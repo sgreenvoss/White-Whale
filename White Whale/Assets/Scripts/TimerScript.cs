@@ -42,6 +42,8 @@ public class Timer : MonoBehaviour
             Debug.LogWarning("PlayerSkills is null! Using base roundDuration.");
             _currTime = roundDuration;
         }
+
+        
     //    if (PlayerSkills.Instance != null)
         //   {
         //        _currTime = PlayerSkills.Instance.gameTime;
