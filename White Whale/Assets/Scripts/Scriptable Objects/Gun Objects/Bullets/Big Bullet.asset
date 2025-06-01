@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Big Bullet
   m_EditorClassIdentifier: 
   name: Big Bullet
-  prefab: {fileID: 4863515396118822957, guid: 7ebeb6d60d237324e845d12332415241, type: 3}
+  prefab: {fileID: 4863515396118822957, guid: a6dfd90869a192f458785cd9b076efa0, type: 3}
   damage: 2
   projectileLifetime: 4
   ricochets: 2

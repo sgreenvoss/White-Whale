@@ -3,22 +3,30 @@ using System.Collections;
 using System;
 
 using DistantLands;
+using UnityEditor.ShaderGraph.Internal;
 
 public class Projectile : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] BulletData bulletData;
     [SerializeField] private ParticleSystem bulletParticle;
+    Vector3 goAhead;
+    private void Start()
+    {
+        goAhead = transform.forward * 1f;
+    }
+    private void FixedUpdate()
+    {
+        transform.position += goAhead;
+    }
 
-    int numRicochets = 0;
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collided with: " + collision.gameObject.name + " tag: " + collision.gameObject.tag);
-        numRicochets++;
-
+        
         ParticleSystem colParticle = Instantiate(bulletParticle, collision.gameObject.transform.position, Quaternion.LookRotation(collision.gameObject.transform.position));
         colParticle.Play();
-        Destroy(colParticle, 1);
+        
         if (collision.gameObject.CompareTag("Fish"))
         {
             ABSFish fish = collision.gameObject.GetComponent<ABSFish>();
@@ -50,15 +58,8 @@ public class Projectile : MonoBehaviour
         }
 
 
-        if (numRicochets >= bulletData.ricochets)
-        {
-           // if (bulletData.explosions)
-           // {
-           //     Debug.Log("EXPLOSION!!!");
-           // }
-            Destroy(gameObject);
-        }
-        numRicochets++;
+        Destroy(gameObject);
+        
     }
 
 }

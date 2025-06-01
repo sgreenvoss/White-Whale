@@ -33,8 +33,11 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         // Restart Score
-        fishCountText.text = $"Score: 0";
-        ABSFish.total_score = 0;
+        if (fishCountText != null)
+        {
+            fishCountText.text = $"Score: 0";
+            ABSFish.total_score = 0;
+        }
     }
 
 
