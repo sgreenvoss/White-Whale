@@ -9,7 +9,7 @@ public class ControlListBuilder : MonoBehaviour
 
     private Dictionary<string, string> controls = new Dictionary<string, string>()
     {
-        {"G", "Flashlight"},
+        {"N", "Flashlight"},
         {"P", "Pause"},
         {"Space", "Dash"},
         {"Shift", "Upward"},

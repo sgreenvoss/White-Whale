@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
     private GameObject RestartButton;
     private GameObject RestartIndicator;
 
+    public GameObject CoinUI;
+
+
     void Start()
     {
         // Restart Score
@@ -98,6 +101,7 @@ public class UIManager : MonoBehaviour
 
             HomeButton?.SetActive(false);
             RestartButton?.SetActive(false);
+            CoinUI?.SetActive(false);
 
             StartCoroutine(ShowRoundOverUI());
         }
@@ -112,6 +116,9 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
         RestartButton?.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(1f);
+        CoinUI?.SetActive(true);
 
     }
 
