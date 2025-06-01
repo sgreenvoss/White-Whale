@@ -129,8 +129,11 @@ public class Gun : MonoBehaviour
                 if (hitInfo.transform.CompareTag("Shark"))
                 {
                     Debug.Log("collision with shark detected");
-                    WaypointSystem.attackPlayer = true;
-                    Debug.Log("Shark is chasing you :0");
+                    if (WaypointSystem.attackPlayer == false)
+                    {
+                        WaypointSystem.attackPlayer = true;
+                        Debug.Log("Shark is chasing you :0");
+                    }
                     ABSFish shark = hitInfo.transform.GetComponent<ABSFish>();
 
 
@@ -142,6 +145,28 @@ public class Gun : MonoBehaviour
                     else
                     {
                         Debug.Log("Shark is Null");
+                    }
+                }
+                if (hitInfo.transform.CompareTag("Whale"))
+                {
+                    Debug.Log("collision with WHale detected");
+
+                    // if (WaypointSystem.attackPlayer == false)
+                    // {
+                    //     WaypointSystem.attackPlayer = true;
+                    //     Debug.Log("Whale is chasing you :0");
+                    // }
+                    ABSFish Whale = hitInfo.transform.GetComponent<ABSFish>();
+
+
+                    if (Whale != null)
+                    {
+                        Debug.Log("Whale hit!!");
+                        Whale.Damage(gunData.damage);
+                    }
+                    else
+                    {
+                        Debug.Log("Whale is Null");
                     }
                 }
             }

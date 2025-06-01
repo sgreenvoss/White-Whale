@@ -17,6 +17,7 @@ namespace DistantLands
         public float moveSpeed;
         public float turnSpeed;
         public float attackSpeed;
+        public float attackdist = 10f;
 
         public Transform target;
         private int progress;
@@ -30,18 +31,28 @@ namespace DistantLands
             waypoints = GetComponentsInChildren<Transform>().ToList();
             waypoints.Remove(transform);
             target = waypoints[progress];
+            attackPlayer = false;
 
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (objectToMove.tag == "Whale")
+            {
+                float distanceToPlayer = Vector3.Distance(objectToMove.position, player.position);
+
+                if (distanceToPlayer < attackdist && attackPlayer == false)
+                {   
+                    attackPlayer = true;
+                    Debug.Log("Whale is coming for you!!!!");
+                }
+            }
 
             if (attackPlayer)
             {
                 target = player;
                 moveSpeed = attackSpeed;
-
             }
 
             if (objectToMove.tag == "Whale")
@@ -104,6 +115,15 @@ namespace DistantLands
                 else
                     Gizmos.DrawLine(j.position, transform.GetChild(0).position);
 
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (objectToMove)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(objectToMove.position, attackdist); // 10f is your detection radius
             }
         }
     }

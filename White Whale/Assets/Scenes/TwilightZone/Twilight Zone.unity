@@ -3836,6 +3836,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 524713669}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524713670}
   m_SourcePrefab: {fileID: 100100000, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
 --- !u!4 &524713666 stripped
 Transform:
@@ -3878,7 +3881,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524713667}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3893,10 +3896,26 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &524713670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524713667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627d56f16e18c44c7bab305d95adc8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fish_score: 2000
+  max_health: 200
+  uiManager: {fileID: 128166855}
+  caught: 0
 --- !u!1 &537256672
 GameObject:
   m_ObjectHideFlags: 0
@@ -5665,7 +5684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &914026445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5684,6 +5703,7 @@ MonoBehaviour:
   moveSpeed: 3
   turnSpeed: 15
   attackSpeed: 0
+  attackdist: 10
   target: {fileID: 0}
 --- !u!4 &914026446
 Transform:
@@ -6013,6 +6033,7 @@ MonoBehaviour:
   moveSpeed: 8
   turnSpeed: 100
   attackSpeed: 10
+  attackdist: 30
   target: {fileID: 0}
 --- !u!4 &1035313759
 Transform:
@@ -6946,7 +6967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guns:
-  - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
+  - {fileID: 11400000, guid: 282b66341c9bea64f9b779bc53a1ff70, type: 2}
   - {fileID: 11400000, guid: 1a7c8c55c3f32d645bda337d0b50f25e, type: 2}
   - {fileID: 11400000, guid: 8657aa696bfbdda40afeb80274cd92dd, type: 2}
   - {fileID: 11400000, guid: cafea10014ae0ff4eaacb50b742663e1, type: 2}
@@ -9741,6 +9762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2916198332035017451, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3987814220991435101, guid: 2cc9b2e64497deb4b996f3766d0a6a8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.19246674
@@ -12397,7 +12422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1950500061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12416,6 +12441,7 @@ MonoBehaviour:
   moveSpeed: 4
   turnSpeed: 15
   attackSpeed: 0
+  attackdist: 10
   target: {fileID: 0}
 --- !u!4 &1950500062
 Transform:
