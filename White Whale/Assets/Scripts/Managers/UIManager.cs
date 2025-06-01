@@ -2,6 +2,9 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.XR;
+using UnityEngine.UI;
+using System.Collections;
+
 
 // Observer
 // Listens to:
@@ -22,6 +25,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject timerUI;
 
     [SerializeField] private BulletBarUI bulletBarUI;
+
+    [SerializeField] private CanvasGroup reloadTextCanvasGroup;
+
+
+    private Coroutine reloadFadeCoroutine;
 
 
     // Round Over children
@@ -75,7 +83,7 @@ public class UIManager : MonoBehaviour
         if (timerUI != null)
             timerUI.SetActive(false);       // disables timer
 
-            
+
         // Show round over UI
         if (roundOverScreen != null)
         {
@@ -124,6 +132,40 @@ public class UIManager : MonoBehaviour
         Debug.Log($"UIManager received ammo update: {currentAmmo}");
 
         bulletBarUI?.UpdateBulletDisplay(currentAmmo);
+    }
+
+    public void ShowReloadText(float reloadDuration)
+    {
+        if (reloadFadeCoroutine != null)
+            StopCoroutine(reloadFadeCoroutine);
+
+        reloadFadeCoroutine = StartCoroutine(FadeReloadText(reloadDuration));
+    }
+
+    private IEnumerator FadeReloadText(float reloadDuration)
+    {
+        // Fade in
+        yield return StartCoroutine(FadeCanvasGroup(reloadTextCanvasGroup, 0f, 1f, 0.3f));
+
+        // Wait for reload to finish
+        yield return new WaitForSeconds(reloadDuration - 0.6f);
+
+        // Fade out
+        yield return StartCoroutine(FadeCanvasGroup(reloadTextCanvasGroup, 1f, 0f, 0.3f));
+
+
+    }
+
+    private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            cg.alpha = Mathf.Lerp(start, end, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        cg.alpha = end;
     }
 
 

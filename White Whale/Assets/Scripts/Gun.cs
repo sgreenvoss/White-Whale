@@ -227,6 +227,14 @@ public class Gun : MonoBehaviour
     {
         Debug.Log("Reloading!");
         reloading = true;
+
+        // Trigger Reload text
+        UIManager ui = FindObjectOfType<UIManager>();
+        if (ui != null)
+            ui.ShowReloadText(gunData.reloadTime);
+
+
+
         yield return new WaitForSeconds(gunData.reloadTime);
         currentAmmo = gunData.capacity;
         OnAmmoChanged?.Invoke(currentAmmo);
