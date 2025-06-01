@@ -29,7 +29,7 @@ public class CursorManager : MonoBehaviour
     {
         string currScene = SceneManager.GetActiveScene().name;
 
-        if (currScene == "UpgradeScene")
+        if (currScene == "UpgradeScene" || currScene == "TutorialScene")
         {
             _isCursorVisible = true;
             lockCursor = false;
