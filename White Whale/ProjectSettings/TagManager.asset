@@ -9,6 +9,7 @@ TagManager:
   - BFish
   - Shark
   - New tag
+  - Whale
   layers:
   - Default
   - TransparentFX

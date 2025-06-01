@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace DistantLands
 {
-    public class WaypointSystem : MonoBehaviour
+    public class WaypointWhale : MonoBehaviour
 
     {
 
@@ -16,7 +16,6 @@ namespace DistantLands
         public Rigidbody rb;
         public float moveSpeed;
         public float turnSpeed;
-        public float attackSpeed;
 
         public Transform target;
         private int progress;
@@ -40,25 +39,13 @@ namespace DistantLands
             if (attackPlayer)
             {
                 target = player;
-                moveSpeed = attackSpeed;
+                moveSpeed = 8f;
 
             }
+        
 
-            if (objectToMove.tag == "Whale")
-            {
-                objectToMove.position += -objectToMove.forward * moveSpeed * Time.deltaTime;
-
-                Vector3 lookDir = -(target.position - objectToMove.position).normalized;
-                objectToMove.rotation = Quaternion.RotateTowards(
-                objectToMove.rotation,
-                Quaternion.LookRotation(lookDir, Vector3.up),turnSpeed * Time.deltaTime);
-            }
-
-            else
-            {
-                objectToMove.position += objectToMove.forward * moveSpeed * Time.deltaTime;
-                objectToMove.rotation = Quaternion.RotateTowards(objectToMove.rotation, Quaternion.LookRotation(target.position - objectToMove.position, Vector3.up), turnSpeed * Time.deltaTime);
-            }
+            objectToMove.position += objectToMove.forward * moveSpeed * Time.deltaTime;
+            objectToMove.rotation = Quaternion.RotateTowards(objectToMove.rotation, Quaternion.LookRotation(target.position - objectToMove.position, Vector3.up), turnSpeed * Time.deltaTime);
       
 
             if (!attackPlayer && Vector3.Distance(objectToMove.position, target.position) < moveSpeed)

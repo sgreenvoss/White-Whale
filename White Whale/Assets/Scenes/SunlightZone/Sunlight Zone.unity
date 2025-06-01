@@ -49862,6 +49862,7 @@ MonoBehaviour:
   rb: {fileID: 9113134}
   moveSpeed: 2
   turnSpeed: 40
+  attackSpeed: 8
   target: {fileID: 0}
 --- !u!4 &1459809000
 Transform:
