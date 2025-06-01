@@ -13,7 +13,7 @@ public class CoinUI : MonoBehaviour
         coins = ABSFish.total_coins;
         ABSFish.total_coins = 0;
         coinText = GetComponent<TMP_Text>();
-        coinText.text = "FishCoin: " + coins.ToString();
+        coinText.text = "Sand Dollars: " + coins.ToString();
         PlayerSkills.Instance.coinCount += coins;
     }
 

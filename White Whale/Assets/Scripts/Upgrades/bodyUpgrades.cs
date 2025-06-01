@@ -15,6 +15,7 @@ namespace Skills
         public GunData currentGunData;
         public int coinCount = 0;
         public List<Vector3> gunPositions = new List<Vector3>();
+        public static event Action<int> OnCoinChange;
 
         public static PlayerSkills Instance;
         private void Awake()
@@ -37,6 +38,11 @@ namespace Skills
 
         }
 
+        public void ChangeCoins(int cost)
+        {
+            coinCount -= cost;
+            OnCoinChange?.Invoke(coinCount);
+        }
         public void SwapIndex(int index)
         {
             if (index >= 0 && index < guns.Count)

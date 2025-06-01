@@ -40,33 +40,33 @@ namespace Skills
         }
 
         private Dictionary<string, SkillNode> nodes;
-        public bool Unlockable(string id) => nodes[id].Prereqs.All(p => p.IsUnlocked);
+        public bool Unlockable(string id) => nodes[id].Prereqs.All(p => p.IsUnlocked) && nodes[id].cost <= PlayerSkills.Instance.coinCount;
 
         private void InitializeTree()
         {
             // this is the instantiator
             // there are a lot of things we could do to clean this up...
             nodes = new Dictionary<string, SkillNode>();
-            SkillNode default_node = new SkillNode("", new List<SkillNode>(), _applyEffect: new NotImplemented());
-            SkillNode d_node = new SkillNode("Speed1", new List<SkillNode>(), false, 3, new DashMult());
+            SkillNode default_node = new SkillNode(0, "", new List<SkillNode>(), _applyEffect: new NotImplemented());
+            SkillNode d_node = new SkillNode(300, "Speed1", new List<SkillNode>(), false, 3, new DashMult());
             nodes.Add("Speed1", d_node);
-            SkillNode s_node = new SkillNode("Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
+            SkillNode s_node = new SkillNode(400, "Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
             nodes.Add("Speed2", s_node);
-            SkillNode h_node = new SkillNode("Speed3", new List<SkillNode> { s_node }, false, 7, new OxygenUp());
+            SkillNode h_node = new SkillNode(500, "Speed3", new List<SkillNode> { s_node }, false, 7, new OxygenUp());
             nodes.Add("Speed3", h_node);
 
-            SkillNode gun1 = new SkillNode("Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
+            SkillNode gun1 = new SkillNode(9000, "Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
             nodes.Add("Weapon1", gun1);
-            SkillNode gun2 = new SkillNode("Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
+            SkillNode gun2 = new SkillNode(10000, "Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon2", gun2);
-            SkillNode gun3 = new SkillNode("Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
+            SkillNode gun3 = new SkillNode(10000, "Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon3", gun3);
 
-            SkillNode general1 = new SkillNode("Oxygen1", new List<SkillNode>(), _max: 1, _applyEffect: new Flashlight());
+            SkillNode general1 = new SkillNode(1000, "Oxygen1", new List<SkillNode>(), _max: 1, _applyEffect: new Flashlight());
             nodes.Add("Oxygen1", general1);
-            SkillNode ox2 = new SkillNode("Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
+            SkillNode ox2 = new SkillNode(2000, "Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
             nodes.Add("Oxygen2", ox2);
-            SkillNode hands = new SkillNode("Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
+            SkillNode hands = new SkillNode(5000, "Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", hands);
 
         }
@@ -80,6 +80,7 @@ namespace Skills
                 node.IsUnlocked = true;
                 node.appCt++;
                 node.ApplyEffect.Apply();
+                PlayerSkills.Instance.ChangeCoins(node.cost);
 
                 string category = new string(id.TakeWhile(char.IsLetter).ToArray());
                 SelectUpgrade(category, id);
@@ -96,6 +97,7 @@ namespace Skills
 
     public class SkillNode
     {
+        public int cost;
         public string ID;
         public List<SkillNode> Prereqs = new();
         public bool IsUnlocked;
@@ -104,8 +106,9 @@ namespace Skills
         public int appCt = 0;
         // the maximum number of times a player can unlock this
         public int maxCt;
-        public SkillNode(string _id, List<SkillNode> _pre, bool _unlocked = false, int _max = 1, ISkillEffect _applyEffect = null)
+        public SkillNode(int _cost, string _id, List<SkillNode> _pre, bool _unlocked = false, int _max = 1, ISkillEffect _applyEffect = null)
         {
+            cost = _cost;
             ID = _id;
             Prereqs = _pre;
             IsUnlocked = _unlocked;
