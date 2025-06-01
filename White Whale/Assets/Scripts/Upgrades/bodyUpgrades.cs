@@ -13,6 +13,7 @@ namespace Skills
         [SerializeField] public List<GunData> guns;
         public static int _index = 0;
         public GunData currentGunData;
+        public int coinCount = 0;
         public List<Vector3> gunPositions = new List<Vector3>();
 
         public static PlayerSkills Instance;
