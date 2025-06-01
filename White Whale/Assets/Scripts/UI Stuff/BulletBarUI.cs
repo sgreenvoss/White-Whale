@@ -31,17 +31,24 @@ public class BulletBarUI : MonoBehaviour
         int iconCount = bullets.Length;
         float ammoPerIcon =(float)totalAmmo / iconCount;
 
+        int activeIcons = Mathf.CeilToInt((float)currentAmmo / ammoPerIcon);
+
+
+
 
 
         for (int i = 0; i < iconCount; i++)
         {
 
+            bullets[i].color = (i < activeIcons) ? activeColor : inactiveColor;
+
+            /*
             int reverseIndex = iconCount - 1 - i;
 
             float threshold = ammoPerIcon * i;
             bullets[reverseIndex].color = currentAmmo > threshold ? activeColor : inactiveColor;
 
-            /* Failed linear interpolation attempt
+            // Failed linear interpolation attempt
 
 
             float chunkStart = i * bulletsPerIcon;

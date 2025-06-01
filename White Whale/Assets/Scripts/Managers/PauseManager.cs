@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 // Notifier
     // Raises OnPauseStateChanged when the game is paused / resumed
@@ -11,6 +12,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private Button resumeButton;
     [SerializeField] private CursorManager cursorManager;
+    [SerializeField] private Button homeButton;
 
     private bool isPaused = false;
 
@@ -25,6 +27,9 @@ public class PauseManager : MonoBehaviour
 
         if (resumeButton != null)
             resumeButton.onClick.AddListener(ResumeGame);
+
+        if (homeButton != null)
+            homeButton.onClick.AddListener(GoHome);
     }
 
     void Update()
@@ -65,6 +70,11 @@ public class PauseManager : MonoBehaviour
 
         OnPauseStateChanged?.Invoke(isPaused);
 
+    }
+    private void GoHome()
+    {
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("Underwater Base"); 
     }
 
     public bool IsPaused()

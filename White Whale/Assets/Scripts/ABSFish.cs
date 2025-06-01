@@ -10,6 +10,7 @@ public abstract class ABSFish : MonoBehaviour
 
     public static int total_score;
 
+    int coin_mult = 10;
     public static int total_coins;
 
     public int max_health;
@@ -34,6 +35,9 @@ public abstract class ABSFish : MonoBehaviour
         current_health -= damage;
         if (current_health <= 0)
         {
+            int my_coin = fish_score * coin_mult;
+            total_coins += my_coin;
+            Debug.Log("coins: " + total_coins.ToString());
             Catch();
         }
     }
