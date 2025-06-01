@@ -23,9 +23,19 @@ public class LightingManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (PlayerSkills.Instance.goggles)
         {
-            PutGogglesOn();
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                if (gogglesOn == false)
+                {
+                    PutGogglesOn();
+                }
+                else
+                {
+                    TakeGogglesOff();
+                }
+            }
         }
     }
 
@@ -38,7 +48,7 @@ public class LightingManager : MonoBehaviour
     }
 
     void TakeGogglesOff()
-    //This function is mostly for testing
+
     {
         gogglesOn = false;
         RenderSettings.fogColor = defaultFogColor;

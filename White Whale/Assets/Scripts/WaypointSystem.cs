@@ -38,6 +38,9 @@ namespace DistantLands
         // Update is called once per frame
         void Update()
         {
+
+
+
             if (objectToMove.tag == "Whale")
             {
                 float distanceToPlayer = Vector3.Distance(objectToMove.position, player.position);
