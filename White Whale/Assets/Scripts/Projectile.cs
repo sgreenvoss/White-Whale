@@ -41,8 +41,11 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Shark"))
         {
             Debug.Log("collision with shark detected");
-            WaypointSystem.attackPlayer = true;
-            Debug.Log("Shark is chasing you :0");
+            if (WaypointSystem.attackPlayer == false)
+            {   
+                WaypointSystem.attackPlayer = true;
+                Debug.Log("Shark is chasing you :0");
+            }
             ABSFish shark = collision.gameObject.GetComponent<ABSFish>();
             bulletParticle.Play();
 
@@ -55,6 +58,23 @@ public class Projectile : MonoBehaviour
             {
                 Debug.Log("Shark is Null");
             }
+        }
+
+        if (collision.gameObject.CompareTag("Whale"))
+        {
+            Debug.Log("collision with whale detected");
+
+            // if (WaypointSystem.attackPlayer == false)
+            // {   
+            //     Debug.Log("Turnign on attack Player");
+            //     WaypointSystem.attackPlayer = true;
+            //     Debug.Log("Whale is chasing you :0");
+            // }
+
+            ABSFish Whale = collision.gameObject.GetComponent<ABSFish>();
+            bulletParticle.Play();
+            Debug.Log("Whale Hit!!");
+            Whale.Damage(bulletData.damage);
         }
 
 
