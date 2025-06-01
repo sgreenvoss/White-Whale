@@ -166,13 +166,15 @@ public class Gun : MonoBehaviour
         if (reloading) return;
 
         else if (GameState.CurrentState == GState.Diving)
-        {
-
+        { 
+            Debug.Log("Muzzle rotation at shoot time: " + muzzle.rotation.eulerAngles);
+            Debug.DrawRay(muzzle.position, muzzle.forward * 2, Color.red, 2f);
             GameObject projectile = Instantiate(gunData.projectile, muzzle.position, muzzle.rotation);
+            Debug.Log("projectile rotation: " + projectile.transform.rotation.eulerAngles);
             // make the bullet the size as declared in the upgrade
-            projectile.transform.localScale = Vector3.one * _bulletSize;
+            // projectile.transform.localScale = Vector3.one * _bulletSize;
             // shoot projectile
-            projectile.GetComponent<Rigidbody>().AddForce(muzzle.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
+            // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
             currentAmmo--;
             if (currentAmmo == 0)
             {
