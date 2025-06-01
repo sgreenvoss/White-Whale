@@ -37704,7 +37704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isCursorVisible: 0
-  lockCursor: 0
+  lockCursor: 1
 --- !u!114 &1116544086
 MonoBehaviour:
   m_ObjectHideFlags: 0
