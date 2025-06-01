@@ -2876,6 +2876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Submarine
       objectReference: {fileID: 0}
+    - target: {fileID: 2938597470064100849, guid: 56ff3bb442940ae4291fda83ce284d86, type: 3}
+      propertyPath: m_TagString
+      value: Sub
+      objectReference: {fileID: 0}
     - target: {fileID: 2938597470064597457, guid: 56ff3bb442940ae4291fda83ce284d86, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5110,7 +5114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6777d3f3a91adaf40a069d9871dd7be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundDuration: 300
+  roundDuration: 30
   timerText: {fileID: 1151339519}
   roundOverScreen: {fileID: 1929267525}
   restartButton: {fileID: 1866439094}
@@ -5684,7 +5688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &914026445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5692,7 +5696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914026444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f5acac056403243a60f889a2ed5ac4, type: 3}
   m_Name: 
@@ -12422,7 +12426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1950500061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12430,7 +12434,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950500060}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f5acac056403243a60f889a2ed5ac4, type: 3}
   m_Name: 
@@ -13334,6 +13338,10 @@ PrefabInstance:
     - target: {fileID: 1390894189685628394, guid: 9f684c9137319c34181a1454d93e9e5f, type: 3}
       propertyPath: m_Name
       value: Mini Sub
+      objectReference: {fileID: 0}
+    - target: {fileID: 1390894189685628394, guid: 9f684c9137319c34181a1454d93e9e5f, type: 3}
+      propertyPath: m_TagString
+      value: Sub
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
