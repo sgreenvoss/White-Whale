@@ -99,9 +99,12 @@ public class UIManager : MonoBehaviour
             RoundOverText = roundOverScreen.transform.Find("RoundOverText")?.gameObject;
             HomeButton = roundOverScreen.transform.Find("HomeButton")?.gameObject;
             RestartButton = roundOverScreen.transform.Find("RestartButton")?.gameObject;
-            RoundOverText.GetComponent<TMP_Text>().text = EnemyFish.WhaleCaught ? "You Win!" : "Time's up!";
+            // RoundOverText.GetComponent<TMP_Text>().text = EnemyFish.WhaleCaught ? "You Win!" : "Times up!";
 
-
+            if (EnemyFish.WhaleCaught && RoundOverText != null)
+            {
+                RoundOverText.GetComponent<TMP_Text>().text = "You Win!";
+            }
 
             RoundOverText?.SetActive(true);
 
