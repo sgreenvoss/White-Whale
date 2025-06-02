@@ -882,6 +882,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c0be1812ae724140b943cf6347fff94, type: 3}
+--- !u!1001 &2037456340
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.54
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.86740154
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.41763484
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.12181437
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.24157214
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -51.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -329.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
+      propertyPath: m_Name
+      value: Squid04
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7ca79d16e8424d90be63d8357025c14, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -897,3 +954,4 @@ SceneRoots:
   - {fileID: 1415541569}
   - {fileID: 1650250381}
   - {fileID: 1891921088}
+  - {fileID: 2037456340}

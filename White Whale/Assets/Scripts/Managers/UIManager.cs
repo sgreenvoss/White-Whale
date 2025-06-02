@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine.XR;
 using UnityEngine.UI;
 using System.Collections;
+using DistantLands;
 
 
 // Observer
@@ -12,6 +13,7 @@ using System.Collections;
 // Timer.OnRoundEnded                       round over screen
 // FishManager.OnFishCaught                 Updates fish count UI
 // CursorManager.OnCursorVisibilityChanged  reacts to cursor changes
+//EnemyFish.
 
 public class UIManager : MonoBehaviour
 {
@@ -91,11 +93,15 @@ public class UIManager : MonoBehaviour
         if (roundOverScreen != null)
         {
             roundOverScreen.SetActive(true);
+           
 
             // get child references
             RoundOverText = roundOverScreen.transform.Find("RoundOverText")?.gameObject;
             HomeButton = roundOverScreen.transform.Find("HomeButton")?.gameObject;
             RestartButton = roundOverScreen.transform.Find("RestartButton")?.gameObject;
+            RoundOverText.GetComponent<TMP_Text>().text = EnemyFish.WhaleCaught ? "You Win!" : "Time's up!";
+
+
 
             RoundOverText?.SetActive(true);
 

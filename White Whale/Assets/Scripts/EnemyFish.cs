@@ -9,12 +9,9 @@ namespace DistantLands
     {
         public UIManager uiManager; // UIManager in inspector
 
-  
+        public static bool WhaleCaught = false;
 
         public bool caught = false;
-
-        
-
 
         protected override void Start()
         {
@@ -53,12 +50,30 @@ namespace DistantLands
 
         public override void Catch()
         {
+  
             ABSFish.total_score += this.fish_score;
             
             caught = true;
 
             gameObject.SetActive(false); //deactivate inseatd of destroy
-            Debug.Log("Fish caught");
+            Debug.Log("Fish caught");          
+            
+            if (this.tag == "Whale")
+            {
+                WhaleCaught = true;
+                GameWon();
+            }
+        }
+
+        void GameWon()
+        {
+            GameState.Instance.ChangeState(GState.EndRound);
+
+            // convert score to total coins
+            ABSFish.total_coins += ABSFish.score * 10;
+
+            GameEvents.RoundEnded(); // Notify all subscribed observers
+
         }
 
     }
