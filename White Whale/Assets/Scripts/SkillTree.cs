@@ -218,7 +218,7 @@ namespace Skills
     {
         public void Apply()
         {
-            PlayerSkills.Instance.bulletScale += 2f;
+            PlayerSkills.Instance.bulletScale = 5f;
         }
     }
     
