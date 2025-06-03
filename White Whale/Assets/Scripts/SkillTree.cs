@@ -59,12 +59,12 @@ namespace Skills
             nodes.Add("Weapon1", gun1);
             SkillNode gun2 = new SkillNode(1000, "Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon2", gun2);
-            SkillNode gun3 = new SkillNode(10000, "Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
+            SkillNode gun3 = new SkillNode(5000, "Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon3", gun3);
 
             SkillNode general1 = new SkillNode(300, "Oxygen1", new List<SkillNode>(), _max: 1, _applyEffect: new Flashlight());
             nodes.Add("Oxygen1", general1);
-            SkillNode ox2 = new SkillNode(2000, "Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
+            SkillNode ox2 = new SkillNode(600, "Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
             nodes.Add("Oxygen2", ox2);
             SkillNode hands = new SkillNode(200, "Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", hands);
