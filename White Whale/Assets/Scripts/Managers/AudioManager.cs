@@ -10,9 +10,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     public string currState;
 
-    public AudioClip SunlightBGM;
-    public AudioClip TwilightBGM;
-    public AudioClip HomebaseBGM;
+    // public AudioClip SunlightBGM;
+    // public AudioClip TwilightBGM;
+    // public AudioClip HomebaseBGM;
 
     public AudioClip bgm;
 
@@ -31,33 +31,33 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // musicSource.clip = bgm;
-        // musicSource.Play();
+        musicSource.clip = bgm;
+        musicSource.Play();
 
         // if (instance == null)
         // {
         //     instance = this;
         // }
 
-        if (currState == "Sunlight Zone")
-        {
-            Debug.Log("currState is" + currState);
-            musicSource.clip = SunlightBGM;
-            musicSource.Play();
-        }
-        else if (currState == "Underwater Base")
-        {
-            Debug.Log("currState is" + currState);
-            musicSource.clip = HomebaseBGM;
-            musicSource.Play();
-        }
-        else
-        {
-            Debug.Log("At else. currState is" + currState);
-            musicSource.clip = SunlightBGM;
-            musicSource.Play();
-            return;
-        }
+        // if (currState == "Sunlight Zone")
+        // {
+        //     Debug.Log("currState is" + currState);
+        //     musicSource.clip = SunlightBGM;
+        //     musicSource.Play();
+        // }
+        // else if (currState == "Underwater Base")
+        // {
+        //     Debug.Log("currState is" + currState);
+        //     musicSource.clip = HomebaseBGM;
+        //     musicSource.Play();
+        // }
+        // else
+        // {
+        //     Debug.Log("At else. currState is" + currState);
+        //     musicSource.clip = SunlightBGM;
+        //     musicSource.Play();
+        //     return;
+        // }
 
     }
 

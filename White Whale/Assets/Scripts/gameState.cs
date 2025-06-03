@@ -79,7 +79,7 @@ public class GameState : MonoBehaviour
         GameStateChanged?.Invoke(newState);
 
         // Update Audio Manager
-        AudioManager.currState = sceneName;
+        // AudioManager.currState = sceneName;
     }
 
     public void ChangeState(GState state)
