@@ -23,6 +23,8 @@ namespace DistantLands
         private int progress;
         private List<Transform> waypoints;
 
+        public static bool isPaused;
+
 
         // Start is called before the first frame update
         void Start()
@@ -32,16 +34,21 @@ namespace DistantLands
             waypoints.Remove(transform);
             target = waypoints[progress];
             attackPlayer = false;
+            isPaused = false;
+
 
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (isPaused && objectToMove.tag == "Whale")
+            {
+                return;
+            }
 
 
-
-            if (objectToMove.tag == "Whale")
+            if (objectToMove.tag == "Whale" && !EnemyFish.youDied)
             {
                 float distanceToPlayer = Vector3.Distance(objectToMove.position, player.position);
 
@@ -56,6 +63,11 @@ namespace DistantLands
             {
                 target = player;
                 moveSpeed = attackSpeed;
+            }
+
+            if(!attackPlayer)
+            {
+                target = waypoints[progress];
             }
 
             if (objectToMove.tag == "Whale")

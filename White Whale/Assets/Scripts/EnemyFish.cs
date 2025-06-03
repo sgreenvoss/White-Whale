@@ -9,16 +9,22 @@ namespace DistantLands
     {
         public UIManager uiManager; // UIManager in inspector
 
-  
+        public static bool WhaleCaught = false;
+
+        public static bool youDied;
 
         public bool caught = false;
 
-        
-
+        public float playerHealth = 6f;
 
         protected override void Start()
         {
             base.Start();
+            youDied = false;
+
+
+
+
 
         }
 
@@ -40,26 +46,70 @@ namespace DistantLands
                 Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
                 if (playerRb != null)
                 {
-                    Debug.Log("player rb not found");
+
                     Vector3 knockbackDir = (collision.transform.position - transform.position).normalized;
 
-                    float knockbackForce = 60f;
-                    rb.AddForce(-knockbackDir * knockbackForce, ForceMode.Impulse); // Shark knockback
+
+                    float knockbackForce = (this.tag == "Whale") ? 90f : 60f;
+                    rb.AddForce(-knockbackDir * knockbackForce, ForceMode.Impulse); // enemy knockback
                     playerRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse); // Player knockback
+
+                    if (this.tag == "Whale")
+                    {
+                        StartCoroutine(PauseForSeconds(1f));
+                        playerHealth -= 1;
+                        Debug.Log("health down");
+                    }
+
+                    if (playerHealth == 0)
+                    {
+                        WaypointSystem.attackPlayer = false;
+                        youDied = true;
+                        GameWon();
+
+                    }
                 }
             }
+        }
+
+        private IEnumerator PauseForSeconds(float duration)
+        {
+            WaypointSystem.isPaused = true;
+            yield return new WaitForSeconds(duration);
+            WaypointSystem.isPaused = false;
         }
         
 
         public override void Catch()
         {
+  
             ABSFish.total_score += this.fish_score;
+
+            uiManager.HandleFishScore(null);
             
             caught = true;
 
             gameObject.SetActive(false); //deactivate inseatd of destroy
-            Debug.Log("Fish caught");
+            Debug.Log("Fish caught");          
+            
+            if (this.tag == "Whale")
+            {
+                WhaleCaught = true;
+                GameWon();
+            }
         }
+
+        void GameWon()
+        {
+            GameState.Instance.ChangeState(GState.EndRound);
+
+            // convert score to total coins
+            ABSFish.total_coins += ABSFish.score * 10;
+
+            GameEvents.RoundEnded(); // Notify all subscribed observers
+
+        }
+
 
     }
 }

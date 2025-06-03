@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine.XR;
 using UnityEngine.UI;
 using System.Collections;
+using DistantLands;
 
 
 // Observer
@@ -12,6 +13,7 @@ using System.Collections;
 // Timer.OnRoundEnded                       round over screen
 // FishManager.OnFishCaught                 Updates fish count UI
 // CursorManager.OnCursorVisibilityChanged  reacts to cursor changes
+//EnemyFish.
 
 public class UIManager : MonoBehaviour
 {
@@ -27,6 +29,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private BulletBarUI bulletBarUI;
 
     [SerializeField] private CanvasGroup reloadTextCanvasGroup;
+    [SerializeField] private TMP_Text highScoreText;
+
+
+
 
 
     private Coroutine reloadFadeCoroutine;
@@ -37,8 +43,11 @@ public class UIManager : MonoBehaviour
     private GameObject HomeButton;
     private GameObject RestartButton;
     private GameObject RestartIndicator;
+    private GameObject HighScoreText;
 
     public GameObject CoinUI;
+    public CursorManager cursorManager;
+
 
 
     void Start()
@@ -82,6 +91,7 @@ public class UIManager : MonoBehaviour
 
     void HandleRoundEnded()
     {
+        GameState.Instance.setHighScore(ABSFish.total_score);
 
         if (timerUI != null)
             timerUI.SetActive(false);       // disables timer
@@ -92,16 +102,31 @@ public class UIManager : MonoBehaviour
         {
             roundOverScreen.SetActive(true);
 
+
             // get child references
             RoundOverText = roundOverScreen.transform.Find("RoundOverText")?.gameObject;
             HomeButton = roundOverScreen.transform.Find("HomeButton")?.gameObject;
             RestartButton = roundOverScreen.transform.Find("RestartButton")?.gameObject;
+            // RoundOverText.GetComponent<TMP_Text>().text = EnemyFish.WhaleCaught ? "You Win!" : "Times up!";
+
+            if (EnemyFish.WhaleCaught && RoundOverText != null)
+            {
+                RoundOverText.GetComponent<TMP_Text>().text = "You Win!";
+                cursorManager.UpdateCursorState();
+
+            }
+            
+            if (EnemyFish.youDied && RoundOverText != null)
+            {
+                RoundOverText.GetComponent<TMP_Text>().text = "You Died!";
+            }
 
             RoundOverText?.SetActive(true);
 
             HomeButton?.SetActive(false);
             RestartButton?.SetActive(false);
             CoinUI?.SetActive(false);
+            HighScoreText?.SetActive(false);
 
             StartCoroutine(ShowRoundOverUI());
         }
@@ -119,6 +144,14 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
         CoinUI?.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(1f);
+        if (highScoreText != null && GameState.Instance != null)
+        {
+            int high = GameState.Instance.highScore;
+            highScoreText.text = "High Score: " + high.ToString();
+            highScoreText.gameObject.SetActive(true);  // Make sure it's visible
+        }
 
     }
 
@@ -174,6 +207,10 @@ public class UIManager : MonoBehaviour
         }
         cg.alpha = end;
     }
+
+
+
+
 
 
 }

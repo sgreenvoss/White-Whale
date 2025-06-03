@@ -18,6 +18,18 @@ public class GameState : MonoBehaviour
         ["Twilight Zone"] = GState.Diving
     };
 
+    public int highScore = 0;
+
+    public void setHighScore(int score)
+    {
+        Debug.Log("current high: " + highScore.ToString());
+        Debug.Log("considering high: " + score.ToString());
+        if (score > highScore)
+        {
+            highScore = score;
+        }
+    }
+
     public static GameState Instance { get; private set; }
     public static GState CurrentState { get; set; } = GState.Diving;
     private static GState _lastState = CurrentState;

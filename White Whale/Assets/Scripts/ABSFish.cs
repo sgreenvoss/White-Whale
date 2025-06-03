@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+
+
 
 // standing for ABSTRACT fish. (or fish with abs)
 // holds all shared functions to enable polymorphism
@@ -23,6 +27,9 @@ public abstract class ABSFish : MonoBehaviour
 
     protected Rigidbody rb;
 
+    public int high_score;
+
+
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,6 +45,7 @@ public abstract class ABSFish : MonoBehaviour
             int my_coin = fish_score * coin_mult;
             total_coins += my_coin;
             Debug.Log("coins: " + total_coins.ToString());
+            
             Catch();
         }
     }

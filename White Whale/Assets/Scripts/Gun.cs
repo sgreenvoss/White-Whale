@@ -197,7 +197,7 @@ public class Gun : MonoBehaviour
             GameObject projectile = Instantiate(gunData.projectile, muzzle.position, muzzle.rotation);
             Debug.Log("projectile rotation: " + projectile.transform.rotation.eulerAngles);
             // make the bullet the size as declared in the upgrade
-            // projectile.transform.localScale = Vector3.one * _bulletSize;
+            projectile.transform.localScale = Vector3.one * _bulletSize * 2f;
             // shoot projectile
             // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
             currentAmmo--;

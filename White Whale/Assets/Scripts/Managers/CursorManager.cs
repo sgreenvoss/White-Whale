@@ -46,7 +46,7 @@ public class CursorManager : MonoBehaviour
         UpdateCursorState();
     }
 
-    void UpdateCursorState()
+    public void UpdateCursorState()
     {
         Cursor.visible = _isCursorVisible;
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;

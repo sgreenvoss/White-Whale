@@ -52,21 +52,21 @@ namespace Skills
             nodes.Add("Speed1", d_node);
             SkillNode s_node = new SkillNode(400, "Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
             nodes.Add("Speed2", s_node);
-            SkillNode h_node = new SkillNode(500, "Speed3", new List<SkillNode> { s_node }, false, 7, new OxygenUp());
+            SkillNode h_node = new SkillNode(500, "Speed3", new List<SkillNode> { s_node }, false, 1, new OxygenUp());
             nodes.Add("Speed3", h_node);
 
-            SkillNode gun1 = new SkillNode(9000, "Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
+            SkillNode gun1 = new SkillNode(300, "Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
             nodes.Add("Weapon1", gun1);
-            SkillNode gun2 = new SkillNode(10000, "Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
+            SkillNode gun2 = new SkillNode(1000, "Weapon2", new List<SkillNode> { gun1 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon2", gun2);
             SkillNode gun3 = new SkillNode(10000, "Weapon3", new List<SkillNode> { gun1, gun2 }, _applyEffect: new IncreaseGun());
             nodes.Add("Weapon3", gun3);
 
-            SkillNode general1 = new SkillNode(1000, "Oxygen1", new List<SkillNode>(), _max: 1, _applyEffect: new Flashlight());
+            SkillNode general1 = new SkillNode(300, "Oxygen1", new List<SkillNode>(), _max: 1, _applyEffect: new Flashlight());
             nodes.Add("Oxygen1", general1);
             SkillNode ox2 = new SkillNode(2000, "Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
             nodes.Add("Oxygen2", ox2);
-            SkillNode hands = new SkillNode(5000, "Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
+            SkillNode hands = new SkillNode(200, "Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", hands);
 
         }
@@ -218,7 +218,7 @@ namespace Skills
     {
         public void Apply()
         {
-            PlayerSkills.Instance.bulletScale += 2f;
+            PlayerSkills.Instance.bulletScale = 5f;
         }
     }
     

@@ -236,8 +236,10 @@ public class UpgradeUIManager : MonoBehaviour
                 string id = category + (i + 1).ToString();
                 var btn = upgradeButtons[category][i];
 
+                bool isWeapon = category == "Weapon";
+
                 // Check for multi-press capacity
-                if (maxUpgradeCounts.ContainsKey(id))
+                if (!isWeapon && maxUpgradeCounts.ContainsKey(id))
                 {
                     int currentCount = currentUpgradeCounts.ContainsKey(id) ? currentUpgradeCounts[id] : 0;
                     int maxCount = maxUpgradeCounts[id];
@@ -275,7 +277,7 @@ public class UpgradeUIManager : MonoBehaviour
                     if (isUnlocked)
                     {
                         bool isSelected = tree.IsCurrentlySelected(category, id);
-                        if (category == "Weapon" && !isSelected)
+                        if (category == "Weapon" && !isSelected && !isUnlockable)
                         {
                             SetButtonColor(btn, "locked");
                         }
