@@ -20,6 +20,8 @@ public class GameState : MonoBehaviour
 
     public int highScore = 0;
 
+    public AudioManager AudioManager;
+
     public void setHighScore(int score)
     {
         Debug.Log("current high: " + highScore.ToString());
@@ -75,6 +77,9 @@ public class GameState : MonoBehaviour
         GState newState = SceneLookup[sceneName];
         CurrentState = newState;
         GameStateChanged?.Invoke(newState);
+
+        // Update Audio Manager
+        AudioManager.currState = sceneName;
     }
 
     public void ChangeState(GState state)

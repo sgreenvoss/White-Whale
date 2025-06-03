@@ -8,25 +8,57 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource soundFXObject;
     [SerializeField] private AudioSource musicSource;
+    public string currState;
+
+    public AudioClip SunlightBGM;
+    public AudioClip TwilightBGM;
+    public AudioClip HomebaseBGM;
 
     public AudioClip bgm;
 
+
     private void Awake()
     {
-        if (instance == null) {
+        Debug.Log("AudioManager is awake. currState is" + currState);
+
+        if (instance == null)
+        {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else {
+        else
+        {
             Destroy(gameObject);
         }
+
+        // musicSource.clip = bgm;
+        // musicSource.Play();
 
         // if (instance == null)
         // {
         //     instance = this;
         // }
-        musicSource.clip = bgm;
-        musicSource.Play();
+
+        if (currState == "Sunlight Zone")
+        {
+            Debug.Log("currState is" + currState);
+            musicSource.clip = SunlightBGM;
+            musicSource.Play();
+        }
+        else if (currState == "Underwater Base")
+        {
+            Debug.Log("currState is" + currState);
+            musicSource.clip = HomebaseBGM;
+            musicSource.Play();
+        }
+        else
+        {
+            Debug.Log("At else. currState is" + currState);
+            musicSource.clip = SunlightBGM;
+            musicSource.Play();
+            return;
+        }
+
     }
 
     public void PlaySoundClip(AudioClip audioClip, Transform spawnTransform, float volume)
