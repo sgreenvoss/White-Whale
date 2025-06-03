@@ -118,6 +118,7 @@ public class Gun : MonoBehaviour
         if (currentAmmo > 0 && CanShoot())
         {
             // plays particle system and starts coroutine to delete self in one second. 
+            shootingSource.PlayOneShot(shootSound); // keeping the same one (since it plays a million times)
             Instantiate(muzzleInst, muzzle.position, muzzle.rotation);
             if (Physics.SphereCast(muzzle.position, autoBulletSize, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
             {
