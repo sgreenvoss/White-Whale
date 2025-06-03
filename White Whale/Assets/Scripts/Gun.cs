@@ -161,11 +161,11 @@ public class Gun : MonoBehaviour
                 {
                     Debug.Log("collision with WHale detected");
 
-                    // if (WaypointSystem.attackPlayer == false)
-                    // {
-                    //     WaypointSystem.attackPlayer = true;
-                    //     Debug.Log("Whale is chasing you :0");
-                    // }
+                    if (WaypointSystem.attackPlayer == false)
+                    {
+                        WaypointSystem.attackPlayer = true;
+                        Debug.Log("Whale is chasing you :0");
+                    }
                     ABSFish Whale = hitInfo.transform.GetComponent<ABSFish>();
 
 
