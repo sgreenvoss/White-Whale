@@ -64,6 +64,11 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log("collision with whale detected");
 
+            if (WaypointSystem.attackPlayer == false)
+            {   
+                WaypointSystem.attackPlayer = true;
+                Debug.Log("Whale is chasing you :0");
+            }
             // if (WaypointSystem.attackPlayer == false)
             // {   
             //     Debug.Log("Turnign on attack Player");

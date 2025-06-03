@@ -17,6 +17,8 @@ namespace DistantLands
 
         public float playerHealth = 6f;
 
+
+
         protected override void Start()
         {
             base.Start();
