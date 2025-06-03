@@ -29,6 +29,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private BulletBarUI bulletBarUI;
 
     [SerializeField] private CanvasGroup reloadTextCanvasGroup;
+    [SerializeField] private TMP_Text highScoreText;
+
+
+
 
 
     private Coroutine reloadFadeCoroutine;
@@ -39,8 +43,11 @@ public class UIManager : MonoBehaviour
     private GameObject HomeButton;
     private GameObject RestartButton;
     private GameObject RestartIndicator;
+    private GameObject HighScoreText;
 
     public GameObject CoinUI;
+    public CursorManager cursorManager;
+
 
 
     void Start()
@@ -94,7 +101,7 @@ public class UIManager : MonoBehaviour
         if (roundOverScreen != null)
         {
             roundOverScreen.SetActive(true);
-           
+
 
             // get child references
             RoundOverText = roundOverScreen.transform.Find("RoundOverText")?.gameObject;
@@ -105,6 +112,8 @@ public class UIManager : MonoBehaviour
             if (EnemyFish.WhaleCaught && RoundOverText != null)
             {
                 RoundOverText.GetComponent<TMP_Text>().text = "You Win!";
+                cursorManager.UpdateCursorState();
+
             }
             
             if (EnemyFish.youDied && RoundOverText != null)
@@ -117,6 +126,7 @@ public class UIManager : MonoBehaviour
             HomeButton?.SetActive(false);
             RestartButton?.SetActive(false);
             CoinUI?.SetActive(false);
+            HighScoreText?.SetActive(false);
 
             StartCoroutine(ShowRoundOverUI());
         }
@@ -134,6 +144,14 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
         CoinUI?.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(1f);
+        if (highScoreText != null && GameState.Instance != null)
+        {
+            int high = GameState.Instance.highScore;
+            highScoreText.text = "High Score: " + high.ToString();
+            highScoreText.gameObject.SetActive(true);  // Make sure it's visible
+        }
 
     }
 
@@ -189,6 +207,10 @@ public class UIManager : MonoBehaviour
         }
         cg.alpha = end;
     }
+
+
+
+
 
 
 }

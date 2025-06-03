@@ -84,6 +84,8 @@ namespace DistantLands
         {
   
             ABSFish.total_score += this.fish_score;
+
+            uiManager.HandleFishScore(null);
             
             caught = true;
 

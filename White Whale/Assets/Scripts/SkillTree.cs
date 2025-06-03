@@ -52,7 +52,7 @@ namespace Skills
             nodes.Add("Speed1", d_node);
             SkillNode s_node = new SkillNode(400, "Speed2", new List<SkillNode> { d_node }, false, 1, new SpeedMult());
             nodes.Add("Speed2", s_node);
-            SkillNode h_node = new SkillNode(500, "Speed3", new List<SkillNode> { s_node }, false, 7, new OxygenUp());
+            SkillNode h_node = new SkillNode(500, "Speed3", new List<SkillNode> { s_node }, false, 1, new OxygenUp());
             nodes.Add("Speed3", h_node);
 
             SkillNode gun1 = new SkillNode(300, "Weapon1", new List<SkillNode>(), _applyEffect: new IncreaseGun());
