@@ -21,10 +21,7 @@ namespace DistantLands
         {
             base.Start();
             youDied = false;
-
-
-
-
+            WhaleCaught = false;
 
         }
 
@@ -65,7 +62,7 @@ namespace DistantLands
                     {
                         WaypointSystem.attackPlayer = false;
                         youDied = true;
-                        GameWon();
+                        // GameWon();
 
                     }
                 }
@@ -95,20 +92,20 @@ namespace DistantLands
             if (this.tag == "Whale")
             {
                 WhaleCaught = true;
-                GameWon();
+                // GameWon();
             }
         }
 
-        void GameWon()
-        {
-            GameState.Instance.ChangeState(GState.EndRound);
+        // void GameWon()
+        // {
+        //     GameState.Instance.ChangeState(GState.EndRound);
 
-            // convert score to total coins
-            ABSFish.total_coins += ABSFish.score * 10;
+        //     // convert score to total coins
+        //     ABSFish.total_coins += ABSFish.score * 10;
 
-            GameEvents.RoundEnded(); // Notify all subscribed observers
+        //     GameEvents.RoundEnded(); // Notify all subscribed observers
 
-        }
+        // }
 
 
     }

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using Skills;
+using DistantLands;
 
 // Notifier
 // Raises OnRoundEnded when round ends
@@ -90,6 +91,28 @@ public class Timer : MonoBehaviour
             if (_currTime <= 0)
             {
                 _currTime = 0;
+                CursorManager cursorManager = FindFirstObjectByType<CursorManager>();
+
+                if (cursorManager != null)
+                {
+                    cursorManager.ShowCursor();
+                }
+                EndRound();
+            }
+
+            if (EnemyFish.WhaleCaught)
+            {
+                CursorManager cursorManager = FindFirstObjectByType<CursorManager>();
+
+                if (cursorManager != null)
+                {
+                    cursorManager.ShowCursor();
+                }
+                EndRound();
+            }
+
+            if (EnemyFish.youDied)
+            {
                 CursorManager cursorManager = FindFirstObjectByType<CursorManager>();
 
                 if (cursorManager != null)

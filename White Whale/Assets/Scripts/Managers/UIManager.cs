@@ -109,14 +109,14 @@ public class UIManager : MonoBehaviour
             RestartButton = roundOverScreen.transform.Find("RestartButton")?.gameObject;
             // RoundOverText.GetComponent<TMP_Text>().text = EnemyFish.WhaleCaught ? "You Win!" : "Times up!";
 
-            if (EnemyFish.WhaleCaught && RoundOverText != null)
+            if (EnemyFish.WhaleCaught)
             {
                 RoundOverText.GetComponent<TMP_Text>().text = "You Win!";
-                cursorManager.UpdateCursorState();
+ 
 
             }
             
-            if (EnemyFish.youDied && RoundOverText != null)
+            if (EnemyFish.youDied)
             {
                 RoundOverText.GetComponent<TMP_Text>().text = "You Died!";
             }
