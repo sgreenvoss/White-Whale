@@ -16,7 +16,10 @@ public class Gun : MonoBehaviour
     [SerializeField] GunData gunData;
     [SerializeField] Transform muzzle;
     public List<AudioClip> sounds;
+    // if i had more time i would move these to the scriptable objects
+    // but alas and alack it is tuesday. so they are here now.
     public AudioClip shootSound;
+    [SerializeField] public AudioClip reloadSound;
     AudioSource shootingSource;
 
 
@@ -238,6 +241,7 @@ public class Gun : MonoBehaviour
     {
         Debug.Log("Reloading!");
         reloading = true;
+        shootingSource.PlayOneShot(reloadSound);
 
         // Trigger Reload text
         UIManager ui = FindObjectOfType<UIManager>();
