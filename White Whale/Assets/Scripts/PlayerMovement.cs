@@ -25,8 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] KeyCode dashKey = KeyCode.Space;
 
     Rigidbody rb;
-    Light flashlight;
-
+   
     void Start()
     {
         rb = GetComponent<Rigidbody>();
