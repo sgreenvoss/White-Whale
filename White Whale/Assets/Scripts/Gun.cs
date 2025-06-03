@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Scripting;
 using DistantLands;
+using System.Collections.Generic;
 
 public class Gun : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Gun : MonoBehaviour
     [Header("References")]
     [SerializeField] GunData gunData;
     [SerializeField] Transform muzzle;
+    public List<AudioClip> sounds;
+    public AudioClip shootSound;
+    AudioSource shootingSource;
 
 
     // for particle instantiation:
@@ -42,6 +46,8 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
+        shootingSource = GetComponent<AudioSource>();
+        shootSound = sounds[0];
         recip = 1f / (gunData.fireRate / div);
         //    GameState.GameStateChanged += HandleGameChange;
         currentAmmo = gunData.capacity;
@@ -191,15 +197,12 @@ public class Gun : MonoBehaviour
         if (reloading) return;
 
         else if (GameState.CurrentState == GState.Diving)
-        { 
-            Debug.Log("Muzzle rotation at shoot time: " + muzzle.rotation.eulerAngles);
-            Debug.DrawRay(muzzle.position, muzzle.forward * 2, Color.red, 2f);
+        {
+            shootingSource.PlayOneShot(shootSound);
             GameObject projectile = Instantiate(gunData.projectile, muzzle.position, muzzle.rotation);
-            Debug.Log("projectile rotation: " + projectile.transform.rotation.eulerAngles);
             // make the bullet the size as declared in the upgrade
             projectile.transform.localScale = Vector3.one * _bulletSize * 2f;
             // shoot projectile
-            // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward.normalized * gunData.projectileVelocity, ForceMode.Impulse);
             currentAmmo--;
             if (currentAmmo == 0)
             {
@@ -208,7 +211,14 @@ public class Gun : MonoBehaviour
             OnAmmoChanged?.Invoke(currentAmmo);
             // destroy after some time
             StartCoroutine(DestroyProjectileAfterTime(projectile, gunData.projectileLifetime));
+            int r = Random.Range(0, sounds.Count);
+            Debug.Log(r);
+            shootSound = sounds[r];
+
+            shootingSource.clip = shootSound;
+            Debug.Log(shootingSource.clip.name);
         }
+
     }
 
     private void TryReload()
