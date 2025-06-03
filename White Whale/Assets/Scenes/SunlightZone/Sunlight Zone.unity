@@ -5284,6 +5284,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 84869633}
   musicSource: {fileID: 168052976}
+  currState: 
+  SunlightBGM: {fileID: 8300000, guid: 51108fcf3cf930b40b35893f536b1de5, type: 3}
+  TwilightBGM: {fileID: 0}
+  HomebaseBGM: {fileID: 8300000, guid: 560884c100072b04f93f40e5a840f3b2, type: 3}
   bgm: {fileID: 8300000, guid: c283605077d1e1a47b72f984aab25580, type: 3}
 --- !u!4 &168052978
 Transform:
@@ -31131,6 +31135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: 0
+  AudioManager: {fileID: 0}
 --- !u!4 &914946053
 Transform:
   m_ObjectHideFlags: 0
