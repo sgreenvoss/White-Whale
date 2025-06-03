@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -38,6 +40,7 @@ public abstract class ABSFish : MonoBehaviour
             int my_coin = fish_score * coin_mult;
             total_coins += my_coin;
             Debug.Log("coins: " + total_coins.ToString());
+
             Catch();
         }
     }

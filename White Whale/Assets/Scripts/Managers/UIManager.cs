@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
 
     void HandleRoundEnded()
     {
+        GameState.Instance.setHighScore(ABSFish.total_score);
 
         if (timerUI != null)
             timerUI.SetActive(false);       // disables timer
