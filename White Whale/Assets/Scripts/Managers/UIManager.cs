@@ -105,6 +105,11 @@ public class UIManager : MonoBehaviour
             {
                 RoundOverText.GetComponent<TMP_Text>().text = "You Win!";
             }
+            
+            if (EnemyFish.youDied && RoundOverText != null)
+            {
+                RoundOverText.GetComponent<TMP_Text>().text = "You Died!";
+            }
 
             RoundOverText?.SetActive(true);
 
