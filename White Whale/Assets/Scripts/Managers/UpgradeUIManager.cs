@@ -27,7 +27,7 @@ public class UpgradeUIManager : MonoBehaviour
     private Dictionary<string, int> maxUpgradeCounts = new Dictionary<string, int>()
     {
         { "Speed1", 3 },
-        { "Oxygen3", 7 }
+        { "Oxygen3", 3 }
     };
 
 

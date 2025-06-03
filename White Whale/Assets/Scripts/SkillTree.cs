@@ -66,7 +66,7 @@ namespace Skills
             nodes.Add("Oxygen1", general1);
             SkillNode ox2 = new SkillNode(600, "Oxygen2", new List<SkillNode> { general1 }, _max: 1, _applyEffect: new BulletSize());
             nodes.Add("Oxygen2", ox2);
-            SkillNode hands = new SkillNode(200, "Oxygen3", new List<SkillNode>(), _max: 7, _applyEffect: new NewHand());
+            SkillNode hands = new SkillNode(200, "Oxygen3", new List<SkillNode>(), _max: 3, _applyEffect: new NewHand());
             nodes.Add("Oxygen3", hands);
 
         }
@@ -200,9 +200,11 @@ namespace Skills
 
     public class NewHand : ISkillEffect
     {
+        static int mult = 1;
         public void Apply()
         {
-            PlayerSkills.Instance.hands++;
+            PlayerSkills.Instance.hands += mult;
+            mult *= 2;
         }
     }
 
