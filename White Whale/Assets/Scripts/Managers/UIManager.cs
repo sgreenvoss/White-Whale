@@ -5,6 +5,8 @@ using UnityEngine.XR;
 using UnityEngine.UI;
 using System.Collections;
 using DistantLands;
+using UnityEngine.SceneManagement;
+
 
 
 // Observer
@@ -128,6 +130,7 @@ public class UIManager : MonoBehaviour
             CoinUI?.SetActive(false);
             HighScoreText?.SetActive(false);
 
+
             StartCoroutine(ShowRoundOverUI());
         }
 
@@ -207,6 +210,15 @@ public class UIManager : MonoBehaviour
         }
         cg.alpha = end;
     }
+
+    public void RestartGame()
+    {
+        GameState.Instance.ResetState();
+
+        // Load the Underwater Base scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Underwater Base");
+    }
+
 
 
 
