@@ -9,8 +9,8 @@ Team members: Stella Greenvoss, Dylan Tiffany, Clio Tsao, Julia Wheless
 This repository contains a final build for the game White Whale.
 
 **Gameplay**:  
-  - Player movement (using WASD keys to move relative to view; press SPACE to dash; press LEFT SHIFT to boost upwards)
-  - "Catching" fish with a projectile (click to shoot): there is a reload period after 6 shots for the starter pistol
+  - Player movement (using WASD keys to move relative to view; press SPACE to dash; press LEFT SHIFT to boost upwards).
+  - "Catching" fish with a projectile (click to shoot): there is a reload period after 6 shots for the starter pistol.
   - Different fish have different swim patterns and health... but the harder-to-catch ones may be worth more points!
 
 **Environments**:  
