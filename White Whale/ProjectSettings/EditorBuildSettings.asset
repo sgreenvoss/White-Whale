@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Proof of Concept.unity
     guid: c5f2d06b140f0f24995d6adfeab3b0e1
   - enabled: 1
-    path: Assets/Scenes/SunlightZone/Sunlight Zone.unity
-    guid: e1f4ef38dcb7344da8eafaa464281a9d
-  - enabled: 1
     path: Assets/Scenes/UnderwaterBase/Underwater Base.unity
     guid: e5b2f8d5e92a94450bf51ca525c8e5b9
+  - enabled: 1
+    path: Assets/Scenes/SunlightZone/Sunlight Zone.unity
+    guid: e1f4ef38dcb7344da8eafaa464281a9d
   - enabled: 1
     path: Assets/Scenes/UpgradeScene.unity
     guid: 77353752f80011d47af071679edde0c2
