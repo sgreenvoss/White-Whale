@@ -5285,9 +5285,6 @@ MonoBehaviour:
   soundFXObject: {fileID: 84869633}
   musicSource: {fileID: 168052976}
   currState: 
-  SunlightBGM: {fileID: 8300000, guid: 51108fcf3cf930b40b35893f536b1de5, type: 3}
-  TwilightBGM: {fileID: 0}
-  HomebaseBGM: {fileID: 8300000, guid: 560884c100072b04f93f40e5a840f3b2, type: 3}
   bgm: {fileID: 8300000, guid: c283605077d1e1a47b72f984aab25580, type: 3}
 --- !u!4 &168052978
 Transform:
@@ -50357,6 +50354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f5acac056403243a60f889a2ed5ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aManager: {fileID: 168052977}
   player: {fileID: 1160720790}
   objectToMove: {fileID: 9113130}
   rb: {fileID: 9113134}

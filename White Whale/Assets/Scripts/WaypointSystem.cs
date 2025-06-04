@@ -8,7 +8,7 @@ namespace DistantLands
     public class WaypointSystem : MonoBehaviour
 
     {
-
+        [SerializeField] AudioManager aManager;
         public Transform player;
         public static bool attackPlayer = false;
 

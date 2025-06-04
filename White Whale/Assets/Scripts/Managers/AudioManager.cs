@@ -1,4 +1,5 @@
 using UnityEngine;
+using DistantLands;
 
 public class AudioManager : MonoBehaviour
 {
@@ -81,4 +82,13 @@ public class AudioManager : MonoBehaviour
         // // destroy the clip after it is done playing
         Destroy(audioSource.gameObject, clipLength);
     }
+
+
+    public static void HandleAttack() {
+        if (instance != null && instance.musicSource != null)
+        {
+            instance.musicSource.pitch *= 1.5f;
+        }
+    }
+
 }

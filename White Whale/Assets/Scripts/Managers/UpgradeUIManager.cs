@@ -243,6 +243,7 @@ public class UpgradeUIManager : MonoBehaviour
                 {
                     int currentCount = currentUpgradeCounts.ContainsKey(id) ? currentUpgradeCounts[id] : 0;
                     int maxCount = maxUpgradeCounts[id];
+                    bool WeapPurchase = false;
 
                     // Allow pressing
                     if (currentCount >= maxCount)

@@ -11,6 +11,8 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private BulletBarUI bulletBarUI;
 
+    
+
 
     [Header("References")]
     [SerializeField] GunData gunData;
@@ -46,6 +48,8 @@ public class Gun : MonoBehaviour
     public int MaxAmmo => gunData.capacity;
 
     private bool CanShoot() => !reloading && timeSinceLastShot > recip;
+
+    private float pitch = 1;
 
     private void Awake()
     {
@@ -121,7 +125,10 @@ public class Gun : MonoBehaviour
         if (currentAmmo > 0 && CanShoot())
         {
             // plays particle system and starts coroutine to delete self in one second. 
+            pitch = pitch * 1.005f;
+            shootingSource.pitch = pitch;
             shootingSource.PlayOneShot(shootSound); // keeping the same one (since it plays a million times)
+            
             Instantiate(muzzleInst, muzzle.position, muzzle.rotation);
             if (Physics.SphereCast(muzzle.position, autoBulletSize, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
             {
@@ -142,6 +149,7 @@ public class Gun : MonoBehaviour
                     if (WaypointSystem.attackPlayer == false)
                     {
                         WaypointSystem.attackPlayer = true;
+                        AudioManager.HandleAttack();
                         Debug.Log("Shark is chasing you :0");
                     }
                     ABSFish shark = hitInfo.transform.GetComponent<ABSFish>();
@@ -164,6 +172,7 @@ public class Gun : MonoBehaviour
                     if (WaypointSystem.attackPlayer == false)
                     {
                         WaypointSystem.attackPlayer = true;
+                        AudioManager.HandleAttack();
                         Debug.Log("Whale is chasing you :0");
                     }
                     ABSFish Whale = hitInfo.transform.GetComponent<ABSFish>();
@@ -189,6 +198,7 @@ public class Gun : MonoBehaviour
             if (currentAmmo == 0)
             {
                 StartCoroutine(Reload());
+                pitch = 1f;
             }
 
             OnAmmoChanged?.Invoke(currentAmmo);
@@ -202,6 +212,8 @@ public class Gun : MonoBehaviour
 
         else if (GameState.CurrentState == GState.Diving)
         {
+            pitch = pitch * 1.1f;
+            shootingSource.pitch = pitch;
             shootingSource.PlayOneShot(shootSound);
             GameObject projectile = Instantiate(gunData.projectile, muzzle.position, muzzle.rotation);
             // make the bullet the size as declared in the upgrade
@@ -241,6 +253,8 @@ public class Gun : MonoBehaviour
     {
         Debug.Log("Reloading!");
         reloading = true;
+        pitch = 1f;
+        shootingSource.pitch = pitch;
         shootingSource.PlayOneShot(reloadSound);
 
         // Trigger Reload text
