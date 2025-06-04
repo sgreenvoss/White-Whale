@@ -121,13 +121,16 @@ public class UIManager : MonoBehaviour
             if (EnemyFish.WhaleCaught)
             {
                 RoundOverText.GetComponent<TMP_Text>().text = "You Win!";
+                AudioManager.ResetPitch();
  
 
             }
-            
+
             if (EnemyFish.youDied)
             {
                 RoundOverText.GetComponent<TMP_Text>().text = "You Died!";
+                AudioManager.ResetPitch();
+
             }
 
             RoundOverText?.SetActive(true);

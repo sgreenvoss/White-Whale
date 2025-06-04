@@ -60,6 +60,7 @@ namespace DistantLands
                     {
                         StartCoroutine(PauseForSeconds(1f));
                         playerHealth -= 1;
+                        AudioManager.PitchShift(1.1f);
                         Debug.Log("health down");
                     }
 

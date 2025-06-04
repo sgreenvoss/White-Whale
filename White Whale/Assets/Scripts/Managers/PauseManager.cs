@@ -51,6 +51,7 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0f;
+        AudioManager.PitchShift(0.8f);
 
         pauseMenuUI?.SetActive(true);
         cursorManager.ShowCursor();
@@ -64,6 +65,7 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
+        AudioManager.PitchShift(1.25f);
 
         pauseMenuUI?.SetActive(false);
         cursorManager?.HideCursor();

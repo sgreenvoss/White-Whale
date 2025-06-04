@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
         // // destroy the clip after it is done playing
         Destroy(audioSource.gameObject, clipLength);
     }
-    
+
     public void PlayRandomSoundClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
     {
         // pick random sound
@@ -78,14 +78,19 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public static void HandleAttack()
+    public static void PitchShift(float amt)
     {
-        Debug.Log("entered HandleAttack" + instance + instance.musicSource);
-
         if (instance != null && instance.musicSource != null)
         {
-            Debug.Log("pitching music");
-            instance.musicSource.pitch *= 1.5f;
+            instance.musicSource.pitch *= amt;
+        }
+    }
+    
+    public static void ResetPitch()
+    {
+        if (instance != null && instance.musicSource != null)
+        {
+            instance.musicSource.pitch = 1;
         }
     }
 
