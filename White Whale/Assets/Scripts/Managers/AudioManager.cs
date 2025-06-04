@@ -9,23 +9,15 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource soundFXObject;
     [SerializeField] private AudioSource musicSource;
-    public string currState;
-
-    // public AudioClip SunlightBGM;
-    // public AudioClip TwilightBGM;
-    // public AudioClip HomebaseBGM;
-
     public AudioClip bgm;
 
 
     private void Awake()
     {
-        Debug.Log("AudioManager is awake. currState is" + currState);
-
         if (instance == null)
         {
             instance = this;
-            // DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject); // to make it a singleton
         }
         else
         {
@@ -34,31 +26,6 @@ public class AudioManager : MonoBehaviour
 
         musicSource.clip = bgm;
         musicSource.Play();
-
-        // if (instance == null)
-        // {
-        //     instance = this;
-        // }
-
-        // if (currState == "Sunlight Zone")
-        // {
-        //     Debug.Log("currState is" + currState);
-        //     musicSource.clip = SunlightBGM;
-        //     musicSource.Play();
-        // }
-        // else if (currState == "Underwater Base")
-        // {
-        //     Debug.Log("currState is" + currState);
-        //     musicSource.clip = HomebaseBGM;
-        //     musicSource.Play();
-        // }
-        // else
-        // {
-        //     Debug.Log("At else. currState is" + currState);
-        //     musicSource.clip = SunlightBGM;
-        //     musicSource.Play();
-        //     return;
-        // }
 
     }
 
@@ -85,8 +52,11 @@ public class AudioManager : MonoBehaviour
 
 
     public static void HandleAttack() {
+        Debug.Log("entered HandleAttack" + instance + instance.musicSource);
+
         if (instance != null && instance.musicSource != null)
         {
+            Debug.Log("pitching music");
             instance.musicSource.pitch *= 1.5f;
         }
     }
