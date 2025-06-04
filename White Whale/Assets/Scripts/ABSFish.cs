@@ -28,6 +28,9 @@ public abstract class ABSFish : MonoBehaviour
     protected Rigidbody rb;
 
     public int high_score;
+    
+    [SerializeField] private AudioClip[] fishCaught;
+
 
 
     protected virtual void Start()
@@ -42,6 +45,7 @@ public abstract class ABSFish : MonoBehaviour
         current_health -= damage;
         if (current_health <= 0)
         {
+            AudioManager.instance.PlayRandomSoundClip(fishCaught, transform, 2f);
             int my_coin = fish_score * coin_mult;
             total_coins += my_coin;
             Debug.Log("coins: " + total_coins.ToString());

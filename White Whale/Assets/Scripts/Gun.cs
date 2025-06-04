@@ -230,7 +230,7 @@ public class Gun : MonoBehaviour
             int r = Random.Range(0, sounds.Count);
             Debug.Log(r);
             shootSound = sounds[r];
-
+            
             shootingSource.clip = shootSound;
             Debug.Log(shootingSource.clip.name);
         }

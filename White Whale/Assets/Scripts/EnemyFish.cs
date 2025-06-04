@@ -9,6 +9,8 @@ namespace DistantLands
     {
         public UIManager uiManager; // UIManager in inspector
 
+        public ParticleSystem playerHitParticle;
+
         public static bool WhaleCaught = false;
 
         public static bool youDied;
@@ -36,6 +38,12 @@ namespace DistantLands
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                // // Play player hit particle effect
+                // playerHitParticle = collision.gameObject.GetComponentInChildren<ParticleSystem>();
+                // playerHitParticle.Play();
+                // CameraShake.instance.start = true;
+                
+
                 // Decrease score
                 ABSFish.total_score = Mathf.Max(0, ABSFish.total_score - 10); // prevent score from going below 0
 

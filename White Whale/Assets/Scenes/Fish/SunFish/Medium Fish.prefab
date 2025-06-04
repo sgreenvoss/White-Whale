@@ -103,6 +103,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fish_score: 10
   max_health: 2
+  high_score: 0
+  fishCaught:
+  - {fileID: 8300000, guid: 51b25ce0602dd464fb309b3632fa8729, type: 3}
+  - {fileID: 8300000, guid: 0253015d530ab44d88b7bc7b50512a11, type: 3}
+  - {fileID: 8300000, guid: 49fd0be31dfe94f47b422307ecf75d3a, type: 3}
+  - {fileID: 8300000, guid: 5e7e132af546040a58e8104150e1db32, type: 3}
+  - {fileID: 8300000, guid: ea585a7758a3e48c89e2321f9564391f, type: 3}
   averageSpeed: 0
   caught: 0
   tankRadius: 10

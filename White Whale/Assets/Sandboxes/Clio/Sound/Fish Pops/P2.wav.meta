@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 928389bfab1bd4589b4d82fb3fac68a1
+guid: e3e0245ec29df4d5d8034f570418f0ce
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7
@@ -26,5 +26,5 @@ AssetOrigin:
   productId: 263821
   packageName: Free Pop Sound Effects Pack
   packageVersion: 1.0
-  assetPath: Assets/Free Pop Sound Effects Pack - UNITY/AUDIO/Designed/SFX_Pop_Designed_Collect_1.wav
+  assetPath: Assets/Free Pop Sound Effects Pack - UNITY/AUDIO/Bottle/Watery/SFX_Pop_Bottle_Glass_Watery_Small5.wav
   uploadId: 616724

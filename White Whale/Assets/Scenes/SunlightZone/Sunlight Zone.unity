@@ -673,7 +673,12 @@ MonoBehaviour:
   fish_score: 300
   max_health: 40
   high_score: 0
+  fishCaught:
+  - {fileID: 8300000, guid: 928389bfab1bd4589b4d82fb3fac68a1, type: 3}
+  - {fileID: 8300000, guid: 0e57f0c7f05154bcd85b93105e377f84, type: 3}
+  - {fileID: 8300000, guid: ea585a7758a3e48c89e2321f9564391f, type: 3}
   uiManager: {fileID: 286881019}
+  playerHitParticle: {fileID: 0}
   caught: 0
   playerHealth: 6
   fishAttack:
