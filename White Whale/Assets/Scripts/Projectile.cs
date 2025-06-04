@@ -44,6 +44,7 @@ public class Projectile : MonoBehaviour
             if (WaypointSystem.attackPlayer == false)
             {   
                 WaypointSystem.attackPlayer = true;
+                AudioManager.HandleAttack();
                 Debug.Log("Shark is chasing you :0");
             }
             ABSFish shark = collision.gameObject.GetComponent<ABSFish>();
@@ -67,6 +68,7 @@ public class Projectile : MonoBehaviour
             if (WaypointSystem.attackPlayer == false)
             {   
                 WaypointSystem.attackPlayer = true;
+                AudioManager.HandleAttack();
                 Debug.Log("Whale is chasing you :0");
             }
             // if (WaypointSystem.attackPlayer == false)
