@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class dollarDisplay : MonoBehaviour
 {
-    int coins;
     public TMP_Text dollarDisp;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         PlayerSkills.OnCoinChange += CoinHandler;
-        coins = PlayerSkills.Instance.coinCount;
-        dollarDisp.text = "$" + coins.ToString(); 
+
+        if (PlayerSkills.Instance != null)
+        {
+            CoinHandler(PlayerSkills.Instance.coinCount);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerSkills.Instance is null at Start in dollarDisplay.");
+        }
     }
+
     private void OnDisable()
     {
         PlayerSkills.OnCoinChange -= CoinHandler;
     }
 
-    // Update is called once per frame
     void CoinHandler(int newVal)
     {
-        dollarDisp.text = "$" + newVal.ToString();
+        if (dollarDisp != null)
+        {
+            dollarDisp.text = "$" + newVal.ToString();
+        }
+        else
+        {
+            Debug.LogError("dollarDisp is not assigned in dollarDisplay!");
+        }
     }
 }

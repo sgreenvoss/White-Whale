@@ -34,6 +34,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         if (PlayerSkills.Instance != null)
         {
             _currTime = roundDuration + PlayerSkills.Instance.roundDurationBonus;

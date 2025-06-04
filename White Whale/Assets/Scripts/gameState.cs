@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Skills;
+//using DistanceLands;
+
 public enum GState
 {
     Diving,
@@ -87,4 +90,31 @@ public class GameState : MonoBehaviour
         CurrentState = state;
         GameStateChanged?.Invoke(CurrentState);
     }
+
+    public void ResetState()
+    {
+        Debug.Log("Resetting GameState");
+
+        ABSFish.total_score = 0;
+        ABSFish.total_coins = 0;
+        ABSFish.score = 0;
+
+        CurrentState = GState.Diving;
+        _lastState = GState.Diving;
+
+        DistantLands.EnemyFish.WhaleCaught = false;
+
+        DistantLands.EnemyFish.youDied = false;
+
+        if (SkillTree.Instance != null)
+        {
+            SkillTree.Instance.ResetSkills();
+        }
+
+
+        // Optionally reset other shared or static states
+    }
+
+
+
 }

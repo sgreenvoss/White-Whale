@@ -49,4 +49,12 @@ public abstract class ABSFish : MonoBehaviour
             Catch();
         }
     }
+
+    public static void ResetFishStats()
+    {
+        total_score = 0;
+        total_coins = 0;
+        score = 0;
+    }
+
 }
