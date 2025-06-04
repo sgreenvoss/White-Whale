@@ -676,6 +676,9 @@ MonoBehaviour:
   uiManager: {fileID: 286881019}
   caught: 0
   playerHealth: 6
+  fishAttack:
+  - {fileID: 8300000, guid: 74198389e177d0948b63ca9a3fb22801, type: 3}
+  - {fileID: 8300000, guid: e82879725b40ce444bca27d19a75f42c, type: 3}
 --- !u!136 &9113136
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5284,7 +5287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 84869633}
   musicSource: {fileID: 168052976}
-  currState: 
   bgm: {fileID: 8300000, guid: c283605077d1e1a47b72f984aab25580, type: 3}
 --- !u!4 &168052978
 Transform:

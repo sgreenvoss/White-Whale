@@ -17,6 +17,8 @@ namespace DistantLands
 
         public float playerHealth = 6f;
 
+        [SerializeField] private AudioClip[] fishAttack;
+
 
 
         protected override void Start()
@@ -38,6 +40,7 @@ namespace DistantLands
                 ABSFish.total_score = Mathf.Max(0, ABSFish.total_score - 10); // prevent score from going below 0
 
                 uiManager.HandleFishScore(null);
+                AudioManager.instance.PlayRandomSoundClip(fishAttack, transform, 1f);
 
 
 

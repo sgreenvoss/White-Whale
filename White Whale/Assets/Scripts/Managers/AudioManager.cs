@@ -49,9 +49,37 @@ public class AudioManager : MonoBehaviour
         // // destroy the clip after it is done playing
         Destroy(audioSource.gameObject, clipLength);
     }
+    
+    public void PlayRandomSoundClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    {
+        // pick random sound
+        int rand = UnityEngine.Random.Range(0, audioClip.Length);
+
+        // spawn in gameObject
+        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+
+        // assign the audioClip
+        audioSource.clip = audioClip[rand];
+
+        // assign volume
+        audioSource.volume = volume;
+
+        // pitch down
+        audioSource.reverbZoneMix *= 0.75f;
+
+        // play sound
+        audioSource.Play();
+
+        // // get length of sound effect clip
+        float clipLength = audioSource.clip.length;
+
+        // // destroy the clip after it is done playing
+        Destroy(audioSource.gameObject, clipLength);
+    }
 
 
-    public static void HandleAttack() {
+    public static void HandleAttack()
+    {
         Debug.Log("entered HandleAttack" + instance + instance.musicSource);
 
         if (instance != null && instance.musicSource != null)
