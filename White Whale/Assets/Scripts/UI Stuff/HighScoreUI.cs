@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HighScoreUI : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         if (GameState.Instance != null)
         {
@@ -14,6 +14,8 @@ public class HighScoreUI : MonoBehaviour
             text.text = "High Score: " + score.ToString();
         } 
     }
+
+    
 
 }
 

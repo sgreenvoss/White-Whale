@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 namespace Skills
 {
     public class PlayerSkills : MonoBehaviour
@@ -75,6 +76,16 @@ namespace Skills
         public int hands = 1;
         public bool goggles = false;
         public float bulletScale = 1f;
+    
+
+
+        public void Reset()
+        {
+            coinCount = 0;
+            // Reset skill levels, cooldowns, etc.
+        }
     }
+
+    
 
 }

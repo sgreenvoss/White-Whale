@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Collections;
 using DistantLands;
 using UnityEngine.SceneManagement;
+using Skills;
 
 
 
@@ -46,9 +47,12 @@ public class UIManager : MonoBehaviour
     private GameObject RestartButton;
     private GameObject RestartIndicator;
     private GameObject HighScoreText;
+    private GameObject ResetGameButton;
 
     public GameObject CoinUI;
     public CursorManager cursorManager;
+
+    private bool win = false;
 
 
 
@@ -60,6 +64,8 @@ public class UIManager : MonoBehaviour
             fishCountText.text = $"Score: 0";
             ABSFish.total_score = 0;
         }
+
+
     }
 
 
@@ -109,6 +115,7 @@ public class UIManager : MonoBehaviour
             RoundOverText = roundOverScreen.transform.Find("RoundOverText")?.gameObject;
             HomeButton = roundOverScreen.transform.Find("HomeButton")?.gameObject;
             RestartButton = roundOverScreen.transform.Find("RestartButton")?.gameObject;
+            ResetGameButton = roundOverScreen.transform.Find("ResetGameButton")?.gameObject;
             // RoundOverText.GetComponent<TMP_Text>().text = EnemyFish.WhaleCaught ? "You Win!" : "Times up!";
 
             if (EnemyFish.WhaleCaught)
@@ -129,8 +136,9 @@ public class UIManager : MonoBehaviour
             RestartButton?.SetActive(false);
             CoinUI?.SetActive(false);
             HighScoreText?.SetActive(false);
+            ResetGameButton?.SetActive(false);
 
-
+            
             StartCoroutine(ShowRoundOverUI());
         }
 
@@ -139,11 +147,19 @@ public class UIManager : MonoBehaviour
 
     System.Collections.IEnumerator ShowRoundOverUI()
     {
-        yield return new WaitForSecondsRealtime(1f);
-        HomeButton?.SetActive(true);
+        if (!EnemyFish.WhaleCaught)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            HomeButton?.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(1f);
-        RestartButton?.SetActive(true);
+            yield return new WaitForSecondsRealtime(1f);
+            RestartButton?.SetActive(true);
+        }
+        else
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            ResetGameButton?.SetActive(true);
+        }
 
         yield return new WaitForSecondsRealtime(1f);
         CoinUI?.SetActive(true);
@@ -213,11 +229,17 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        GameState.Instance.ResetState();
+        Debug.Log("Restarting game...");
 
-        // Load the Underwater Base scene
+        // Fully reset the game state
+        GameState.Instance?.ResetState();
+        PlayerSkills.Instance?.Reset();  // implement this if needed
+        Time.timeScale = 1f;
+
+        // Reload a clean scene
         UnityEngine.SceneManagement.SceneManager.LoadScene("Underwater Base");
     }
+
 
 
 

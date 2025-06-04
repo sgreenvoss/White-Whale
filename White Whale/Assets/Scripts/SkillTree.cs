@@ -93,6 +93,44 @@ namespace Skills
             if (!nodes.ContainsKey(id)) return false;
             return nodes[id].IsUnlocked;
         }
+
+        public void ResetSkills()
+        {
+            Debug.Log("Resetting skills...");
+
+            // Reset all nodes
+            foreach (var node in nodes.Values)
+            {
+                node.IsUnlocked = false;
+                node.appCt = 0;
+            }
+
+            // Clear selected upgrades
+            selectedUpgrades.Clear();
+
+            // Reset all skill-based player attributes to base values
+            var player = PlayerSkills.Instance;
+            if (player != null)
+            {
+                player.velocity = player.baseVelocity;
+                player.dashAmt = 40f;
+                player.roundDurationBonus = 0f;
+                player.hands = 1;
+                player.goggles = false;
+                player.bulletScale = 1f;
+
+                PlayerSkills._index = 0;
+                player.currentGunData = player.guns[0];
+
+                // Optionally reset the bullet bar UI too
+                var bulletUI = GameObject.FindObjectOfType<BulletBarUI>();
+                if (bulletUI != null)
+                {
+                    bulletUI.SetTotalAmmo(player.GetCurrentGunMaxAmmo());
+                }
+            }
+        }
+
     }
 
     public class SkillNode
@@ -223,6 +261,8 @@ namespace Skills
             PlayerSkills.Instance.bulletScale = 5f;
         }
     }
+
+
     
     
 }
